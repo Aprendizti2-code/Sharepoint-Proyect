@@ -286,22 +286,34 @@ a:focus:not(:focus-visible) {
    ============================================ */
 .hero {
   position: relative;
-  aspect-ratio: 2172 / 724;
+  width: 100%;
   min-height: unset;
   height: auto;
-  background-image: url('assets/hero-banner.png?v=2');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
   background-color: #0a1931;
-  display: flex;
-  align-items: flex-start;
-  padding: 18px 40px;
+  line-height: 0;
+}
+.hero-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: top;
 }
 .hero-content {
-  position: relative; z-index: 10; width: 100%; margin: 0 auto;
-  display: flex; justify-content: flex-end; align-items: flex-start; gap: 20px;
-  padding-top: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 18px 40px;
+  line-height: normal;
 }
 
 /* Quick Panel */
@@ -401,12 +413,12 @@ a:focus:not(:focus-visible) {
    MAIN CONTENT LAYOUT
    ============================================ */
 .main-content-layout {
-  display: grid; 
-  grid-template-columns: 330px 1fr 285px; 
-  gap: var(--space-xl); 
+  display: grid;
+  grid-template-columns: 330px 1fr 320px;
+  gap: var(--space-xl);
   padding: 0 var(--side-padding) var(--space-2xl) var(--side-padding);
-  width: 100%; 
-  margin: 0 auto; 
+  width: 100%;
+  margin: 0 auto;
   align-items: stretch;
 }
 .col-comunicaciones {
@@ -536,13 +548,13 @@ a:focus:not(:focus-visible) {
 .widget h3 { font-size: var(--text-xl); margin-bottom: var(--space-xs); font-weight: 700;}
 .widget p { font-size: var(--text-base); opacity: 0.9; margin-bottom: var(--space-md); line-height: 1.3;}
 
-.widget-people { 
-  background-image: url('assets/banner-gente.jpg?v=2'); 
-  background-size: cover; 
-  background-position: center top; 
+.widget-people {
+  background-image: url('assets/banner-gente.jpg?v=3');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-color: #1a1a2e;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -553,15 +565,15 @@ a:focus:not(:focus-visible) {
 }
 .widget-people * { display: none !important; }
 
-.widget-survey { 
-  background-image: url('assets/banner-encuesta.jpg?v=2');
+.widget-survey {
+  background-image: url('assets/banner-encuesta.jpg?v=3');
   background-size: cover;
-  background-position: center top;
+  background-position: center;
   background-repeat: no-repeat;
   background-color: #1a1a2e;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   height: auto;
-  border-radius: var(--radius-lg); 
+  border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
   border: none;
@@ -601,7 +613,7 @@ a:focus:not(:focus-visible) {
 }
 
 .widget-calendar { 
-  background-image: linear-gradient(to right, rgba(10,25,49,0.95) 0%, rgba(10,25,49,0.7) 50%, rgba(10,25,49,0.2) 100%), url('assets/banner-calendario.jpg?v=2');
+  background-image: linear-gradient(to right, rgba(10,25,49,0.95) 0%, rgba(10,25,49,0.7) 50%, rgba(10,25,49,0.2) 100%), url('assets/banner-calendario.jpg?v=3');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1092,7 +1104,7 @@ body.font-xlarge { font-size: 20px; }
 @media (max-width: 1280px) {
   :root { --side-padding: 28px; }
   .main-content-layout {
-    grid-template-columns: 280px 1fr 265px;
+    grid-template-columns: 280px 1fr 300px;
   }
   .quick-panel { width: 340px; }
   .eco-columns { grid-template-columns: repeat(5, 1fr); }
@@ -1111,7 +1123,7 @@ body.font-xlarge { font-size: 20px; }
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-base);
   }
-  .widget-people, .widget-survey { aspect-ratio: 16 / 10; }
+  .widget-people, .widget-survey { aspect-ratio: 16 / 9; }
   .formatos-categories-grid { grid-template-columns: repeat(2, 1fr); }
   .area-grid-13 { grid-template-columns: repeat(2, 1fr); }
   .area-card-wide { grid-column: span 2; }
@@ -1172,6 +1184,17 @@ body.font-xlarge { font-size: 20px; }
     width: 100%;
     align-self: stretch;
   }
+  .hero {
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 420px;
+  }
+  .hero-bg {
+    min-height: 420px;
+    object-fit: cover;
+    object-position: center;
+    height: 420px;
+  }
 
   /* Feature Grid */
   .feature-grid {
@@ -1190,7 +1213,7 @@ body.font-xlarge { font-size: 20px; }
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-base);
   }
-  .widget-people, .widget-survey { aspect-ratio: 16 / 10; }
+  .widget-people, .widget-survey { aspect-ratio: 16 / 9; }
 
   /* Formatos */
   .format-header-with-search {

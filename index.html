@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" media="print" onload="this.media='all'" />
 
   <!-- CSS CRÍTICO: carga síncrona -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 
   <!-- Material Symbols: carga asíncrona para no bloquear renderizado -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -24,11 +24,12 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" />
+    <link rel="stylesheet" href="styles.css?v=4" />
   </noscript>
 
   <!-- PRELOAD: imágenes LCP ( Largest Contentful Paint ) -->
-  <link rel="preload" as="image" href="assets/banner-flota.png?v=2" />
-  <link rel="preload" as="image" href="assets/hero-banner.png?v=2" />
+  <link rel="preload" as="image" href="assets/hero-banner.png?v=4" />
+  <link rel="preload" as="image" href="assets/banner-flota.png?v=3" />
 </head>
 <body>
   <a href="#inicio" class="skip-nav">Saltar al contenido principal</a>
@@ -115,6 +116,7 @@
   <main id="inicio">
     <!-- HERO BANNER CON MONITOR EN TIEMPO REAL DEL ECOSISTEMA DIGITAL -->
     <section class="hero" role="region" aria-label="Banner de bienvenida de la intranet TRANES con imagen de camión en carretera">
+      <img class="hero-bg" src="assets/hero-banner.png?v=4" alt="" aria-hidden="true" width="2172" height="724" fetchpriority="high" />
       <div class="hero-content">
         <aside class="quick-panel" aria-label="Accesos rápidos">
           <h2><span class="material-symbols-outlined orange-icon" aria-hidden="true">bolt</span> Accesos Rápidos</h2>
@@ -151,7 +153,7 @@
     <!-- BANNERS DE ACCESO RÁPIDO (3 BANNERS SUPERIORES) -->
     <section class="feature-grid" aria-label="Accesos destacados">
       <div class="feature-card" title="Consulta tu Flota y Monitoreo GPS (Cloudfleet / GPS Commandtrack)" aria-label="Banner de flota y soporte TI">
-        <img src="assets/banner-flota.png?v=2" class="card-bg-img" alt="" aria-hidden="true" width="1200" height="630" />
+        <img src="assets/banner-flota.png?v=3" class="card-bg-img" alt="" aria-hidden="true" width="1200" height="630" />
         <div class="card-content-wrapper">
           <div class="card-icon"><span class="material-symbols-outlined" aria-hidden="true">local_shipping</span></div>
           <div class="card-text">
@@ -163,7 +165,7 @@
       </div>
 
       <div class="feature-card" title="Solicitudes y Trámites" aria-label="Banner de solicitudes y trámites">
-        <img src="assets/banner-formatos.png?v=2" class="card-bg-img" alt="" aria-hidden="true" width="1200" height="630" />
+        <img src="assets/banner-formatos.png?v=3" class="card-bg-img" alt="" aria-hidden="true" width="1200" height="630" />
         <div class="card-content-wrapper">
           <div class="card-icon"><span class="material-symbols-outlined" aria-hidden="true">assignment</span></div>
           <div class="card-text">
@@ -175,7 +177,7 @@
       </div>
 
       <div class="feature-card" id="sgi" title="Sistema de Gestión Integrado (SGI)" aria-label="Banner del Sistema de Gestión Integrado">
-        <img src="assets/banner-sst.png?v=2" class="card-bg-img" alt="" aria-hidden="true" width="1200" height="630" />
+        <img src="assets/banner-sst.png?v=3" class="card-bg-img" alt="" aria-hidden="true" width="1200" height="630" />
         <div class="card-content-wrapper">
           <div class="card-icon"><span class="material-symbols-outlined" aria-hidden="true">verified</span></div>
           <div class="card-text">
@@ -201,7 +203,7 @@
         
         <div class="news-list">
           <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news-comunicado.jpg?v=2');" role="img" aria-label="Horario especial Semana Santa" loading="lazy"></div>
+            <div class="news-thumb" style="background-image: url('assets/news-comunicado.jpg?v=3');" role="img" aria-label="Horario especial Semana Santa" loading="lazy"></div>
             <div class="news-info">
               <span class="tag tag-red">Comunicado</span>
               <h3>Horario especial Semana Santa</h3>
@@ -210,7 +212,7 @@
             </div>
           </article>
           <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news-noticias.jpg?v=2');" role="img" aria-label="Nuevos beneficios" loading="lazy"></div>
+            <div class="news-thumb" style="background-image: url('assets/news-noticias.jpg?v=3');" role="img" aria-label="Nuevos beneficios" loading="lazy"></div>
             <div class="news-info">
               <span class="tag tag-blue">Noticias</span>
               <h3>Nuevos beneficios para nuestros colaboradores</h3>
@@ -219,7 +221,7 @@
             </div>
           </article>
           <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news-sst.jpg?v=2');" role="img" aria-label="Campaña de salud" loading="lazy"></div>
+            <div class="news-thumb" style="background-image: url('assets/news-sst.jpg?v=3');" role="img" aria-label="Campaña de salud" loading="lazy"></div>
             <div class="news-info">
               <span class="tag tag-yellow">SGI / SST</span>
               <h3>Cuida tu salud, cuida tu vida</h3>
@@ -228,7 +230,7 @@
             </div>
           </article>
           <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news-cultura.jpg?v=2');" role="img" aria-label="Cultura Tranes" loading="lazy"></div>
+            <div class="news-thumb" style="background-image: url('assets/news-cultura.jpg?v=3');" role="img" aria-label="Cultura Tranes" loading="lazy"></div>
             <div class="news-info">
               <span class="tag tag-orange">Cultura Tranes</span>
               <h3>Celebramos a nuestros conductores</h3>
@@ -613,6 +615,6 @@
     </div>
   </div>
 
-  <script src="app.js" defer></script>
+  <script src="app.js?v=4" defer></script>
 </body>
 </html>
