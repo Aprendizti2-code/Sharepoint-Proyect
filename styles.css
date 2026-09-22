@@ -289,7 +289,7 @@ a:focus:not(:focus-visible) {
   aspect-ratio: 2172 / 724;
   min-height: unset;
   height: auto;
-  background-image: url('assets/hero-banner.png');
+  background-image: url('assets/hero-banner.png?v=2');
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -329,23 +329,28 @@ a:focus:not(:focus-visible) {
   width: 100%; margin: 0 auto;
 }
 .feature-card {
-  min-height: 200px;
+  min-height: 240px;
   border-radius: var(--radius-lg); border: none; color: white; text-align: left;
   padding: 0; display: flex; align-items: flex-end; position: relative;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   overflow: hidden;
   box-shadow: var(--shadow-md); transition: transform 0.25s ease;
 }
 .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.card-bg-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+}
 .card-content-wrapper {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  min-height: 200px;
+  min-height: 240px;
   padding: var(--space-lg) var(--space-xl);
-  background: linear-gradient(to top, rgba(10,25,49,0.95) 0%, rgba(10,25,49,0.85) 50%, rgba(10,25,49,0.4) 100%);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: linear-gradient(to top, rgba(10,25,49,0.85) 0%, rgba(10,25,49,0.25) 50%, transparent 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -391,10 +396,6 @@ a:focus:not(:focus-visible) {
 .banner-btn .material-symbols-outlined { font-size: 1.1rem; }
 .banner-btn-secondary { background: white; color: var(--orange); }
 .banner-btn-secondary:hover { background: #f8f9fa; color: var(--orange-hover); }
-
-.card-flota { background-image: url('assets/banner-flota.jpg'); }
-.card-formatos { background-image: url('assets/banner-formatos.jpg'); }
-.card-sst { background-image: url('assets/banner-sst.jpg'); }
 
 /* ============================================
    MAIN CONTENT LAYOUT
@@ -536,12 +537,12 @@ a:focus:not(:focus-visible) {
 .widget p { font-size: var(--text-base); opacity: 0.9; margin-bottom: var(--space-md); line-height: 1.3;}
 
 .widget-people { 
-  background-image: url('assets/banner-gente.jpg'); 
+  background-image: url('assets/banner-gente.jpg?v=2'); 
   background-size: cover; 
-  background-position: center; 
+  background-position: center top; 
   background-repeat: no-repeat;
   background-color: #1a1a2e;
-  aspect-ratio: 1931 / 814;
+  aspect-ratio: 4 / 3;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -553,12 +554,12 @@ a:focus:not(:focus-visible) {
 .widget-people * { display: none !important; }
 
 .widget-survey { 
-  background-image: url('assets/banner-encuesta.jpg');
+  background-image: url('assets/banner-encuesta.jpg?v=2');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   background-color: #1a1a2e;
-  aspect-ratio: 1932 / 814;
+  aspect-ratio: 4 / 3;
   height: auto;
   border-radius: var(--radius-lg); 
   position: relative;
@@ -600,7 +601,7 @@ a:focus:not(:focus-visible) {
 }
 
 .widget-calendar { 
-  background-image: linear-gradient(to right, rgba(10,25,49,0.95) 0%, rgba(10,25,49,0.7) 50%, rgba(10,25,49,0.2) 100%), url('assets/banner-calendario.jpg');
+  background-image: linear-gradient(to right, rgba(10,25,49,0.95) 0%, rgba(10,25,49,0.7) 50%, rgba(10,25,49,0.2) 100%), url('assets/banner-calendario.jpg?v=2');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -628,6 +629,8 @@ a:focus:not(:focus-visible) {
   width: 100%;
   margin: 0 auto;
   padding: 0 var(--side-padding) var(--space-2xl) var(--side-padding);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
 }
 .formatos-prominente-full {
   background: white;
@@ -758,6 +761,8 @@ a:focus:not(:focus-visible) {
   width: 100%;
   margin: 0 auto var(--space-2xl) auto;
   padding: 0 var(--side-padding);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 120px;
 }
 .governance-container {
   background: linear-gradient(135deg, #0a1931 0%, #1e2a44 100%);
@@ -807,6 +812,8 @@ a:focus:not(:focus-visible) {
   background-color: #12161b;
   border-top: 3px solid var(--orange);
   padding: var(--space-xl) var(--side-padding);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 200px;
 }
 .footer-inner {
   width: 100%;
@@ -1104,7 +1111,7 @@ body.font-xlarge { font-size: 20px; }
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-base);
   }
-  .widget-people, .widget-survey { height: 155px; min-height: 155px; max-height: 155px; }
+  .widget-people, .widget-survey { aspect-ratio: 16 / 10; }
   .formatos-categories-grid { grid-template-columns: repeat(2, 1fr); }
   .area-grid-13 { grid-template-columns: repeat(2, 1fr); }
   .area-card-wide { grid-column: span 2; }
@@ -1183,7 +1190,7 @@ body.font-xlarge { font-size: 20px; }
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-base);
   }
-  .widget-people, .widget-survey { height: 160px; min-height: 160px; max-height: 160px; }
+  .widget-people, .widget-survey { aspect-ratio: 16 / 10; }
 
   /* Formatos */
   .format-header-with-search {
@@ -1235,7 +1242,8 @@ body.font-xlarge { font-size: 20px; }
   .feature-grid .feature-card:last-child {
     grid-column: auto;
   }
-  .card-content-wrapper { min-height: 160px; }
+  .card-content-wrapper { min-height: 280px; }
+  .card-bg-img { object-position: center 35%; }
   .feature-card .card-text h3 { font-size: var(--text-lg); }
 
   /* Areas */
