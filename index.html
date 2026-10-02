@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" media="print" onload="this.media='all'" />
 
   <!-- CSS CRÍTICO: carga síncrona -->
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 
   <!-- Material Symbols: carga asíncrona para no bloquear renderizado -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -24,7 +24,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" />
-    <link rel="stylesheet" href="styles.css?v=4" />
+    <link rel="stylesheet" href="styles.css?v=9" />
   </noscript>
 
   <!-- PRELOAD: imágenes LCP ( Largest Contentful Paint ) -->
@@ -45,9 +45,145 @@
       <input placeholder="Buscar en el Ecosistema Digital..." aria-label="Buscar en el Ecosistema Digital" />
     </div>
     <div class="top-actions">
-      <button aria-label="Notificaciones"><span class="material-symbols-outlined">notifications</span></button>
-      <button aria-label="Configuración"><span class="material-symbols-outlined">settings</span></button>
-      <button aria-label="Ayuda"><span class="material-symbols-outlined">help</span></button>
+      <div class="top-action">
+        <button class="top-action-btn" aria-label="Notificaciones" aria-expanded="false" aria-controls="panel-notif" data-panel="panel-notif">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="topbar-badge" id="notif-badge">4</span>
+        </button>
+        <div class="topbar-panel" id="panel-notif" role="dialog" aria-label="Notificaciones">
+          <div class="tp-head">
+            <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
+            <strong>Notificaciones</strong>
+            <small>Novedades y cambios</small>
+          </div>
+          <ul class="tp-list">
+            <li>
+              <a href="#comunicaciones" class="notif-item is-new">
+                <span class="notif-dot" aria-hidden="true"></span>
+                <span class="notif-body">
+                  <strong>Nuevo horario laboral: 8:30 a.m. a 6:00 p.m.</strong>
+                  <small>Comunicado · 24 sep 2026</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#comunicaciones" class="notif-item is-new">
+                <span class="notif-dot" aria-hidden="true"></span>
+                <span class="notif-body">
+                  <strong>Celebración de Amor y Amistad</strong>
+                  <small>Cultura Tranes · 20 sep 2026</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#comunicaciones" class="notif-item is-new">
+                <span class="notif-dot" aria-hidden="true"></span>
+                <span class="notif-body">
+                  <strong>Salud mental y compañerismo</strong>
+                  <small>SGI / SST · 15 sep 2026</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#comunicaciones" class="notif-item is-new">
+                <span class="notif-dot" aria-hidden="true"></span>
+                <span class="notif-body">
+                  <strong>Actualización código de vestimenta</strong>
+                  <small>Noticias · 10 sep 2026</small>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <a href="#comunicaciones" class="tp-footer">Ver todas las comunicaciones <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        </div>
+      </div>
+
+      <div class="top-action">
+        <button class="top-action-btn" aria-label="Configuración" aria-expanded="false" aria-controls="panel-config" data-panel="panel-config">
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+        <div class="topbar-panel" id="panel-config" role="dialog" aria-label="Configuración">
+          <div class="tp-head">
+            <span class="material-symbols-outlined" aria-hidden="true">settings</span>
+            <strong>Configuración</strong>
+            <small>Personaliza tu vista</small>
+          </div>
+          <div class="tp-body">
+            <p class="tp-label">Fondo de la intranet</p>
+            <div class="theme-options" role="group" aria-label="Fondo de la intranet">
+              <button type="button" class="theme-opt is-active" data-theme="default">
+                <span class="swatch swatch-default" aria-hidden="true"></span> Clásico
+              </button>
+              <button type="button" class="theme-opt" data-theme="carbon">
+                <span class="swatch swatch-carbon" aria-hidden="true"></span> Carbón
+              </button>
+              <button type="button" class="theme-opt" data-theme="blue">
+                <span class="swatch swatch-blue" aria-hidden="true"></span> Azul
+              </button>
+            </div>
+
+            <p class="tp-label">Botones</p>
+            <label class="tp-switch">
+              <input type="checkbox" id="opt-classic" />
+              <span class="tp-slider" aria-hidden="true"></span>
+              <span>Estilo clásico (sin bordes redondeados ni sombras)</span>
+            </label>
+
+            <p class="tp-label">Texto y accesibilidad</p>
+            <div class="pref-row">
+              <span class="pref-name">Tamaño de texto</span>
+              <div class="textsize-group" role="group" aria-label="Tamaño de texto">
+                <button type="button" data-textsize="0">A</button>
+                <button type="button" data-textsize="1">A+</button>
+                <button type="button" data-textsize="2">A++</button>
+              </div>
+            </div>
+            <label class="tp-switch">
+              <input type="checkbox" data-contrast />
+              <span class="tp-slider" aria-hidden="true"></span>
+              <span>Alto contraste</span>
+            </label>
+            <label class="tp-switch">
+              <input type="checkbox" data-notif />
+              <span class="tp-slider" aria-hidden="true"></span>
+              <span>Notificaciones activadas</span>
+            </label>
+
+            <button type="button" class="tp-reset" id="opt-reset">
+              <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span> Restablecer
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="top-action">
+        <button class="top-action-btn" aria-label="Ayuda" aria-expanded="false" aria-controls="panel-help" data-panel="panel-help">
+          <span class="material-symbols-outlined">help</span>
+        </button>
+        <div class="topbar-panel" id="panel-help" role="dialog" aria-label="Ayuda">
+          <div class="tp-head">
+            <span class="material-symbols-outlined" aria-hidden="true">help</span>
+            <strong>Ayuda</strong>
+            <small>¿Necesitas soporte?</small>
+          </div>
+          <div class="tp-body tp-links">
+            <a href="https://m365.cloud.microsoft/m365apps/75f31797-37c9-498e-8dc9-53c16a36afca?auth=2&amp;home=1&amp;origindomain=microsoft365&amp;client-request-id=19eeea6b-6a4e-407d-900d-0381fd544701" target="_blank" rel="noopener">
+              <span class="material-symbols-outlined" aria-hidden="true">confirmation_number</span> Mesa de Ayuda TI (tickets)
+            </a>
+            <a href="#comunicaciones">
+              <span class="material-symbols-outlined" aria-hidden="true">campaign</span> Comunicaciones y novedades
+            </a>
+            <a href="#formatos">
+              <span class="material-symbols-outlined" aria-hidden="true">description</span> Centro de Formatos
+            </a>
+            <a href="#ecosistema">
+              <span class="material-symbols-outlined" aria-hidden="true">hub</span> Ecosistema Digital
+            </a>
+            <p class="tp-hint">Presiona <kbd>Esc</kbd> para cerrar cualquier panel.</p>
+          </div>
+        </div>
+      </div>
+
       <span class="avatar" title="Emmanuel Muñoz" role="img" aria-label="Avatar de usuario">EM</span>
     </div>
   </header>
@@ -102,51 +238,108 @@
     </div>
 
     <div class="navright">
-      <a href="https://gestiona2.co/" target="_blank" class="nav-btn nav-btn-highlight" title="Portal Oficial de Soporte Técnico (Gestiona2 / Calderón)" rel="noopener">
+      <a href="https://m365.cloud.microsoft/m365apps/75f31797-37c9-498e-8dc9-53c16a36afca?auth=2&amp;home=1&amp;origindomain=microsoft365&amp;client-request-id=19eeea6b-6a4e-407d-900d-0381fd544701" target="_blank" class="nav-btn nav-btn-highlight" title="Mesa de Ayuda TI — Crear y consultar tickets" rel="noopener">
         <span class="material-symbols-outlined">headset_mic</span> Mesa de Ayuda TI
       </a>
-      <button class="nav-btn"><span class="material-symbols-outlined">person</span> Mi Perfil <span class="material-symbols-outlined">expand_more</span></button>
+      <div class="dropdown profile-dropdown">
+        <button class="nav-btn dropdown-toggle" aria-expanded="false" aria-controls="menu-perfil"><span class="material-symbols-outlined">person</span> Mi Perfil <span class="material-symbols-outlined">expand_more</span></button>
+        <div class="dropdown-menu profile-menu" id="menu-perfil" role="menu">
+          <div class="profile-head">
+            <span class="avatar profile-avatar" aria-hidden="true">EM</span>
+            <div class="profile-id">
+              <strong>Emmanuel Muñoz</strong>
+              <small>Colaborador · TRANES S.A.S.</small>
+            </div>
+          </div>
+
+          <p class="profile-subtitle">
+            <span class="material-symbols-outlined" aria-hidden="true">badge</span>
+            Datos del colaborador
+          </p>
+          <ul class="profile-assets">
+            <li><span>Cargo</span><strong>Aprendiz TI</strong></li>
+            <li><span>Área / Departamento</span><strong>TI / Sistemas</strong></li>
+            <li><span>Correo corporativo</span><strong>Aprendizti2@tranes.com.co</strong></li>
+            <li><span>Sede</span><strong>Medellín</strong></li>
+            <li><span>Código de empleado</span><strong>—</strong></li>
+          </ul>
+
+          <p class="profile-subtitle">
+            <span class="material-symbols-outlined" aria-hidden="true">tune</span>
+            Preferencias
+          </p>
+          <div class="pref-block">
+            <div class="pref-row">
+              <span class="pref-name">Fondo</span>
+              <div class="theme-options" role="group" aria-label="Fondo de la intranet">
+                <button type="button" class="theme-opt is-active" data-theme="default" aria-label="Fondo clásico">
+                  <span class="swatch swatch-default" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="theme-opt" data-theme="carbon" aria-label="Fondo carbón">
+                  <span class="swatch swatch-carbon" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="theme-opt" data-theme="blue" aria-label="Fondo azul">
+                  <span class="swatch swatch-blue" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="pref-row">
+              <span class="pref-name">Tamaño de texto</span>
+              <div class="textsize-group" role="group" aria-label="Tamaño de texto">
+                <button type="button" data-textsize="0">A</button>
+                <button type="button" data-textsize="1">A+</button>
+                <button type="button" data-textsize="2">A++</button>
+              </div>
+            </div>
+
+            <label class="tp-switch">
+              <input type="checkbox" data-contrast />
+              <span class="tp-slider" aria-hidden="true"></span>
+              <span>Alto contraste</span>
+            </label>
+            <label class="tp-switch">
+              <input type="checkbox" data-notif />
+              <span class="tp-slider" aria-hidden="true"></span>
+              <span>Notificaciones activadas</span>
+            </label>
+          </div>
+
+          <button type="button" class="profile-link" role="menuitem" data-panel-close>
+            <span class="material-symbols-outlined" aria-hidden="true">badge</span> Ver mi perfil completo
+          </button>
+        </div>
+      </div>
     </div>
   </nav>
 
   <main id="inicio">
-    <!-- HERO BANNER CON MONITOR EN TIEMPO REAL DEL ECOSISTEMA DIGITAL -->
-    <section class="hero" role="region" aria-label="Banner de bienvenida de la intranet TRANES con imagen de camión en carretera">
-      <img class="hero-bg" src="assets/Principal.jpg" alt="" aria-hidden="true" width="2172" height="724" fetchpriority="high" />
-      <div class="hero-content">
-        <div class="hero-text-block">
-          <p class="hero-welcome">HOLA, BIENVENIDO A</p>
-          <h1 class="hero-title">
-            Tu espacio de<br>
-            <span class="hero-highlight">trabajo</span>
-          </h1>
-          <p class="hero-desc">Aquí encontrarás todas las comunicaciones, novedades y recursos que necesitas para tu día a día</p>
-          <p class="hero-slogan"><span class="hero-slogan-highlight">Movilidad que conecta personas,</span> rutas que construyen empresa.</p>
-        </div>
-      </div>
+    <!-- HERO BANNER INSTITUCIONAL TRANES (1920×640, 3:1) -->
+    <section class="hero" role="region" aria-label="Banner de bienvenida de la intranet TRANES">
+      <img class="hero-bg" src="assets/3b41e563-d8cd-4212-bb39-ed83338a768e (1).png" alt="Banner TRANES: Tu operación en manos de un gran equipo" fetchpriority="high" />
     </section>
 
     <!-- BANNERS DE ACCESO RÁPIDO (3 BANNERS SUPERIORES) -->
     <section class="feature-grid" aria-label="Accesos destacados">
-      <a href="https://gestiona2.co/" target="_blank" rel="noopener" class="feature-card feature-card-with-text" title="Consulta tu Flota y Monitoreo GPS" aria-label="Banner de flota y soporte TI">
+      <a href="https://m365.cloud.microsoft/m365apps/75f31797-37c9-498e-8dc9-53c16a36afca?auth=2&amp;home=1&amp;origindomain=microsoft365&amp;client-request-id=19eeea6b-6a4e-407d-900d-0381fd544701" target="_blank" rel="noopener" class="feature-card feature-card-with-text" title="Soporte TI" aria-label="Banner de Soporte TI">
         <img src="assets/1 (1).jpg" class="card-bg-img-absolute" alt="Consulta tu Flota y Monitoreo GPS" width="1200" height="630" />
         <div class="card-overlay-mimic">
           <div class="card-icon-mimic"><span class="material-symbols-outlined" aria-hidden="true">support_agent</span></div>
           <div class="card-text-mimic">
               <h3>Soporte TI</h3>
           </div>
-          <div class="banner-btn-mimic">Consulta soporte</div>
+          <div class="banner-btn-mimic">Solicitar soporte</div>
         </div>
       </a>
 
-      <a href="#formatos" class="feature-card feature-card-with-text" title="Solicitudes y Trámites" aria-label="Banner de solicitudes y trámites">
-        <img src="assets/bg_tramites.png" class="card-bg-img-absolute" alt="Solicitudes y Trámites" width="1200" height="630" />
+      <a href="https://tranes1.sharepoint.com/sites/TIDESARROLLOSOFTWARE/_layouts/15/listforms.aspx?cid=MTQ2ZjBjMjktMDczYy00MTQ2LWI5MmUtMjlhNjA2YmQ4NGUx&amp;nav=M2ZlZGUwN2MtMzE5Ny00MWFlLThjZGMtM2Y4ZTBjMTNkYTRk&amp;TeamsCID=5e632a9c-2fc9-4bac-93bb-3dbb7768507d&amp;OR=Teams-HL&amp;CT=1790869530429&amp;xsdata=MDV8MDJ8fDI3NDkzM2M2ZjU3YzRmYzQ5ZmViMDhkZjFmZDMyNjlifDUwNjM1NjQxY2FlZDRiZDk5NjM2ZWYwNmY1MmI5MTk5fDB8MHw2MzkyNjQ2NjM4NTYxOTM1MTV8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T2pjd1lUZzRZekkyTFRBME56a3RORGhtTnkxaVptTTJMVFZqWTJaa09UWXpaV0psWVY5a1lXWmpORFF3WlMwd016Z3pMVFJsWmpZdFlqTm1PQzB5TkRZNE1XVXhObVUxWXpSQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNU1EZzJPVFU0TWprM09BPT18MDkzYTExOTFlNjU0NDE2MDlmZWIwOGRmMWZkMzI2OWJ8ZjIxZTU1Y2RhYzk5NDgyZTg4NTgxYTNmMjNlMDBlYjE%3D&amp;sdata=OWN5WUkvSzdOdGFWam0remRlbVlIS0srVWFIYUw1T3BzTEgzdkFSRUtWRT0%3D&amp;ovuser=50635641-caed-4bd9-9636-ef06f52b9199%2CAprendizti2%40tranes.com.co&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MDMxNTgyMCIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D" target="_blank" rel="noopener" class="feature-card feature-card-with-text" title="Solicitud permisos laborales" aria-label="Banner de solicitud de permisos laborales">
+        <img src="assets/bg_tramites.png" class="card-bg-img-absolute" alt="Solicitud permisos laborales" width="1200" height="630" />
         <div class="card-overlay-mimic">
           <div class="card-icon-mimic"><span class="material-symbols-outlined" aria-hidden="true">assignment</span></div>
           <div class="card-text-mimic">
-              <h3>Solicitudes y Trámites</h3>
+              <h3>Solicitud permisos laborales</h3>
           </div>
-          <div class="banner-btn-mimic">Ir a Formatos</div>
+          <div class="banner-btn-mimic">Solicitar permiso laboral</div>
         </div>
       </a>
 
@@ -403,10 +596,10 @@
           </div>
         </div>
         <div class="gov-apps-right">
-          <a href="#" class="gov-app-link" title="LIBRASYS"><img src="assets/logo_librasys.png" alt="Librasys"></a>
-          <a href="#" class="gov-app-link" title="ENRUTA"><img src="assets/logo_enruta.png" alt="Enruta"></a>
-          <a href="#" class="gov-app-link" title="SIAROCO"><img src="assets/logo_siaroco.jpg" alt="Siaroco"></a>
-          <a href="#" class="gov-app-link" title="SIESA"><img src="assets/logo_siesa.jpg" alt="Siesa"></a>
+          <a href="https://librasys.com.co/" target="_blank" rel="noopener" class="gov-app-link" title="LIBRASYS" aria-label="Abrir LIBRASYS"><img src="assets/logo_librasys.png" alt="Librasys"></a>
+          <a href="https://tranes.enruta.cloudappsaigroup.com/login" target="_blank" rel="noopener" class="gov-app-link" title="ENRUTA" aria-label="Abrir ENRUTA"><img src="assets/logo_enruta.png" alt="Enruta"></a>
+          <a href="https://gt7siaroco.com/control/index.php" target="_blank" rel="noopener" class="gov-app-link" title="SIAROCO" aria-label="Abrir SIAROCO"><img src="assets/logo_siaroco.jpg" alt="Siaroco"></a>
+          <a href="https://www.siesa.com/" target="_blank" rel="noopener" class="gov-app-link" title="SIESA" aria-label="Abrir SIESA"><img src="assets/logo_siesa.jpg" alt="Siesa"></a>
         </div>
       </div>
     </section>
@@ -423,41 +616,37 @@
       </div>
 
       <div class="footer-contact">
-        <div class="f-item">
+        <a class="f-item" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+98+%23+70-91%2C+Bogot%C3%A1%2C+Colombia" target="_blank" rel="noopener" title="Ver en Google Maps - Bogotá">
           <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
           <div><strong>Calle 98 # 70-91</strong><small>Bogotá, Colombia</small></div>
-        </div>
-        <div class="f-item">
+        </a>
+        <a class="f-item" href="https://www.google.com/maps/search/?api=1&amp;query=Cra+35A+No.+15B+35%2C+Medell%C3%ADn%2C+Colombia" target="_blank" rel="noopener" title="Ver en Google Maps - Medellín">
           <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
-          <div><strong>Sede Medellín</strong><small>Medellín, Colombia</small></div>
-        </div>
-        <div class="f-item">
+          <div><strong>Cra 35A No. 15B 35</strong><small>Sede Medellín, Colombia</small></div>
+        </a>
+        <a class="f-item" href="https://www.google.com/maps/search/?api=1&amp;query=Av+30+de+Agosto+No.+32-21%2C+Pereira%2C+Colombia" target="_blank" rel="noopener" title="Ver en Google Maps - Pereira">
           <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
-          <div><strong>Sede Pereira</strong><small>Pereira, Colombia</small></div>
-        </div>
+          <div><strong>Av 30 de Agosto No. 32-21</strong><small>Sede Pereira, Colombia</small></div>
+        </a>
         <div class="f-item">
           <span class="material-symbols-outlined" aria-hidden="true">call</span>
           <div><strong>322 743 3387 / (604 4483197)</strong><small>PBX Línea nacional</small></div>
-        </div>
-        <div class="f-item">
-          <span class="material-symbols-outlined" aria-hidden="true">mail</span>
-          <div><strong>comunicaciones@tranes.com.co</strong><small>Contáctanos</small></div>
         </div>
       </div>
 
       <div class="footer-social">
         <p class="social-title">Redes Sociales Oficiales</p>
         <div class="social-icons">
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener" title="LinkedIn TRANES" class="social-btn" aria-label="LinkedIn TRANES">
+          <a href="https://www.linkedin.com/company/transportes-tranes/?originalSubdomain=co" target="_blank" rel="noopener" title="LinkedIn TRANES" class="social-btn" aria-label="LinkedIn TRANES">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.47 1.47 0 1 0 0 2.94 1.47 1.47 0 0 0 0-2.94Z"/></svg>
           </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener" title="Facebook TRANES" class="social-btn" aria-label="Facebook TRANES">
+          <a href="https://www.facebook.com/transportestranes" target="_blank" rel="noopener" title="Facebook TRANES" class="social-btn" aria-label="Facebook TRANES">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
           </a>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener" title="Instagram TRANES" class="social-btn" aria-label="Instagram TRANES">
+          <a href="https://www.instagram.com/transportestranes/" target="_blank" rel="noopener" title="Instagram TRANES" class="social-btn" aria-label="Instagram TRANES">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.8 3.8 0 0 0 3.8 7.8v8.4A3.8 3.8 0 0 0 7.6 20h8.8a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8a1.25 1.25 0 0 1-1.25-1.25c0-.69.56-1.25 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z"/></svg>
           </a>
-          <a href="https://www.youtube.com" target="_blank" rel="noopener" title="YouTube TRANES" class="social-btn" aria-label="YouTube TRANES">
+          <a href="https://www.youtube.com/@TransportesTranes" target="_blank" rel="noopener" title="YouTube TRANES" class="social-btn" aria-label="YouTube TRANES">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73Z"/></svg>
           </a>
         </div>
@@ -497,6 +686,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=4" defer></script>
+  <script src="app.js?v=6" defer></script>
 </body>
 </html>
