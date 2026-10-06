@@ -301,19 +301,54 @@ a:focus:not(:focus-visible) {
    HERO SECTION
    ============================================ */
 .hero {
+  width: 100%;
+  max-width: 1652px;
+  margin: 0 auto;
+  padding: 14px var(--side-padding) 0;
+}
+.hero-frame {
   position: relative;
   width: 100%;
-  min-height: unset;
-  height: auto;
   overflow: hidden;
-  background-color: #0a1931;
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: var(--white);
+  box-shadow: var(--shadow-md);
   line-height: 0;
 }
 .hero-bg {
   display: block;
   width: 100%;
-  height: auto;
-  vertical-align: top;
+  aspect-ratio: 4 / 1;
+  object-fit: cover;
+  object-position: 50% 44%;
+}
+.hero-site {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4%;
+  display: block;
+  text-align: center;
+  font-size: clamp(9px, 0.72vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  line-height: 1;
+  color: #f27549;
+}
+
+/* Tablet / móvil: se muestra el banner completo (16:9 y 4:3) */
+@media (max-width: 900px) {
+  .hero-bg {
+    aspect-ratio: 16 / 9;
+    object-position: center;
+  }
+  .hero-site { display: none; }
+}
+@media (max-width: 600px) {
+  .hero { padding-top: var(--space-lg); }
+  .hero-bg { aspect-ratio: 4 / 3; }
 }
 .hero-content {
   position: absolute;

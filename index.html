@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" media="print" onload="this.media='all'" />
 
   <!-- CSS CRÍTICO: carga síncrona -->
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 
   <!-- Material Symbols: carga asíncrona para no bloquear renderizado -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -24,11 +24,11 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" />
-    <link rel="stylesheet" href="styles.css?v=9" />
+    <link rel="stylesheet" href="styles.css?v=10" />
   </noscript>
 
   <!-- PRELOAD: imágenes LCP ( Largest Contentful Paint ) -->
-  <link rel="preload" as="image" href="assets/fotofinal.png" />
+  <link rel="preload" as="image" href="assets/banner-hero.jpg" />
   <link rel="preload" as="image" href="assets/1 (1).jpg" />
 </head>
 <body>
@@ -314,9 +314,12 @@
   </nav>
 
   <main id="inicio">
-    <!-- HERO BANNER INSTITUCIONAL TRANES (1920×640, 3:1) -->
+    <!-- HERO BANNER INSTITUCIONAL TRANES (16:9, recortado a 4:1 en desktop) -->
     <section class="hero" role="region" aria-label="Banner de bienvenida de la intranet TRANES">
-      <img class="hero-bg" src="assets/fotofinal.png" alt="Banner TRANES: Tu operación en manos de un gran equipo" fetchpriority="high" />
+      <div class="hero-frame">
+        <img class="hero-bg" src="assets/banner-hero.jpg" width="2000" height="1125" alt="Aquí comienza cada día: con las personas que hacen posible todo lo que somos" fetchpriority="high" />
+        <span class="hero-site">WWW.TRANES.COM.CO</span>
+      </div>
     </section>
 
     <!-- BANNERS DE ACCESO RÁPIDO (3 BANNERS SUPERIORES) -->
