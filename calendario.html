@@ -17,6 +17,10 @@
 
   <link rel="stylesheet" href="styles.css?v=16" />
 
+  <script>
+    try { history.scrollRestoration = 'manual'; } catch (e) {}
+  </script>
+
   <style>
     html {
       scroll-behavior: auto !important;
@@ -74,9 +78,9 @@
     .cal-back .material-symbols-outlined { font-size: 1.05rem; }
 
     .cal-wrap {
-      max-width: var(--container-max);
+      max-width: 1440px;
       margin: 0 auto;
-      padding: clamp(16px, 3vw, 30px) var(--side-padding) 48px;
+      padding: clamp(16px, 3vw, 30px) var(--side-padding) 40px;
     }
     .cal-card {
       background: #fff;
@@ -157,7 +161,7 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
-      min-height: 98px;
+      min-height: 88px;
       padding: 6px 6px 8px;
       text-align: left;
       font-family: inherit;
@@ -512,15 +516,24 @@
 
   <script>
     (function () {
+      var guardUntil = 0;
       function toTop() { try { window.scrollTo(0, 0); } catch (e) {} }
-      try { history.scrollRestoration = 'manual'; } catch (e) {}
-      toTop();
-      window.addEventListener('load', function () {
+      function arm(ms) {
+        guardUntil = Date.now() + (ms || 2500);
         toTop();
+      }
+      try { history.scrollRestoration = 'manual'; } catch (e) {}
+      arm(3500);
+      window.addEventListener('scroll', function () {
+        if (Date.now() < guardUntil) toTop();
+      }, { passive: true });
+      window.addEventListener('load', function () {
+        arm(2500);
         setTimeout(toTop, 150);
         setTimeout(toTop, 700);
+        setTimeout(toTop, 1600);
       });
-      window.addEventListener('pageshow', toTop);
+      window.addEventListener('pageshow', function () { arm(2500); });
 
       var KEY = 'tranes-calendario-v1';
       var today = new Date();
