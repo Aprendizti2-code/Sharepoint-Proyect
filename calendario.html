@@ -535,6 +535,21 @@
       });
       window.addEventListener('pageshow', function () { arm(2500); });
 
+      var lastH = 0;
+      function notifyParent() {
+        try {
+          if (window.parent === window) return;
+          var h = Math.ceil(document.documentElement.scrollHeight);
+          if (Math.abs(h - lastH) < 6) return;
+          lastH = h;
+          window.parent.postMessage({ tranes: 1, height: h }, '*');
+        } catch (e) {}
+      }
+      notifyParent();
+      window.addEventListener('load', notifyParent);
+      window.addEventListener('resize', notifyParent);
+      setInterval(notifyParent, 1500);
+
       var KEY = 'tranes-calendario-v1';
       var today = new Date();
       today.setHours(0, 0, 0, 0);

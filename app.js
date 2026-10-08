@@ -378,3 +378,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+// ============================================
+// 11. AVISO DE ALTURA AL PADRE (iframe en SharePoint)
+// ============================================
+(function () {
+  var lastH = 0;
+  function notifyParent() {
+    try {
+      if (window.parent === window) return;
+      var h = Math.ceil(document.documentElement.scrollHeight);
+      if (Math.abs(h - lastH) < 6) return;
+      lastH = h;
+      window.parent.postMessage({ tranes: 1, height: h }, '*');
+    } catch (e) {}
+  }
+  window.addEventListener('load', notifyParent);
+  window.addEventListener('resize', notifyParent);
+  setInterval(notifyParent, 2000);
+})();
