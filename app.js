@@ -85,18 +85,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. BUSCADOR DE FORMATOS (Tiempo Real)
   // ------------------------------------------
   const searchInput = document.getElementById('fmt-search-input');
+  const vacationOptions = document.getElementById('fmt-vacation-options');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const term = e.target.value.toLowerCase().trim();
       const formatCards = document.querySelectorAll('.fmt-btn-card');
       
       formatCards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        if (text.includes(term)) {
+        const text = `${card.textContent} ${card.dataset.searchTerms || ''}`.toLowerCase();
+        const matches = text.includes(term);
+        if (matches) {
           card.classList.remove('hidden-format');
         } else {
           card.classList.add('hidden-format');
         }
+      });
+
+      const vacationCard = document.querySelector('[data-sharepoint-id="fmt-vacaciones"]');
+      if (vacationCard && vacationCard.classList.contains('hidden-format') && vacationOptions) {
+        vacationOptions.hidden = true;
+        vacationCard.setAttribute('aria-expanded', 'false');
+      }
+
+      document.querySelectorAll('.fmt-group').forEach(group => {
+        group.hidden = group.querySelectorAll('.fmt-btn-card:not(.hidden-format)').length === 0;
       });
     });
   }
@@ -104,10 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------
   // 4. BOTONES CON DATA-SHAREPOINT-ID
   // ------------------------------------------
+  const FORMAT_REQUEST_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header';
   document.querySelectorAll('.fmt-btn-card').forEach(btn => {
     btn.addEventListener('click', () => {
       const spId = btn.getAttribute('data-sharepoint-id');
-      console.log(`Conectando con SharePoint ID: ${spId}`);
+      if (spId === 'fmt-vacaciones' && vacationOptions) {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        vacationOptions.hidden = isExpanded;
+        btn.setAttribute('aria-expanded', String(!isExpanded));
+        return;
+      }
+      window.open(FORMAT_REQUEST_URL, '_blank', 'noopener');
     });
   });
 
