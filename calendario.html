@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Calendario Corporativo | TRÁNES S.A.S.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </noscript>
+
+  <link rel="stylesheet" href="styles.css?v=16" />
+
+  <style>
+    .cal-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px clamp(16px, 4vw, 36px);
+      background: #0a1931;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+    }
+    .cal-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+      min-width: 0;
+    }
+    .cal-brand img {
+      height: 30px;
+      background: #fff;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .cal-brand span {
+      font-weight: 700;
+      font-size: 1.02rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .cal-back:hover { background: var(--orange); border-color: var(--orange); }
+    .cal-back .material-symbols-outlined { font-size: 1.05rem; }
+
+    .cal-wrap {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(16px, 3vw, 30px) var(--side-padding) 48px;
+    }
+    .cal-card {
+      background: #fff;
+      border: 1px solid #dcdfe4;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    .cal-hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 20px clamp(16px, 3vw, 26px);
+      background:
+        linear-gradient(100deg, rgba(10, 25, 49, 0.96) 0%, rgba(10, 25, 49, 0.78) 60%, rgba(10, 25, 49, 0.55) 100%),
+        url('assets/banner-calendario.jpg?v=1') center / cover no-repeat,
+        #0a1931;
+      color: #fff;
+    }
+    .cal-hero-kicker {
+      color: #ffb98a;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .cal-hero h1 {
+      font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+      font-weight: 800;
+    }
+    .cal-nav { display: flex; align-items: center; gap: 8px; }
+    .cal-nav button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      height: 40px;
+      min-width: 40px;
+      padding: 0 12px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .cal-nav button:hover { background: var(--orange); border-color: var(--orange); }
+    #cal-today { padding: 0 16px; }
+
+    .cal-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 344px;
+    }
+    .cal-main {
+      min-width: 0;
+      padding: clamp(10px, 2vw, 20px);
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+    .cal-dow span {
+      padding: 8px 0 10px;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-gray);
+    }
+    .cal-day {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 98px;
+      padding: 6px 6px 8px;
+      text-align: left;
+      font-family: inherit;
+      background: #fff;
+      border: 0;
+      border-top: 1px solid #eef1f5;
+      border-right: 1px solid #eef1f5;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .cal-days .cal-day:nth-child(7n + 1) { border-left: 1px solid #eef1f5; }
+    .cal-days .cal-day:nth-last-child(-n + 7) { border-bottom: 1px solid #eef1f5; }
+    .cal-day:hover { background: #fff8f3; }
+    .cal-day.is-other { background: #fafbfd; color: #aeb6c4; }
+    .cal-day.is-today { background: #fff6ef; }
+    .cal-day.is-selected { box-shadow: inset 0 0 0 2px var(--orange); }
+    .cal-num {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: 50%;
+    }
+    .cal-day.is-today .cal-num {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 3px 8px rgba(255, 102, 0, 0.35);
+    }
+    .cal-chip {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      min-width: 0;
+      padding: 3px 5px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #333;
+      background: #f4f6f9;
+      border-left: 3px solid var(--orange);
+      border-radius: 4px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .cal-chip .lbl {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .cal-chip.c1 { border-left-color: #2563eb; }
+    .cal-chip.c2 { border-left-color: #16a34a; }
+    .cal-chip.c3 { border-left-color: #7c3aed; }
+    .cal-chip.is-done { opacity: 0.55; text-decoration: line-through; }
+    .cal-chip .t {
+      color: #8a93a3;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .cal-more {
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--text-gray);
+      padding-left: 4px;
+    }
+
+    .cal-side {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: clamp(14px, 2vw, 20px);
+      background: #fbfcfe;
+      border-left: 1px solid #eef1f5;
+    }
+    .cal-panel h2 {
+      margin-bottom: 12px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+    #cal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #e6eaf1;
+      border-radius: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    #cal-form input[type="text"],
+    #cal-form input[type="time"] {
+      width: 100%;
+      padding: 9px 10px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      color: var(--text-dark);
+      background: #fff;
+      border: 1px solid #cfd7e3;
+      border-radius: 9px;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+    #cal-form input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.15);
+    }
+    .cal-row { display: flex; align-items: center; gap: 8px; }
+    .cal-row input[type="time"] { flex: 0 0 116px; }
+    .cal-colors {
+      display: flex;
+      gap: 6px;
+      margin-left: auto;
+    }
+    .cal-colors button {
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.12s ease;
+    }
+    .cal-colors button:hover { transform: scale(1.12); }
+    .cal-colors button[aria-pressed="true"] {
+      border-color: #fff;
+      box-shadow: 0 0 0 2px #0a1931;
+    }
+    .sw0 { background: #ff6600; }
+    .sw1 { background: #2563eb; }
+    .sw2 { background: #16a34a; }
+    .sw3 { background: #7c3aed; }
+    .cal-add {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--orange);
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .cal-add:hover { background: var(--orange-hover); }
+    .cal-add .material-symbols-outlined { font-size: 1.1rem; }
+
+    .cal-list {
+      list-style: none;
+      margin: 4px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .cal-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 9px 10px;
+      background: #fff;
+      border: 1px solid #e6eaf1;
+      border-left: 3px solid var(--orange);
+      border-radius: 10px;
+    }
+    .cal-list li.c1 { border-left-color: #2563eb; }
+    .cal-list li.c2 { border-left-color: #16a34a; }
+    .cal-list li.c3 { border-left-color: #7c3aed; }
+    .cal-list input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin-top: 2px;
+      accent-color: var(--orange);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .cal-task { flex: 1; min-width: 0; }
+    .cal-task b {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      word-break: break-word;
+    }
+    .cal-task small {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.74rem;
+      color: var(--text-gray);
+    }
+    .cal-list li.done .cal-task b {
+      color: #98a1b0;
+      text-decoration: line-through;
+    }
+    .cal-del {
+      padding: 2px;
+      color: #b3bccb;
+      background: transparent;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .cal-del:hover { color: #e5484d; background: #fdecec; }
+    .cal-del .material-symbols-outlined { font-size: 1.05rem; }
+    .cal-empty {
+      padding: 14px 12px;
+      font-size: 0.8rem;
+      text-align: center;
+      color: var(--text-gray);
+      background: #fff;
+      border: 1px dashed #d7dde7;
+      border-radius: 10px;
+    }
+
+    .cal-upcoming h3 {
+      margin-bottom: 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-gray);
+    }
+    .cal-upcoming ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cal-upcoming li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      background: #fff;
+      border: 1px solid #e6eaf1;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: border-color 0.15s ease;
+    }
+    .cal-upcoming li:hover { border-color: var(--orange); }
+    .cal-upcoming .date {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .cal-upcoming li.none {
+      color: var(--text-gray);
+      border-style: dashed;
+      cursor: default;
+    }
+    .cal-upcoming li.none:hover { border-color: #e6eaf1; }
+
+    @media (max-width: 1080px) {
+      .cal-body { grid-template-columns: 1fr; }
+      .cal-side { border-left: 0; border-top: 1px solid #eef1f5; }
+    }
+    @media (max-width: 720px) {
+      .cal-day { min-height: 76px; padding: 4px 4px 6px; }
+      .cal-num { width: 22px; height: 22px; font-size: 0.74rem; }
+      .cal-chip { font-size: 0.62rem; padding: 2px 4px; }
+      .cal-chip .t { display: none; }
+      .cal-row { flex-wrap: wrap; }
+      .cal-colors { margin-left: 0; }
+    }
+    @media (max-width: 520px) {
+      .cal-brand span { display: none; }
+      .cal-dow span { font-size: 0.6rem; }
+      .cal-hero { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="cal-topbar">
+    <a class="cal-brand" href="index.html">
+      <img src="assets/logo-tranes.png" alt="TRANES" />
+      <span>Calendario Corporativo</span>
+    </a>
+    <a class="cal-back" href="index.html">
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span> Volver a la intranet
+    </a>
+  </header>
+
+  <main class="cal-wrap">
+    <section class="cal-card">
+      <div class="cal-hero">
+        <div>
+          <p class="cal-hero-kicker">Agenda de la empresa</p>
+          <h1 id="cal-month-title">Calendario</h1>
+        </div>
+        <div class="cal-nav">
+          <button type="button" id="cal-prev" aria-label="Mes anterior"><span class="material-symbols-outlined" aria-hidden="true">chevron_left</span></button>
+          <button type="button" id="cal-today">Hoy</button>
+          <button type="button" id="cal-next" aria-label="Mes siguiente"><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>
+        </div>
+      </div>
+
+      <div class="cal-body">
+        <div class="cal-main">
+          <div class="cal-grid cal-dow" aria-hidden="true">
+            <span>Dom</span><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span>
+          </div>
+          <div class="cal-grid cal-days" id="cal-days" role="grid" aria-label="Días del mes"></div>
+        </div>
+
+        <aside class="cal-side">
+          <div class="cal-panel">
+            <h2 id="cal-selected-title">Selecciona un día</h2>
+            <form id="cal-form" autocomplete="off">
+              <input type="text" id="cal-title" placeholder="¿Qué tienes que hacer?" maxlength="90" required aria-label="Título de la tarea" />
+              <div class="cal-row">
+                <input type="time" id="cal-time" aria-label="Hora" />
+                <div class="cal-colors" role="group" aria-label="Color">
+                  <button type="button" class="sw0" data-color="0" aria-pressed="true" aria-label="Color naranja"></button>
+                  <button type="button" class="sw1" data-color="1" aria-pressed="false" aria-label="Color azul"></button>
+                  <button type="button" class="sw2" data-color="2" aria-pressed="false" aria-label="Color verde"></button>
+                  <button type="button" class="sw3" data-color="3" aria-pressed="false" aria-label="Color morado"></button>
+                </div>
+              </div>
+              <input type="text" id="cal-note" placeholder="Nota (opcional)" maxlength="120" aria-label="Nota" />
+              <button type="submit" class="cal-add">
+                <span class="material-symbols-outlined" aria-hidden="true">add_task</span> Agregar
+              </button>
+            </form>
+            <ul class="cal-list" id="cal-list"></ul>
+          </div>
+
+          <div class="cal-upcoming">
+            <h3>Próximos eventos</h3>
+            <ul id="cal-upcoming"></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var KEY = 'tranes-calendario-v1';
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var view = new Date(today.getFullYear(), today.getMonth(), 1);
+      var selected = ymd(today);
+      var colorSel = 0;
+      var events = load();
+
+      var elDays = document.getElementById('cal-days');
+      var elTitle = document.getElementById('cal-month-title');
+      var elSelectedTitle = document.getElementById('cal-selected-title');
+      var elList = document.getElementById('cal-list');
+      var elUpcoming = document.getElementById('cal-upcoming');
+      var elForm = document.getElementById('cal-form');
+      var elInputTitle = document.getElementById('cal-title');
+      var elInputTime = document.getElementById('cal-time');
+      var elInputNote = document.getElementById('cal-note');
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+      function ymd(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+      function parseYmd(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+      function uid() { return 'e' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+      function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function load() {
+        var raw = null;
+        try { raw = localStorage.getItem(KEY); } catch (e) {}
+        if (raw === null) {
+          var seed = seedEvents();
+          save(seed);
+          return seed;
+        }
+        try {
+          var arr = JSON.parse(raw);
+          return Array.isArray(arr) ? arr : [];
+        } catch (e) { return []; }
+      }
+      function save(list) {
+        try { localStorage.setItem(KEY, JSON.stringify(list || events)); } catch (e) {}
+      }
+      function seedEvents() {
+        function d(off) { var x = new Date(today); x.setDate(x.getDate() + off); return ymd(x); }
+        return [
+          { id: uid(), date: d(2), title: 'Reunión de coordinación', time: '09:00', note: 'Sala de juntas', color: 0, done: false },
+          { id: uid(), date: d(5), title: 'Entrega de informe mensual', time: '', note: '', color: 1, done: false },
+          { id: uid(), date: d(9), title: 'Revisar formatos del Centro', time: '15:30', note: '', color: 2, done: false }
+        ];
+      }
+
+      function byDate(dateKey) {
+        return events.filter(function (e) { return e.date === dateKey; }).sort(function (a, b) {
+          return (a.time || 'zz') < (b.time || 'zz') ? -1 : 1;
+        });
+      }
+
+      function renderMonth() {
+        elTitle.textContent = cap(view.toLocaleDateString('es-CO', { month: 'long' })) + ' ' + view.getFullYear();
+        var first = new Date(view.getFullYear(), view.getMonth(), 1);
+        var startDow = first.getDay();
+        var daysInMonth = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+        var cells = Math.ceil((startDow + daysInMonth) / 7) * 7;
+        var html = '';
+        for (var i = 0; i < cells; i++) {
+          var d = new Date(view.getFullYear(), view.getMonth(), 1 - startDow + i);
+          var key = ymd(d);
+          var cls = ['cal-day'];
+          if (d.getMonth() !== view.getMonth()) cls.push('is-other');
+          if (key === ymd(today)) cls.push('is-today');
+          if (key === selected) cls.push('is-selected');
+          var items = byDate(key);
+          var chips = '';
+          for (var j = 0; j < items.length && j < 3; j++) {
+            var e = items[j];
+            chips += '<span class="cal-chip c' + (e.color || 0) + (e.done ? ' is-done' : '') + '">'
+              + (e.time ? '<span class="t">' + esc(e.time) + '</span>' : '')
+              + '<span class="lbl" title="' + esc(e.title) + '">' + esc(e.title) + '</span></span>';
+          }
+          if (items.length > 3) chips += '<span class="cal-more">+' + (items.length - 3) + ' más</span>';
+          html += '<button type="button" class="' + cls.join(' ') + '" data-date="' + key + '" aria-label="'
+            + d.getDate() + ' de ' + d.toLocaleDateString('es-CO', { month: 'long', year: 'numeric' })
+            + (items.length ? ', ' + items.length + ' evento(s)' : '') + '">'
+            + '<span class="cal-num">' + d.getDate() + '</span>' + chips + '</button>';
+        }
+        elDays.innerHTML = html;
+      }
+
+      function renderSide() {
+        var d = parseYmd(selected);
+        var label = cap(d.toLocaleDateString('es-CO', { weekday: 'long' })) + ', '
+          + d.getDate() + ' de ' + d.toLocaleDateString('es-CO', { month: 'long' });
+        elSelectedTitle.textContent = label;
+        var items = byDate(selected);
+        if (!items.length) {
+          elList.innerHTML = '<li class="cal-empty" style="border-left:1px dashed #d7dde7">Sin pendientes este día. Agrega uno en el formulario.</li>';
+          return;
+        }
+        elList.innerHTML = items.map(function (e) {
+          return '<li class="c' + (e.color || 0) + (e.done ? ' done' : '') + '" data-id="' + e.id + '">'
+            + '<input type="checkbox" ' + (e.done ? 'checked' : '') + ' data-act="toggle" aria-label="Marcar como hecho" />'
+            + '<span class="cal-task"><b>' + esc(e.title) + '</b>'
+            + ((e.time || e.note) ? '<small>' + (e.time ? esc(e.time) : '') + (e.time && e.note ? ' · ' : '') + (e.note ? esc(e.note) : '') + '</small>' : '')
+            + '</span>'
+            + '<button type="button" class="cal-del" data-act="del" aria-label="Eliminar"><span class="material-symbols-outlined" aria-hidden="true">delete</span></button>'
+            + '</li>';
+        }).join('');
+      }
+
+      function renderUpcoming() {
+        var todayKey = ymd(today);
+        var next = events.filter(function (e) { return e.date >= todayKey && !e.done; }).sort(function (a, b) {
+          return a.date < b.date ? -1 : a.date > b.date ? 1 : ((a.time || 'zz') < (b.time || 'zz') ? -1 : 1);
+        }).slice(0, 5);
+        if (!next.length) {
+          elUpcoming.innerHTML = '<li class="none">No hay eventos próximos</li>';
+          return;
+        }
+        elUpcoming.innerHTML = next.map(function (e) {
+          var d = parseYmd(e.date);
+          var when = d.toLocaleDateString('es-CO', { weekday: 'short', day: 'numeric', month: 'short' }).replace(/\./g, '');
+          return '<li data-date="' + e.date + '"><span class="date">' + esc(when) + '</span>'
+            + '<span>' + esc(e.title) + (e.time ? ' · ' + esc(e.time) : '') + '</span></li>';
+        }).join('');
+      }
+
+      function renderAll() { renderMonth(); renderSide(); renderUpcoming(); }
+
+      function selectDate(key) {
+        selected = key;
+        var d = parseYmd(key);
+        if (d.getMonth() !== view.getMonth() || d.getFullYear() !== view.getFullYear()) {
+          view = new Date(d.getFullYear(), d.getMonth(), 1);
+        }
+        renderAll();
+      }
+
+      document.getElementById('cal-prev').addEventListener('click', function () {
+        view = new Date(view.getFullYear(), view.getMonth() - 1, 1);
+        renderMonth();
+      });
+      document.getElementById('cal-next').addEventListener('click', function () {
+        view = new Date(view.getFullYear(), view.getMonth() + 1, 1);
+        renderMonth();
+      });
+      document.getElementById('cal-today').addEventListener('click', function () {
+        selectDate(ymd(today));
+      });
+
+      elDays.addEventListener('click', function (ev) {
+        var btn = ev.target.closest('.cal-day');
+        if (btn) selectDate(btn.getAttribute('data-date'));
+      });
+
+      elForm.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var title = elInputTitle.value.trim();
+        if (!title) return;
+        events.push({
+          id: uid(),
+          date: selected,
+          title: title,
+          time: elInputTime.value,
+          note: elInputNote.value.trim(),
+          color: colorSel,
+          done: false
+        });
+        save();
+        elInputTitle.value = '';
+        elInputNote.value = '';
+        elInputTime.value = '';
+        elInputTitle.focus();
+        renderAll();
+      });
+
+      document.querySelector('.cal-colors').addEventListener('click', function (ev) {
+        var b = ev.target.closest('button[data-color]');
+        if (!b) return;
+        colorSel = +b.getAttribute('data-color');
+        this.querySelectorAll('button').forEach(function (x) {
+          x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+        });
+      });
+
+      elList.addEventListener('change', function (ev) {
+        if (ev.target.getAttribute('data-act') !== 'toggle') return;
+        var id = ev.target.closest('li').getAttribute('data-id');
+        events.forEach(function (e) { if (e.id === id) e.done = ev.target.checked; });
+        save();
+        renderAll();
+      });
+      elList.addEventListener('click', function (ev) {
+        var btn = ev.target.closest('[data-act="del"]');
+        if (!btn) return;
+        var id = btn.closest('li').getAttribute('data-id');
+        events = events.filter(function (e) { return e.id !== id; });
+        save();
+        renderAll();
+      });
+
+      elUpcoming.addEventListener('click', function (ev) {
+        var li = ev.target.closest('li[data-date]');
+        if (li) selectDate(li.getAttribute('data-date'));
+      });
+
+      renderAll();
+    })();
+  </script>
+</body>
+</html>
