@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="styles.css?v=16" />
 
   <style>
+    html {
+      scroll-behavior: auto !important;
+      overflow-anchor: none;
+    }
     .cal-topbar {
       position: sticky;
       top: 0;
@@ -508,9 +512,15 @@
 
   <script>
     (function () {
-      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-      window.scrollTo(0, 0);
-      window.addEventListener('load', function () { window.scrollTo(0, 0); });
+      function toTop() { try { window.scrollTo(0, 0); } catch (e) {} }
+      try { history.scrollRestoration = 'manual'; } catch (e) {}
+      toTop();
+      window.addEventListener('load', function () {
+        toTop();
+        setTimeout(toTop, 150);
+        setTimeout(toTop, 700);
+      });
+      window.addEventListener('pageshow', toTop);
 
       var KEY = 'tranes-calendario-v1';
       var today = new Date();
@@ -686,7 +696,7 @@
         elInputTitle.value = '';
         elInputNote.value = '';
         elInputTime.value = '';
-        elInputTitle.focus();
+        try { elInputTitle.focus({ preventScroll: true }); } catch (e) { elInputTitle.focus(); }
         renderAll();
       });
 
