@@ -85,30 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. BUSCADOR DE FORMATOS (Tiempo Real)
   // ------------------------------------------
   const searchInput = document.getElementById('fmt-search-input');
-  const vacationOptions = document.getElementById('fmt-vacation-options');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const term = e.target.value.toLowerCase().trim();
       const formatCards = document.querySelectorAll('.fmt-btn-card');
       
       formatCards.forEach(card => {
-        const text = `${card.textContent} ${card.dataset.searchTerms || ''}`.toLowerCase();
-        const matches = text.includes(term);
-        if (matches) {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(term)) {
           card.classList.remove('hidden-format');
         } else {
           card.classList.add('hidden-format');
         }
-      });
-
-      const vacationCard = document.querySelector('[data-sharepoint-id="fmt-vacaciones"]');
-      if (vacationCard && vacationCard.classList.contains('hidden-format') && vacationOptions) {
-        vacationOptions.hidden = true;
-        vacationCard.setAttribute('aria-expanded', 'false');
-      }
-
-      document.querySelectorAll('.fmt-group').forEach(group => {
-        group.hidden = group.querySelectorAll('.fmt-btn-card:not(.hidden-format)').length === 0;
       });
     });
   }
@@ -116,17 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------
   // 4. BOTONES CON DATA-SHAREPOINT-ID
   // ------------------------------------------
-  const FORMAT_REQUEST_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header';
   document.querySelectorAll('.fmt-btn-card').forEach(btn => {
     btn.addEventListener('click', () => {
       const spId = btn.getAttribute('data-sharepoint-id');
-      if (spId === 'fmt-vacaciones' && vacationOptions) {
-        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-        vacationOptions.hidden = isExpanded;
-        btn.setAttribute('aria-expanded', String(!isExpanded));
-        return;
-      }
-      window.open(FORMAT_REQUEST_URL, '_blank', 'noopener');
+      console.log(`Conectando con SharePoint ID: ${spId}`);
     });
   });
 
@@ -134,10 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. SMOOTH SCROLL PARA ENLACES INTERNOS
   // ------------------------------------------
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    const href = anchor.getAttribute('href');
-    if (!href || href === '#' || href.length < 2) return;
     anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(href);
+      const target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -156,119 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------------------------
-  // 7. PREFERENCIAS DE USUARIO
-  //    Compartidas entre Configuración,
-  //    Mi Perfil y la barra de accesibilidad
-  // ------------------------------------------
-  const store = {
-    get(key) { try { return window.localStorage.getItem(key); } catch (err) { return null; } },
-    set(key, value) { try { window.localStorage.setItem(key, value); } catch (err) {} },
-    del(key) { try { window.localStorage.removeItem(key); } catch (err) {} }
-  };
-
-  const applyTheme = (theme) => {
-    const value = theme || 'default';
-    if (value === 'default') document.body.removeAttribute('data-theme');
-    else document.body.setAttribute('data-theme', value);
-
-    document.querySelectorAll('.theme-opt').forEach(b => {
-      b.classList.toggle('is-active', b.getAttribute('data-theme') === value);
-    });
-  };
-
-  const applyTextSize = (level) => {
-    const value = String(level === undefined ? 0 : level);
-    document.body.classList.remove('font-large', 'font-xlarge');
-    if (value === '1') document.body.classList.add('font-large');
-    if (value === '2') document.body.classList.add('font-xlarge');
-
-    document.querySelectorAll('[data-textsize]').forEach(b => {
-      const active = b.getAttribute('data-textsize') === value;
-      b.classList.toggle('is-active', active);
-      b.setAttribute('aria-pressed', active);
-    });
-  };
-
-  const applyContrast = (on) => {
-    document.body.classList.toggle('high-contrast', !!on);
-    document.querySelectorAll('[data-contrast]').forEach(i => { i.checked = !!on; });
-  };
-
-  const applyNotif = (on) => {
-    document.body.classList.toggle('notif-off', !on);
-    document.querySelectorAll('[data-notif]').forEach(i => { i.checked = !!on; });
-    const badge = document.getElementById('notif-badge');
-    if (badge) badge.hidden = !on;
-  };
-
-  const applyClassic = (on) => {
-    document.body.classList.toggle('classic-buttons', !!on);
-    const toggle = document.getElementById('opt-classic');
-    if (toggle) toggle.checked = !!on;
-  };
-
-  const textSizeLevel = () => parseInt(store.get('tranes-textsize') || '0', 10);
-
-  // Enlaces de preferencia (Configuración y Mi Perfil)
-  document.querySelectorAll('.theme-opt').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const value = btn.getAttribute('data-theme');
-      applyTheme(value);
-      store.set('tranes-theme', value);
-    });
-  });
-
-  document.querySelectorAll('[data-textsize]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const value = btn.getAttribute('data-textsize');
-      applyTextSize(value);
-      store.set('tranes-textsize', value);
-    });
-  });
-
-  document.querySelectorAll('[data-contrast]').forEach(input => {
-    input.addEventListener('change', () => {
-      applyContrast(input.checked);
-      store.set('tranes-contrast', input.checked ? '1' : '0');
-    });
-  });
-
-  document.querySelectorAll('[data-notif]').forEach(input => {
-    input.addEventListener('change', () => {
-      applyNotif(input.checked);
-      store.set('tranes-notif', input.checked ? '1' : '0');
-    });
-  });
-
-  const classicToggle = document.getElementById('opt-classic');
-  if (classicToggle) {
-    classicToggle.addEventListener('change', () => {
-      applyClassic(classicToggle.checked);
-      store.set('tranes-classic', classicToggle.checked ? '1' : '0');
-    });
-  }
-
-  // Carga inicial de preferencias guardadas
-  applyTheme(store.get('tranes-theme') || 'default');
-  applyTextSize(store.get('tranes-textsize') || '0');
-  applyContrast(store.get('tranes-contrast') === '1');
-  applyNotif(store.get('tranes-notif') !== '0');
-  applyClassic(store.get('tranes-classic') === '1');
-
-  const resetBtn = document.getElementById('opt-reset');
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      applyTheme('default');
-      applyTextSize('0');
-      applyContrast(false);
-      applyNotif(true);
-      applyClassic(false);
-      ['tranes-theme', 'tranes-textsize', 'tranes-contrast', 'tranes-notif', 'tranes-classic'].forEach(k => store.del(k));
-    });
-  }
-
-  // ------------------------------------------
-  // 8. BARRA DE ACCESIBILIDAD
+  // 7. BARRA DE ACCESIBILIDAD
   // ------------------------------------------
   const a11yToggle = document.querySelector('.a11y-toggle');
   const a11yPanel = document.querySelector('.a11y-panel');
@@ -287,113 +154,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // A11y buttons — usan las mismas preferencias
+    // A11y buttons
+    let fontLevel = 0;
     document.querySelectorAll('.a11y-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const action = btn.getAttribute('data-action');
 
         if (action === 'contrast') {
-          const next = !document.body.classList.contains('high-contrast');
-          applyContrast(next);
-          store.set('tranes-contrast', next ? '1' : '0');
+          document.body.classList.toggle('high-contrast');
         } else if (action === 'fontsize-increase') {
-          const next = Math.min(textSizeLevel() + 1, 2);
-          applyTextSize(next);
-          store.set('tranes-textsize', String(next));
+          fontLevel = Math.min(fontLevel + 1, 2);
+          document.body.classList.remove('font-large', 'font-xlarge');
+          if (fontLevel === 1) document.body.classList.add('font-large');
+          if (fontLevel === 2) document.body.classList.add('font-xlarge');
         } else if (action === 'fontsize-decrease') {
-          const next = Math.max(textSizeLevel() - 1, 0);
-          applyTextSize(next);
-          store.set('tranes-textsize', String(next));
+          fontLevel = Math.max(fontLevel - 1, 0);
+          document.body.classList.remove('font-large', 'font-xlarge');
+          if (fontLevel === 1) document.body.classList.add('font-large');
         } else if (action === 'reset') {
-          applyTextSize(0);
-          applyContrast(false);
-          store.del('tranes-textsize');
-          store.del('tranes-contrast');
+          fontLevel = 0;
+          document.body.classList.remove('high-contrast', 'font-large', 'font-xlarge');
         }
       });
     });
   }
 
-  // ------------------------------------------
-  // 9. PANELES DE LA BARRA SUPERIOR
-  //    (Notificaciones, Configuración, Ayuda)
-  // ------------------------------------------
-  const closeTopPanels = (except) => {
-    document.querySelectorAll('.topbar-panel.show').forEach(panel => {
-      if (panel === except) return;
-      panel.classList.remove('show');
-      const owner = document.querySelector('[data-panel="' + panel.id + '"]');
-      if (owner) owner.setAttribute('aria-expanded', 'false');
-    });
-  };
-
-  document.querySelectorAll('[data-panel]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const panel = document.getElementById(btn.getAttribute('data-panel'));
-      if (!panel) return;
-
-      const willOpen = !panel.classList.contains('show');
-      closeTopPanels(panel);
-      panel.classList.toggle('show', willOpen);
-      btn.setAttribute('aria-expanded', willOpen);
-
-      if (willOpen && panel.id === 'panel-notif') {
-        const badge = document.getElementById('notif-badge');
-        if (badge) badge.hidden = true;
-      }
-    });
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.top-action')) closeTopPanels();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    closeTopPanels();
-    document.querySelectorAll('.dropdown.open').forEach(d => {
-      d.classList.remove('open');
-      const toggle = d.querySelector('.dropdown-toggle');
-      if (toggle) toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  document.querySelectorAll('.topbar-panel a[href^="#"], .profile-menu a[href^="#"]').forEach(link => {
-    link.addEventListener('click', () => closeTopPanels());
-  });
-
-  // ------------------------------------------
-  // 10. CIERRE DE MENÚS (perfil / paneles)
-  // ------------------------------------------
-  document.querySelectorAll('[data-panel-close]').forEach(el => {
-    el.addEventListener('click', () => {
-      closeTopPanels();
-      document.querySelectorAll('.dropdown.open').forEach(d => {
-        d.classList.remove('open');
-        const toggle = d.querySelector('.dropdown-toggle');
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  });
-
 });
-
-// ============================================
-// 11. AVISO DE ALTURA AL PADRE (iframe en SharePoint)
-// ============================================
-(function () {
-  var lastH = 0;
-  function notifyParent() {
-    try {
-      if (window.parent === window) return;
-      var h = Math.ceil(document.documentElement.scrollHeight);
-      if (Math.abs(h - lastH) < 6) return;
-      lastH = h;
-      window.parent.postMessage({ tranes: 1, height: h }, '*');
-    } catch (e) {}
-  }
-  window.addEventListener('load', notifyParent);
-  window.addEventListener('resize', notifyParent);
-  setInterval(notifyParent, 2000);
-})();
