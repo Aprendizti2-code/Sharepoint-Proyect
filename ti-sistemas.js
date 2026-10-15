@@ -190,7 +190,7 @@
     return link;
   }
 
-  function openGuide(id) {
+  function openGuide(id, trigger) {
     if (!dialog || !CFG.guides) return;
     var g = CFG.guides.filter(function (item) { return item.id === id; })[0];
     if (!g) return;
@@ -247,22 +247,24 @@
       actions.innerHTML = html;
     }
 
-    modalScroll.x = window.scrollX || window.pageXOffset || 0;
-    modalScroll.y = window.scrollY || window.pageYOffset || 0;
-    try { parentScroll.x = window.parent.scrollX || 0; parentScroll.y = window.parent.scrollY || 0; } catch (errPS) {}
+    // Si estamos dentro de un iframe (como en SharePoint), centrar el modal
+    // exactamente en la zona visible de las guías o donde el usuario hizo clic
+    var triggerRect = trigger ? trigger.getBoundingClientRect() : null;
+    var currentTop = triggerRect
+      ? (window.scrollY + triggerRect.top - 80)
+      : (window.scrollY + 200);
+
+    // Asegurar que no quede fuera de los límites
+    currentTop = Math.max(120, currentTop);
+    dialog.style.top = currentTop + 'px';
+
     if (typeof dialog.showModal === 'function') { dialog.showModal(); }
     else { dialog.setAttribute('open', ''); }
-    document.body.style.overflow = 'hidden';
-    /* El foco del modal y el bloqueo del fondo pueden mover el scroll
-       (peor dentro de SharePoint): se guarda y se restaura la posición,
-       en este documento y, si hay mismo origen, también en el padre. */
-    try { window.parent.postMessage({ tranes: 1, keepScroll: true }, '*'); } catch (err) {}
-    window.scrollTo(modalScroll.x, modalScroll.y);
-    try { window.parent.scrollTo(parentScroll.x, parentScroll.y); } catch (errPS2) {}
-    window.requestAnimationFrame(function () {
-      window.scrollTo(modalScroll.x, modalScroll.y);
-      try { window.parent.scrollTo(parentScroll.x, parentScroll.y); } catch (errPS3) {}
-    });
+
+    // Scroll suave para asegurar que el modal esté perfectamente encuadrado
+    try {
+      dialog.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (e) {}
   }
 
   /* Cerrar al hacer clic en el fondo del modal */
@@ -280,7 +282,7 @@
 
   document.addEventListener('click', function (e) {
     var trigger = e.target.closest('[data-guide]');
-    if (trigger) { openGuide(trigger.getAttribute('data-guide')); return; }
+    if (trigger) { openGuide(trigger.getAttribute('data-guide'), trigger); return; }
     if (e.target.closest('[data-close-dialog]') && dialog) { dialog.close(); }
   });
 
