@@ -247,10 +247,12 @@
 
     if (typeof dialog.showModal === 'function') { dialog.showModal(); }
     else { dialog.setAttribute('open', ''); }
+    document.body.style.overflow = 'hidden';
   }
 
   /* Cerrar al hacer clic en el fondo del modal */
   if (dialog) {
+    dialog.addEventListener('close', function () { document.body.style.overflow = ''; });
     dialog.addEventListener('click', function (e) {
       if (e.target === dialog) { dialog.close(); }
     });
