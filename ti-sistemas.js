@@ -182,6 +182,7 @@
   /* Modal de guías */
   var dialog = document.getElementById('ti-dialog');
   var modalScroll = { x: 0, y: 0 };
+  var parentScroll = { x: 0, y: 0 };
 
   function resolveGuideLink(link) {
     if (!link) return null;
@@ -248,14 +249,20 @@
 
     modalScroll.x = window.scrollX || window.pageXOffset || 0;
     modalScroll.y = window.scrollY || window.pageYOffset || 0;
+    try { parentScroll.x = window.parent.scrollX || 0; parentScroll.y = window.parent.scrollY || 0; } catch (errPS) {}
     if (typeof dialog.showModal === 'function') { dialog.showModal(); }
     else { dialog.setAttribute('open', ''); }
     document.body.style.overflow = 'hidden';
     /* El foco del modal y el bloqueo del fondo pueden mover el scroll
-       (peor dentro de SharePoint): se guarda y se restaura la posición. */
+       (peor dentro de SharePoint): se guarda y se restaura la posición,
+       en este documento y, si hay mismo origen, también en el padre. */
     try { window.parent.postMessage({ tranes: 1, keepScroll: true }, '*'); } catch (err) {}
     window.scrollTo(modalScroll.x, modalScroll.y);
-    window.requestAnimationFrame(function () { window.scrollTo(modalScroll.x, modalScroll.y); });
+    try { window.parent.scrollTo(parentScroll.x, parentScroll.y); } catch (errPS2) {}
+    window.requestAnimationFrame(function () {
+      window.scrollTo(modalScroll.x, modalScroll.y);
+      try { window.parent.scrollTo(parentScroll.x, parentScroll.y); } catch (errPS3) {}
+    });
   }
 
   /* Cerrar al hacer clic en el fondo del modal */
@@ -263,6 +270,7 @@
     dialog.addEventListener('close', function () {
       document.body.style.overflow = '';
       window.scrollTo(modalScroll.x, modalScroll.y);
+      try { window.parent.scrollTo(parentScroll.x, parentScroll.y); } catch (errPSC) {}
       window.dispatchEvent(new Event('resize'));
     });
     dialog.addEventListener('click', function (e) {
@@ -563,6 +571,12 @@
         var h = currentHeight();
         if (Math.abs(h - lastH) < 4) return;
         lastH = h;
+        /* Mismo origen (alojado en Site Assets): ajuste directo del iframe,
+           sin depender de ningún script en la página padre. */
+        try {
+          var f = window.parent.document.getElementById('tranesFrame');
+          if (f) { f.style.height = h + 'px'; f.style.minHeight = '0'; }
+        } catch (errSame) {}
         window.parent.postMessage({ tranes: 1, height: h }, '*');
       } catch (e) {}
     }

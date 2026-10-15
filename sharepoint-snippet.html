@@ -1,38 +1,20 @@
-<"https://aprendizti2-code.github.io/Sharepoint-Proyect/ti-sistemas.html"
+<!-- ==========================================================================
+     TRANES — Micrositio TI / Sistemas en SharePoint (SIN JavaScript padre)
+     --------------------------------------------------------------------------
+     1. Sube la carpeta del proyecto a Site Assets (manteniendo la estructura):
+          Site Assets/micrositio-ti/ti-sistemas.html
+          Site Assets/micrositio-ti/ti-config.js
+          Site Assets/micrositio-ti/ti-sistemas.js
+          Site Assets/micrositio-ti/ti-sistemas.css
+          Site Assets/micrositio-ti/app.js
+          Site Assets/micrositio-ti/styles.css
+          Site Assets/micrositio-ti/assets/...
+     2. Reemplaza LA_URL_DE_TU_SITIO por la de tu sitio y pega SOLO este
+        iframe (sin <script>: la CSP de SharePoint bloquea scripts en línea
+        del padre; la página hija se auto-ajusta sola al ser mismo origen).
+     ========================================================================== -->
+<iframe id="tranesFrame"
+  title="Micrositio TI / Sistemas TRANES"
+  src="https://tranes1.sharepoint.com/sites/Intranet/SiteAssets/micrositio-ti/ti-sistemas.html"
   style="width:100%;min-height:1200px;border:0;display:block;overflow:hidden"
   scrolling="no"></iframe>
-<script>
-(function () {
-  /* Origen permitido: solo se aceptan avisos del sitio publicado en Pages. */
-  var ORIGIN = 'https://aprendizti2-code.github.io';
-  var f = document.getElementById('tranesFrame');
-  var gotHeight = false;
-
-  function setHeight(h) {
-    h = Math.max(600, Math.ceil(h));
-    f.style.height = h + 'px';
-    f.style.minHeight = '0';
-  }
-
-  /* La página hija avisa { tranes: 1, height } ante cualquier cambio. */
-  window.addEventListener('message', function (e) {
-    if (e.origin !== ORIGIN) return;
-    if (!e.data || e.data.tranes !== 1) return;
-    /* El modal mueve el foco y SharePoint reubica el scroll: se restaura. */
-    if (e.data.keepScroll) {
-      var px = window.scrollX || 0, py = window.scrollY || 0;
-      setTimeout(function () { window.scrollTo(px, py); }, 60);
-      setTimeout(function () { window.scrollTo(px, py); }, 350);
-      return;
-    }
-    if (!e.data.height) return;
-    gotHeight = true;
-    setHeight(e.data.height);
-  });
-
-  /* Respaldo: si los avisos no llegan, altura generosa en vez de recorte. */
-  setTimeout(function () {
-    if (!gotHeight) setHeight(3200);
-  }, 4000);
-})();
-</script>
