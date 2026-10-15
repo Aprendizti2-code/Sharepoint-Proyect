@@ -106,7 +106,7 @@
        3. BANNER PRINCIPAL (HERO)
        --------------------------------------------------------------------- */
     hero: {
-      image: 'assets/ti/hero-c.jpg',
+      image: 'hero-c.jpg',
       imageAlt:
         'Profesionales de tecnología trabajando frente a computadores en una estación de trabajo corporativa',
       title: { first: 'TI', slash: '/', accent: 'Sistemas' },
@@ -171,7 +171,7 @@
         categoryColor: '#ff6600',
         title: 'Cómo crear un ticket en Planner',
         desc: 'Sigue el paso a paso para registrar tu solicitud correctamente.',
-        image: 'assets/ti/guide-planner.jpg',
+        image: 'guide-planner.jpg',
         imageAlt: 'Pantalla de un computador con el tablero de trabajo del ticket',
         cta: 'Ver guía',
         steps: [
@@ -199,7 +199,7 @@
         categoryColor: '#1f6fd0',
         title: 'Funciones del área de TI',
         desc: 'Conoce todo lo que hacemos por ti y por la empresa.',
-        image: 'assets/ti/guide-funciones.jpg',
+        image: 'guide-funciones.jpg',
         imageAlt: 'Pantalla con código y sistemas en desarrollo',
         cta: 'Ver funciones',
         steps: [
@@ -218,7 +218,7 @@
         categoryColor: '#2e7d32',
         title: 'Consejos de seguridad digital',
         desc: 'Evita riesgos y protege tu información.',
-        image: 'assets/ti/guide-seguridad.jpg',
+        image: 'guide-seguridad.jpg',
         imageAlt: 'Representación de circuitos digitales y protección de datos',
         cta: 'Ver consejos',
         steps: [
@@ -237,7 +237,7 @@
         categoryColor: '#1f6fd0',
         title: 'Cómo configurar tu firma de correo',
         desc: 'Personaliza tu firma con los datos y el formato institucional.',
-        image: 'assets/ti/guide-firma.jpg',
+        image: 'guide-firma.jpg',
         imageAlt: 'Icono de aplicación de correo electrónico',
         cta: 'Ver guía',
         steps: [
@@ -306,7 +306,7 @@
     team: [
       {
         demo: false,
-        photo: 'assets/ti/equipo-lider.jpg',
+        photo: 'equipo-lider.jpg',
         photoPosition: 'center 31%',
         photoAlt: 'Retrato de Estiven Álvarez Martínez',
         name: 'Estiven Álvarez Martínez',
@@ -320,7 +320,7 @@
       },
       {
         demo: false,
-        photo: 'assets/ti/equipo-automatizacion.jpg',
+        photo: 'equipo-automatizacion.jpg',
         photoPosition: 'center 27%',
         photoAlt: 'Retrato de Santiago Urrutia Urrutia',
         name: 'Santiago Urrutia Urrutia',
@@ -334,7 +334,7 @@
       },
       {
         demo: false,
-        photo: 'assets/ti/equipo-redes.jpg',
+        photo: 'equipo-redes.jpg',
         photoPosition: 'center 37%',
         photoAlt: 'Retrato de Eliobys Ogaza Cogollo',
         name: 'Eliobys Ogaza Cogollo',
@@ -348,7 +348,7 @@
       },
       {
         demo: false,
-        photo: 'assets/ti/equipo-desarrollo.jpg',
+        photo: 'equipo-desarrollo.jpg',
         photoPosition: 'center 23%',
         photoAlt: 'Retrato de Emmanuel Muñoz Lopez',
         name: 'Emmanuel Muñoz Lopez',
