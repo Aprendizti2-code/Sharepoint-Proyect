@@ -522,6 +522,10 @@ body.ti-page {
 /* --------------------------------------------------------------------------
    6. GUÍAS Y TUTORIALES
    -------------------------------------------------------------------------- */
+.ti-guides {
+  position: relative;
+}
+
 .ti-guide-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1124,34 +1128,40 @@ body.ti-page {
 .ti-footer-current .material-symbols-outlined { font-size: 1.05rem; }
 
 /* --------------------------------------------------------------------------
-   13. MODAL DE GUÍAS
+   13. MODAL DE GUÍAS (Overlay absoluto en sección Guías)
    -------------------------------------------------------------------------- */
+.ti-modal-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ti-radius);
+  background: rgba(8, 12, 18, 0.72);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.ti-modal-overlay.is-active {
+  display: flex;
+}
+
 .ti-dialog {
+  position: relative;
   width: min(660px, 92vw);
-  max-height: 88vh;
-  max-height: 88dvh;
-  margin: auto;
+  max-height: 85vh;
+  margin: 0 auto;
   padding: 0;
   border: 0;
   border-radius: var(--ti-radius);
   overflow: hidden;
-  box-shadow: 0 30px 70px rgba(6, 10, 16, 0.45);
+  background: #fff;
+  box-shadow: 0 30px 70px rgba(6, 10, 16, 0.55);
+  animation: ti-dialog-in 0.22s ease;
 }
-/* En un iframe (Sharepoint), position:fixed se calcularía respecto al iframe de 3550px.
-   Usamos position: absolute y margin horizontal automático para que quede centrado
-   exactamente a la altura de la tarjeta que el usuario pulsó. */
-.ti-dialog[open] {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  height: fit-content;
-}
-.ti-dialog::backdrop { background: rgba(8, 12, 18, 0.62); backdrop-filter: blur(3px); }
-.ti-dialog[open] { animation: ti-dialog-in 0.22s ease; }
 @keyframes ti-dialog-in {
-  from { opacity: 0; transform: translate(-50%, 14px) scale(0.98); }
-  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .ti-dialog-media { position: relative; height: 210px; background: var(--ti-soft); }

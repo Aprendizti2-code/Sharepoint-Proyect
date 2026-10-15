@@ -247,33 +247,32 @@
       actions.innerHTML = html;
     }
 
-    // Posicionar el modal directamente sobre la sección de Guías y Tutoriales
-    var guidesSec = document.getElementById('guias');
-    var targetTop = 720; // Posición de respaldo estándar
-    if (guidesSec) {
-      targetTop = guidesSec.offsetTop + 10;
-    }
-    dialog.style.top = targetTop + 'px';
+    dialog.classList.add('is-active');
+  }
 
-    if (typeof dialog.showModal === 'function') { dialog.showModal(); }
-    else { dialog.setAttribute('open', ''); }
+  function closeGuide() {
+    if (dialog) {
+      dialog.classList.remove('is-active');
+    }
   }
 
   /* Cerrar al hacer clic en el fondo del modal */
   if (dialog) {
-    dialog.addEventListener('close', function () {
-      document.body.style.overflow = '';
-      window.dispatchEvent(new Event('resize'));
-    });
     dialog.addEventListener('click', function (e) {
-      if (e.target === dialog) { dialog.close(); }
+      if (e.target === dialog) { closeGuide(); }
     });
   }
 
   document.addEventListener('click', function (e) {
     var trigger = e.target.closest('[data-guide]');
     if (trigger) { openGuide(trigger.getAttribute('data-guide'), trigger); return; }
-    if (e.target.closest('[data-close-dialog]') && dialog) { dialog.close(); }
+    if (e.target.closest('[data-close-dialog]')) { closeGuide(); }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && dialog && dialog.classList.contains('is-active')) {
+      closeGuide();
+    }
   });
 
   /* ------------------------------------------------------------------

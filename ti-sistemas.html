@@ -156,6 +156,25 @@
           <a class="ti-view-all" data-link="todasLasGuias" href="#guias">Ver todas las guías <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
         </header>
         <div class="ti-guide-grid" id="guide-grid"><!-- ti-sistemas.js --></div>
+
+        <!-- MODAL DE GUÍAS: dentro de la sección guías, centrado sobre ella -->
+        <div class="ti-modal-overlay" id="ti-dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+          <div class="ti-dialog">
+            <div class="ti-dialog-media">
+              <img id="dlg-img" src="" alt="" width="800" height="500" />
+              <button type="button" class="ti-dialog-close ti-icon-btn" data-close-dialog aria-label="Cerrar guía">
+                <span class="material-symbols-outlined" aria-hidden="true">close</span>
+              </button>
+            </div>
+            <div class="ti-dialog-body">
+              <span class="ti-tag" id="dlg-tag"></span>
+              <h2 id="dlg-title"></h2>
+              <p class="ti-dialog-desc" id="dlg-desc"></p>
+              <ol class="ti-dialog-steps" id="dlg-steps"></ol>
+              <div class="ti-dialog-actions" id="dlg-actions"></div>
+            </div>
+          </div>
+        </div>
       </section>
 
     </div>
@@ -277,27 +296,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- =========================================================
-       MODAL DE GUÍAS
-       ========================================================= -->
-  <dialog class="ti-dialog" id="ti-dialog" aria-labelledby="dlg-title">
-    <div class="ti-dialog-media">
-      <img id="dlg-img" src="" alt="" width="800" height="500" />
-      <form method="dialog" class="ti-dialog-close">
-        <button type="submit" class="ti-icon-btn" aria-label="Cerrar guía">
-          <span class="material-symbols-outlined" aria-hidden="true">close</span>
-        </button>
-      </form>
-    </div>
-    <div class="ti-dialog-body">
-      <span class="ti-tag" id="dlg-tag"></span>
-      <h2 id="dlg-title"></h2>
-      <p class="ti-dialog-desc" id="dlg-desc"></p>
-      <ol class="ti-dialog-steps" id="dlg-steps"></ol>
-      <div class="ti-dialog-actions" id="dlg-actions"></div>
-    </div>
-  </dialog>
 
   <!-- AVISO TRANSITORIO (enlaces pendientes de configuración) -->
   <div class="ti-toast" id="ti-toast" role="status" aria-live="polite"></div>
