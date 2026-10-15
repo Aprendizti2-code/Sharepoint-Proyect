@@ -181,6 +181,7 @@
 
   /* Modal de guías */
   var dialog = document.getElementById('ti-dialog');
+  var modalScroll = { x: 0, y: 0 };
 
   function resolveGuideLink(link) {
     if (!link) return null;
@@ -245,14 +246,25 @@
       actions.innerHTML = html;
     }
 
+    modalScroll.x = window.scrollX || window.pageXOffset || 0;
+    modalScroll.y = window.scrollY || window.pageYOffset || 0;
     if (typeof dialog.showModal === 'function') { dialog.showModal(); }
     else { dialog.setAttribute('open', ''); }
     document.body.style.overflow = 'hidden';
+    /* El foco del modal y el bloqueo del fondo pueden mover el scroll
+       (peor dentro de SharePoint): se guarda y se restaura la posición. */
+    try { window.parent.postMessage({ tranes: 1, keepScroll: true }, '*'); } catch (err) {}
+    window.scrollTo(modalScroll.x, modalScroll.y);
+    window.requestAnimationFrame(function () { window.scrollTo(modalScroll.x, modalScroll.y); });
   }
 
   /* Cerrar al hacer clic en el fondo del modal */
   if (dialog) {
-    dialog.addEventListener('close', function () { document.body.style.overflow = ''; });
+    dialog.addEventListener('close', function () {
+      document.body.style.overflow = '';
+      window.scrollTo(modalScroll.x, modalScroll.y);
+      window.dispatchEvent(new Event('resize'));
+    });
     dialog.addEventListener('click', function (e) {
       if (e.target === dialog) { dialog.close(); }
     });

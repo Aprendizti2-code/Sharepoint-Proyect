@@ -17,7 +17,15 @@
   /* La página hija avisa { tranes: 1, height } ante cualquier cambio. */
   window.addEventListener('message', function (e) {
     if (e.origin !== ORIGIN) return;
-    if (!e.data || e.data.tranes !== 1 || !e.data.height) return;
+    if (!e.data || e.data.tranes !== 1) return;
+    /* El modal mueve el foco y SharePoint reubica el scroll: se restaura. */
+    if (e.data.keepScroll) {
+      var px = window.scrollX || 0, py = window.scrollY || 0;
+      setTimeout(function () { window.scrollTo(px, py); }, 60);
+      setTimeout(function () { window.scrollTo(px, py); }, 350);
+      return;
+    }
+    if (!e.data.height) return;
     gotHeight = true;
     setHeight(e.data.height);
   });
