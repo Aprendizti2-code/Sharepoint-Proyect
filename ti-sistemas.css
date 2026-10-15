@@ -1,0 +1,1410 @@
+/* ==========================================================================
+   TRANES S.A.S. — Micrositio «TI / Sistemas»
+   Estilos de presentación (los datos viven en ti-config.js).
+   Reutiliza los design tokens, el reset y la accesibilidad de styles.css
+   (naranja corporativo, radios, sombras, focus-visible, skip-nav).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. TOKENS LOCALES DEL MICROSITIO
+   -------------------------------------------------------------------------- */
+.ti-page {
+  --ti-ink: #14181f;          /* texto principal */
+  --ti-muted: #67707c;        /* texto secundario */
+  --ti-line: #e4e9f0;         /* bordes */
+  --ti-soft: #f7f9fc;         /* fondos suaves */
+  --ti-dark: #12161b;         /* barra y footer */
+  --ti-night: #0f141b;        /* hero */
+  --ti-navy: #0e1a2b;         /* sección de proceso */
+  --ti-blue: #1f6fd0;         /* acento azul */
+  --ti-green: #187a52;
+  --ti-violet: #7b1fa2;
+
+  --ti-radius: 16px;
+  --ti-radius-md: 12px;
+  --ti-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+  --ti-shadow-hover: 0 12px 26px rgba(16, 24, 40, 0.12);
+
+  background-color: var(--page-bg);
+}
+
+.ti-page h1,
+.ti-page h2,
+.ti-page h3 {
+  color: var(--ti-ink);
+  line-height: 1.25;
+}
+
+.ti-page .material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   1. ESTRUCTURA GENERAL
+   -------------------------------------------------------------------------- */
+.ti-main {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 16px var(--side-padding) 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ti-panel {
+  background: var(--white);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius);
+  box-shadow: var(--ti-shadow);
+  padding: 22px 24px;
+}
+
+.ti-row {
+  display: grid;
+  gap: 18px;
+  align-items: start;
+}
+/* Los hijos de las cuadrículas nunca fuerzan el ancho de la página */
+.ti-quick-grid > *,
+.ti-guide-grid > *,
+.ti-services-grid > *,
+.ti-team-grid > *,
+.ti-policies-grid > *,
+.ti-sec-titles { min-width: 0; }
+
+/* Encabezado de sección */
+.ti-sec-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ti-sec-icon {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--orange-light);
+  color: var(--orange);
+}
+.ti-sec-icon .material-symbols-outlined { font-size: 1.3rem; }
+
+.ti-sec-titles h2 {
+  font-size: 1.16rem;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+.ti-sec-titles p {
+  font-size: 0.85rem;
+  color: var(--ti-muted);
+  margin-top: 3px;
+}
+
+.ti-view-all {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--orange);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  padding-top: 6px;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.ti-view-all .material-symbols-outlined { font-size: 1.05rem; transition: transform 0.18s ease; }
+.ti-view-all:hover { color: var(--orange-hover); }
+.ti-view-all:hover .material-symbols-outlined { transform: translateX(3px); }
+
+.ti-panel-foot {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--ti-line);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.83rem;
+  color: var(--ti-muted);
+}
+.ti-panel-foot > .material-symbols-outlined { color: var(--orange); font-size: 1.1rem; }
+.ti-panel-foot a {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--orange);
+  font-weight: 700;
+  text-decoration: none;
+}
+.ti-panel-foot a:hover { text-decoration: underline; }
+.ti-panel-foot a .material-symbols-outlined { color: inherit; font-size: 1rem; }
+
+/* --------------------------------------------------------------------------
+   2. LOGOTIPO (archivo oficial sobre placa blanca, sin alterar el diseño)
+   -------------------------------------------------------------------------- */
+.ti-logo-clip {
+  position: relative;
+  display: block;
+  width: 186px;
+  height: 40px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.ti-logo-clip img {
+  position: absolute;
+  width: 211px;
+  height: 91px;
+  max-width: none;
+  left: -13px;
+  top: -21px;
+}
+.ti-logo-clip--sm { width: 152px; height: 33px; }
+.ti-logo-clip--sm img { width: 172px; height: 74px; left: -11px; top: -17px; }
+
+/* --------------------------------------------------------------------------
+   3. NAVEGACIÓN OSCURA
+   -------------------------------------------------------------------------- */
+.ti-nav {
+  position: sticky;
+  top: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 9px var(--side-padding);
+  background: linear-gradient(180deg, #171c23 0%, var(--ti-dark) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+}
+
+.ti-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.ti-nav .navlinks {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ti-nav .navlinks > a,
+.ti-nav .dropdown-toggle {
+  color: #e9edf2;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+  white-space: nowrap;
+}
+.ti-nav .navlinks > a .material-symbols-outlined { font-size: 1.1rem; color: var(--orange); }
+.ti-nav .navlinks > a:hover,
+.ti-nav .dropdown-toggle:hover { color: var(--orange); }
+.ti-nav .navlinks > a.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+.ti-nav .dropdown-toggle .material-symbols-outlined { font-size: 1rem; color: inherit; }
+
+/* Menús desplegables (hereda fondo claro de styles.css) */
+.ti-nav .dropdown-menu {
+  border: 1px solid var(--ti-line);
+  box-shadow: 0 18px 40px rgba(10, 15, 22, 0.28);
+  min-width: 250px;
+  padding: 6px 0;
+}
+.ti-nav .dropdown-menu a { font-size: 0.85rem; }
+.ti-nav .dropdown-menu a:hover { background: var(--orange-light); }
+.ti-nav .dropdown-menu a .material-symbols-outlined { color: var(--orange); font-size: 1.05rem; }
+.ti-nav .dropdown-menu .is-current a,
+.ti-nav .dropdown-menu a[aria-current="page"] { color: var(--orange); font-weight: 700; }
+
+.ti-nav .navright {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.ti-nav .nav-btn { color: #dfe5ec; font-size: 0.85rem; font-weight: 600; }
+.ti-nav .nav-btn:hover { color: var(--orange); }
+
+.ti-nav .nav-btn-highlight {
+  background: rgba(255, 102, 0, 0.12);
+  border: 1px solid rgba(255, 102, 0, 0.6);
+  color: var(--orange) !important;
+  border-radius: 22px;
+  padding: 7px 16px;
+  font-weight: 700 !important;
+  gap: 6px;
+}
+.ti-nav .nav-btn-highlight .material-symbols-outlined { font-size: 1.1rem; }
+.ti-nav .nav-btn-highlight:hover {
+  background: var(--orange);
+  color: #fff !important;
+  border-color: var(--orange);
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.35);
+}
+
+.ti-nav .mobile-toggle { display: none; color: #fff; }
+.ti-nav .mobile-toggle:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* --------------------------------------------------------------------------
+   4. BANNER PRINCIPAL (HERO)
+   -------------------------------------------------------------------------- */
+.ti-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--ti-radius);
+  background: var(--ti-night);
+  color: #fff;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--ti-shadow);
+}
+
+.ti-hero-media { position: absolute; inset: 0; z-index: -2; }
+.ti-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 42%;
+}
+.ti-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      #0f141b 0%,
+      #0f141b 34%,
+      rgba(15, 20, 27, 0.86) 50%,
+      rgba(15, 20, 27, 0.5) 70%,
+      rgba(15, 20, 27, 0.2) 100%
+    );
+}
+.ti-hero-stripes {
+  position: absolute;
+  right: -30px;
+  bottom: -40px;
+  width: 300px;
+  height: 220px;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--orange) 0 16px,
+    rgba(255, 102, 0, 0) 16px 44px
+  );
+  -webkit-mask-image: linear-gradient(to top left, #000 25%, transparent 85%);
+  mask-image: linear-gradient(to top left, #000 25%, transparent 85%);
+  opacity: 0.9;
+}
+.ti-hero-script {
+  position: absolute;
+  right: 42px;
+  bottom: 34px;
+  max-width: 320px;
+  text-align: right;
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #fff;
+  transform: rotate(-5deg);
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.55);
+}
+
+.ti-hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 34px;
+  padding: 46px 48px;
+  width: 100%;
+  min-width: 0;
+}
+
+.ti-hero-badge {
+  position: relative;
+  flex: 0 0 auto;
+  width: 96px;
+  height: 96px;
+  border: 3px solid var(--orange);
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  color: var(--orange);
+  background: rgba(255, 102, 0, 0.08);
+  margin-top: 6px;
+}
+.ti-hero-badge > .material-symbols-outlined { font-size: 3rem; font-variation-settings: 'FILL' 0, 'wght' 300; }
+.ti-hero-badge-gear {
+  position: absolute;
+  right: -14px;
+  bottom: -14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff !important;
+  font-size: 1.4rem !important;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.4);
+}
+
+.ti-hero-text { max-width: 760px; min-width: 0; }
+.ti-hero-text h1 {
+  color: #fff;
+  font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.05;
+}
+.ti-hero-slash { color: var(--orange); font-weight: 700; margin: 0 4px; }
+.ti-hero-accent { color: var(--orange); }
+
+.ti-hero-rule {
+  display: block;
+  width: 92px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--orange);
+  margin: 16px 0 14px;
+}
+
+.ti-hero-sub {
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.ti-hero-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 22px;
+  list-style: none;
+  margin-top: 14px;
+}
+.ti-hero-bullets li {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #eef1f5;
+  padding-left: 16px;
+}
+.ti-hero-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.ti-hero-bullets li:first-child { padding-left: 0; }
+.ti-hero-bullets li:first-child::before { display: none; }
+
+.ti-hero-lead {
+  margin-top: 22px;
+  max-width: 540px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d7dde5;
+}
+
+/* --------------------------------------------------------------------------
+   5. ACCESOS RÁPIDOS
+   -------------------------------------------------------------------------- */
+.ti-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ti-quick-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 92px;
+  padding: 14px 14px 14px 16px;
+  background: var(--white);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+  text-align: left;
+  text-decoration: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.ti-quick-card:hover {
+  border-color: var(--orange-border);
+  box-shadow: var(--ti-shadow-hover);
+  transform: translateY(-3px);
+}
+.ti-quick-card:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+
+.ti-quick-icon {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--qi, var(--orange));
+  box-shadow: 0 6px 14px rgba(16, 24, 40, 0.16);
+}
+.ti-quick-icon .material-symbols-outlined { font-size: 1.55rem; }
+
+.ti-quick-text { min-width: 0; flex: 1 1 auto; }
+.ti-quick-text h3 { font-size: 0.92rem; font-weight: 700; }
+.ti-quick-text p {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ti-muted);
+  margin-top: 3px;
+}
+
+.ti-arrow {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--orange-light);
+  color: var(--orange);
+  border: 1px solid var(--orange-border);
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.ti-arrow .material-symbols-outlined { font-size: 1.05rem; }
+.ti-quick-card:hover .ti-arrow {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   6. GUÍAS Y TUTORIALES
+   -------------------------------------------------------------------------- */
+.ti-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ti-guide-card { min-width: 0; }
+
+.ti-guide-open {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background: var(--white);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.ti-guide-open:hover {
+  border-color: var(--orange-border);
+  box-shadow: var(--ti-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.ti-guide-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--ti-soft);
+}
+.ti-guide-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.ti-guide-open:hover .ti-guide-media img { transform: scale(1.06); }
+
+.ti-guide-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 12px 4px 4px;
+}
+.ti-tag {
+  align-self: flex-start;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  color: #fff;
+  background: var(--tag-color, var(--orange));
+  border-radius: 5px;
+  padding: 4px 9px;
+}
+.ti-guide-body h3 {
+  font-size: 0.94rem;
+  font-weight: 700;
+  margin-top: 10px;
+  line-height: 1.35;
+}
+.ti-guide-body p {
+  font-size: 0.79rem;
+  line-height: 1.5;
+  color: var(--ti-muted);
+  margin-top: 6px;
+}
+.ti-guide-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--orange);
+}
+.ti-guide-cta .material-symbols-outlined { font-size: 1rem; transition: transform 0.18s ease; }
+.ti-guide-open:hover .ti-guide-cta .material-symbols-outlined { transform: translateX(4px); }
+
+/* 7. Panel lateral retirado: el HTML ya no incluye soporte ni formatos. */
+.ti-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 26px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 102, 0, 0.32);
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.ti-btn-primary:hover {
+  background: var(--orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(255, 102, 0, 0.4);
+}
+.ti-btn-primary .material-symbols-outlined { font-size: 1.15rem; }
+
+
+.ti-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border: 1.5px solid var(--orange);
+  border-radius: 24px;
+  background: transparent;
+  color: var(--orange);
+  font-size: 0.83rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.ti-btn-outline:hover { background: var(--orange); color: #fff; }
+.ti-btn-outline .material-symbols-outlined { font-size: 1rem; }
+
+/* --------------------------------------------------------------------------
+   8. SERVICIOS — «¿Qué hace el área de TI?»
+   -------------------------------------------------------------------------- */
+.ti-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ti-service {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: var(--ti-soft);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+.ti-service:hover {
+  background: #fff;
+  border-color: var(--orange-border);
+  transform: translateY(-3px);
+  box-shadow: var(--ti-shadow);
+}
+.ti-service-icon {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--sa, var(--orange));
+  color: #fff;
+}
+.ti-service-icon .material-symbols-outlined { font-size: 1.4rem; }
+.ti-service h3 { font-size: 0.92rem; font-weight: 700; }
+.ti-service p { font-size: 0.8rem; color: var(--ti-muted); line-height: 1.5; margin-top: 4px; }
+
+/* --------------------------------------------------------------------------
+   9. EQUIPO
+   -------------------------------------------------------------------------- */
+
+.ti-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ti-member {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+  overflow: hidden;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.ti-member:hover {
+  border-color: var(--orange-border);
+  box-shadow: var(--ti-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.ti-member-photo {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  background: var(--ti-soft);
+  overflow: hidden;
+}
+.ti-member-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+.ti-member-demo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #7a4d00;
+  background: rgba(255, 246, 229, 0.95);
+  border: 1px solid #ffe0ad;
+  border-radius: 20px;
+  padding: 4px 9px;
+}
+/* Respaldo cuando el integrante aún no tiene foto (iniciales, sin foto ficticia) */
+.ti-member-initials {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #1e232a 0%, #37474f 100%);
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.ti-member-demo--pending {
+  color: #ffd9ae;
+  background: rgba(15, 20, 27, 0.85);
+  border-color: rgba(255, 214, 150, 0.55);
+}
+
+.ti-member-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 14px 16px 16px;
+}
+.ti-member-name { font-size: 1rem; font-weight: 800; }
+.ti-member-role { font-size: 0.8rem; color: var(--ti-muted); margin-top: 2px; }
+.ti-member-tag {
+  align-self: flex-start;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--tag-color, var(--orange));
+  border-radius: 5px;
+  padding: 4px 10px;
+}
+.ti-member-summary {
+  font-size: 0.79rem;
+  line-height: 1.5;
+  color: var(--ti-muted);
+  margin-top: 10px;
+}
+.ti-member-specialty {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ti-ink);
+}
+.ti-member-specialty .material-symbols-outlined { font-size: 1rem; color: var(--orange); }
+
+.ti-member-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--ti-line);
+}
+/* Separa la especialidad del bloque de contacto cuando la tarjeta es alta */
+.ti-member-specialty { margin-bottom: 12px; }
+.ti-member-contact a,
+.ti-member-contact span.ti-member-data {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.76rem;
+  color: var(--ti-ink);
+  text-decoration: none;
+  word-break: break-all;
+}
+.ti-member-contact a:hover { color: var(--orange); text-decoration: underline; }
+.ti-member-contact .material-symbols-outlined { font-size: 1rem; color: var(--orange); flex: 0 0 auto; }
+
+.ti-member-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--orange);
+  border-radius: 22px;
+  background: transparent;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.ti-member-action:hover { background: var(--orange); color: #fff; }
+.ti-member-action .material-symbols-outlined { font-size: 1rem; }
+
+.ti-team-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  font-size: 0.77rem;
+  line-height: 1.5;
+  color: #8a5b00;
+  background: #fff9ee;
+  border: 1px dashed #ffe0ad;
+  border-radius: 10px;
+}
+.ti-team-notice .material-symbols-outlined { font-size: 1rem; }
+
+/* --------------------------------------------------------------------------
+   10. PROCESO DE SOPORTE
+   -------------------------------------------------------------------------- */
+.ti-process {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--ti-radius);
+  background: var(--ti-navy);
+  color: #fff;
+  box-shadow: var(--ti-shadow);
+}
+.ti-process-bg { position: absolute; inset: 0; z-index: -1; }
+.ti-process-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.ti-process-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    var(--ti-navy) 30%,
+    rgba(14, 26, 43, 0.9) 60%,
+    rgba(14, 26, 43, 0.72) 100%
+  );
+}
+.ti-process-inner { position: relative; z-index: 1; padding: 26px 30px 30px; }
+
+.ti-process-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.ti-process-title { display: flex; align-items: center; gap: 14px; }
+.ti-process-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 102, 0, 0.16);
+  color: var(--orange);
+}
+.ti-process-icon .material-symbols-outlined { font-size: 1.5rem; }
+.ti-process-title h2 { color: #fff; font-size: 1.2rem; font-weight: 800; }
+.ti-process-title p { color: #b9c3d1; font-size: 0.86rem; margin-top: 4px; }
+
+.ti-process-sign { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.ti-script {
+  font-family: 'Caveat', cursive;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--orange);
+  text-align: right;
+  max-width: 250px;
+  transform: rotate(-3deg);
+}
+
+.ti-steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 28px;
+}
+.ti-step { position: relative; padding-right: 26px; }
+.ti-step::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 16px;
+  width: 24px;
+  height: 12px;
+  background:
+    linear-gradient(var(--orange), var(--orange)) left center / 16px 2px no-repeat,
+    linear-gradient(45deg, transparent 45%, var(--orange) 45%, var(--orange) 55%, transparent 55%) right top / 9px 9px no-repeat,
+    linear-gradient(-45deg, transparent 45%, var(--orange) 45%, var(--orange) 55%, transparent 55%) right bottom / 9px 9px no-repeat;
+  opacity: 0.9;
+}
+.ti-step:last-child { padding-right: 0; }
+.ti-step:last-child::after { display: none; }
+
+.ti-step-top { display: flex; align-items: center; gap: 12px; }
+.ti-step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--orange);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(255, 102, 0, 0.35);
+}
+.ti-step-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+.ti-step-icon .material-symbols-outlined { font-size: 1.25rem; }
+.ti-step h3 { color: #fff; font-size: 0.94rem; font-weight: 700; margin-top: 14px; }
+.ti-step p { color: #b9c3d1; font-size: 0.8rem; line-height: 1.55; margin-top: 6px; }
+
+/* --------------------------------------------------------------------------
+   11. CONTACTO Y RECURSOS
+   -------------------------------------------------------------------------- */
+.ti-policies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ti-policy-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--ti-soft);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+}
+.ti-policy-item > .material-symbols-outlined { color: var(--orange); font-size: 1.5rem; }
+.ti-policy-item h3 { font-size: 0.86rem; font-weight: 700; }
+.ti-policy-item p { font-size: 0.8rem; color: var(--ti-muted); line-height: 1.5; }
+.ti-policy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+}
+.ti-policy-link:hover { text-decoration: underline; }
+.ti-policy-link .material-symbols-outlined { font-size: 1rem; }
+
+.ti-pending-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #8a5b00;
+  background: #fff6e5;
+  border: 1px dashed #f0c67a;
+  border-radius: 20px;
+  padding: 5px 11px;
+}
+.ti-pending-chip .material-symbols-outlined { font-size: 0.95rem; color: inherit; }
+
+.ti-resources { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--ti-line); }
+.ti-resources h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.ti-resources h3 .material-symbols-outlined { color: var(--orange); font-size: 1.15rem; }
+.ti-resources ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+.ti-resources li a,
+.ti-resources li button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--ti-line);
+  border-radius: 20px;
+  background: var(--white);
+  color: var(--ti-ink);
+  font-size: 0.79rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+.ti-resources li a:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: var(--orange-light);
+}
+.ti-resources li .material-symbols-outlined { font-size: 0.95rem; color: var(--orange); }
+
+/* --------------------------------------------------------------------------
+   12. PIE DE PÁGINA
+   -------------------------------------------------------------------------- */
+.ti-footer {
+  margin-top: 24px;
+  background: var(--ti-dark);
+  border-top: 3px solid var(--orange);
+  color: #c9d1db;
+  padding: 22px var(--side-padding);
+}
+.ti-footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.ti-footer-brand { display: flex; align-items: center; gap: 14px; }
+.ti-footer-copy { font-size: 0.78rem; color: #98a2ae; }
+.ti-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+  font-size: 0.75rem;
+  color: #7f8996;
+}
+.ti-breadcrumb a { color: #c9d1db; text-decoration: none; }
+.ti-breadcrumb a:hover { color: var(--orange); text-decoration: underline; }
+.ti-breadcrumb .material-symbols-outlined { font-size: 0.85rem; }
+.ti-breadcrumb strong { color: var(--orange); font-weight: 700; }
+
+.ti-footer-links { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.ti-footer-links a {
+  color: #c9d1db;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+.ti-footer-links a:hover { color: var(--orange); background: rgba(255, 255, 255, 0.06); }
+.ti-footer-links .sep { color: #3c444f; }
+
+.ti-footer-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.ti-footer-help {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--orange);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.ti-footer-help:hover { text-decoration: underline; }
+.ti-footer-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #98a2ae;
+  font-size: 0.82rem;
+}
+.ti-footer-current .material-symbols-outlined { font-size: 1.05rem; }
+
+/* --------------------------------------------------------------------------
+   13. MODAL DE GUÍAS
+   -------------------------------------------------------------------------- */
+.ti-dialog {
+  width: min(660px, 92vw);
+  max-height: 88vh;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ti-radius);
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(6, 10, 16, 0.45);
+}
+.ti-dialog::backdrop { background: rgba(8, 12, 18, 0.62); backdrop-filter: blur(3px); }
+.ti-dialog[open] { animation: ti-dialog-in 0.22s ease; }
+@keyframes ti-dialog-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.ti-dialog-media { position: relative; height: 210px; background: var(--ti-soft); }
+.ti-dialog-media img { width: 100%; height: 100%; object-fit: cover; }
+.ti-dialog-close { position: absolute; top: 12px; right: 12px; margin: 0; }
+.ti-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(15, 20, 27, 0.72);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.ti-icon-btn:hover { background: var(--orange); }
+.ti-icon-btn .material-symbols-outlined { font-size: 1.2rem; }
+
+.ti-dialog-body { padding: 20px 24px 24px; overflow-y: auto; max-height: calc(88vh - 210px); }
+.ti-dialog-body h2 { font-size: 1.2rem; font-weight: 800; margin-top: 10px; }
+.ti-dialog-desc { font-size: 0.88rem; color: var(--ti-muted); line-height: 1.55; margin-top: 8px; }
+.ti-dialog-steps {
+  margin-top: 16px;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: ti-step;
+  display: grid;
+  gap: 10px;
+}
+.ti-dialog-steps li {
+  position: relative;
+  counter-increment: ti-step;
+  padding: 12px 14px 12px 46px;
+  background: var(--ti-soft);
+  border: 1px solid var(--ti-line);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.ti-dialog-steps li::before {
+  content: counter(ti-step);
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.ti-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--ti-line);
+}
+.ti-dialog-actions .ti-btn-primary,
+.ti-dialog-actions .ti-btn-outline { width: auto; margin-top: 0; }
+
+/* --------------------------------------------------------------------------
+   14. ESTADOS: PENDIENTES, VACÍOS, AVISOS Y REVELADO
+   -------------------------------------------------------------------------- */
+button.is-pending {
+  border-style: dashed !important;
+  border-color: #f0c67a !important;
+  background: #fffdf7 !important;
+}
+
+.ti-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 34px 20px;
+  text-align: center;
+  background: var(--ti-soft);
+  border: 1px dashed var(--ti-line);
+  border-radius: var(--ti-radius-md);
+}
+.ti-empty .material-symbols-outlined { font-size: 1.8rem; color: var(--orange); }
+.ti-empty p { font-size: 0.86rem; color: var(--ti-muted); max-width: 460px; line-height: 1.55; }
+
+.ti-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translate(-50%, 24px);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: min(560px, 90vw);
+  padding: 12px 18px;
+  background: var(--ti-dark);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 4px solid var(--orange);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(6, 10, 16, 0.4);
+  font-size: 0.83rem;
+  line-height: 1.45;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+.ti-toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.ti-toast .material-symbols-outlined { color: var(--orange); font-size: 1.15rem; }
+
+.ti-noscript {
+  padding: 16px 18px;
+  background: #fff6e5;
+  border: 1px dashed #f0c67a;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: #8a5b00;
+  line-height: 1.55;
+}
+
+/* Revelado discreto al desplazar (se aplica desde JavaScript) */
+.ti-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.ti-reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ti-reveal { opacity: 1 !important; transform: none !important; transition: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+/* --------------------------------------------------------------------------
+   15. RESPONSIVE
+   -------------------------------------------------------------------------- */
+
+/* Escritorios medio-pequeños: menos columnas dentro de los paneles */
+@media (max-width: 1400px) {
+  .ti-team-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1280px) {
+  .ti-quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ti-guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ti-guide-media { aspect-ratio: 16 / 9; }
+  .ti-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ti-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ti-policies-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ti-hero-content { padding: 40px 36px; gap: 26px; }
+  .ti-hero-badge { width: 80px; height: 80px; border-radius: 16px; }
+  .ti-hero-badge > .material-symbols-outlined { font-size: 2.4rem; }
+}
+
+/* Tabletas apaisadas: una sola columna principal */
+@media (max-width: 1100px) {
+  .ti-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 20px; }
+  .ti-step:nth-child(2)::after { display: none; }
+}
+
+/* Móvil / navegación compacta */
+@media (max-width: 980px) {
+  .ti-nav { flex-wrap: wrap; gap: 12px; padding: 9px 18px; }
+  .ti-nav .mobile-toggle {
+    display: flex;
+    order: 2;
+    margin-left: auto;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+  }
+  .ti-nav .navright { order: 1; margin-left: auto; }
+  .ti-nav .navlinks {
+    order: 3;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--ti-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.4);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 6px 0 14px;
+  }
+  .ti-nav .navlinks.open { display: flex; }
+  .ti-nav .navlinks > a,
+  .ti-nav .dropdown-toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 13px 20px;
+    border-bottom: 0;
+    border-left: 3px solid transparent;
+  }
+  .ti-nav .navlinks > a.active { background: rgba(255, 102, 0, 0.1); border-left-color: var(--orange); }
+  .ti-nav .dropdown { border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+  .ti-nav .dropdown-menu {
+    position: static;
+    display: none;
+    min-width: 0;
+    box-shadow: none;
+    background: #1a1f27;
+    border: 0;
+    padding: 4px 0 8px;
+  }
+  .ti-nav .dropdown.open .dropdown-menu { display: flex; }
+  .ti-nav .dropdown-menu a { color: #e9edf2; padding: 10px 24px; }
+  .ti-nav .dropdown-menu a:hover { background: rgba(255, 255, 255, 0.06); color: var(--orange); }
+}
+
+@media (max-width: 860px) {
+  :root { --side-padding: 18px; }
+  .ti-hero { min-height: 0; }
+  .ti-hero-content { flex-direction: column; gap: 20px; padding: 32px 24px 150px; }
+  .ti-hero-text { width: 100%; max-width: 100%; }
+  .ti-hero-scrim {
+    background:
+      linear-gradient(180deg, rgba(15, 20, 27, 0.96) 0%, rgba(15, 20, 27, 0.9) 55%, rgba(15, 20, 27, 0.65) 100%);
+  }
+  .ti-hero-text h1 { font-size: clamp(2.1rem, 9vw, 2.9rem); }
+  .ti-hero-script { right: 24px; bottom: 26px; font-size: 1.6rem; max-width: 260px; }
+  .ti-hero-stripes { width: 220px; height: 170px; }
+  .ti-process-head { flex-direction: column; align-items: flex-start; }
+  .ti-process-sign { width: 100%; justify-content: space-between; }
+  .ti-script { text-align: left; max-width: none; }
+  .ti-footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 640px) {
+  .ti-main { gap: 14px; padding-top: 12px; }
+  .ti-panel { padding: 18px 16px; }
+  .ti-quick-grid,
+  .ti-guide-grid,
+  .ti-services-grid,
+  .ti-team-grid,
+  .ti-policies-grid { grid-template-columns: minmax(0, 1fr); }
+  .ti-steps { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .ti-step { padding-right: 0; padding-left: 56px; }
+  .ti-step::after { display: none; }
+  .ti-step-top { position: absolute; left: 0; top: 0; flex-direction: column; gap: 8px; }
+  .ti-step h3 { margin-top: 0; }
+  .ti-step p { margin-top: 4px; }
+  .ti-sec-head { flex-wrap: wrap; }
+  .ti-view-all { margin-left: 0; }
+  .ti-panel-foot a { margin-left: 0; }
+  .ti-nav .nav-btn-highlight { padding: 7px 12px; font-size: 0.78rem; }
+  .ti-nav { gap: 10px; padding: 9px 14px; }
+  .ti-logo-clip { width: 150px; height: 33px; }
+  .ti-logo-clip img { width: 170px; height: 74px; left: -11px; top: -17px; }
+  .ti-hero-content { padding: 26px 20px 140px; }
+  .ti-hero-bullets { gap: 6px 14px; }
+  .ti-hero-bullets li { font-size: 0.85rem; padding-left: 13px; }
+  .ti-hero-badge { width: 68px; height: 68px; }
+  .ti-hero-badge > .material-symbols-outlined { font-size: 2rem; }
+  .ti-process-inner { padding: 22px 18px 24px; }
+  .ti-footer { padding: 20px 18px; }
+  .ti-dialog-media { height: 170px; }
+  .ti-dialog-body { padding: 16px 18px 20px; max-height: calc(88vh - 170px); }
+}
+
+/* Impresión / exporte limpio */
+@media print {
+  .ti-nav, .ti-footer, .ti-toast, .ti-dialog { display: none !important; }
+  .ti-page { background: #fff; }
+  .ti-panel, .ti-hero, .ti-process { box-shadow: none; }
+}

@@ -697,6 +697,45 @@ a:focus:not(:focus-visible) {
   border-color: var(--col-accent, var(--orange));
 }
 
+/* Tarjeta TI con doble destino: micrositio + carpeta del área.
+   Mantiene el aspecto de las demás tarjetas; solo agrega dos accesos. */
+.area-ti-links {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+.area-ti-links a {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 6px 8px;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.area-ti-links a .material-symbols-outlined { font-size: 0.95rem; }
+.area-ti-go {
+  background: var(--orange);
+  border: 1px solid var(--orange);
+  color: #fff;
+}
+.area-ti-go:hover { background: var(--orange-hover); border-color: var(--orange-hover); color: #fff; }
+.area-ti-folder {
+  background: #f0f4f8;
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+.area-ti-folder:hover {
+  border-color: var(--col-accent, var(--orange));
+  color: var(--col-accent, var(--orange));
+  background: #fff;
+}
+
 /* WIDGETS LATERALES */
 .col-widgets { 
   display: flex; 
