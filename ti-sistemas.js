@@ -247,32 +247,22 @@
       actions.innerHTML = html;
     }
 
-    // Si estamos dentro de un iframe (como en SharePoint), centrar el modal
-    // exactamente en la zona visible de las guías o donde el usuario hizo clic
-    var triggerRect = trigger ? trigger.getBoundingClientRect() : null;
-    var currentTop = triggerRect
-      ? (window.scrollY + triggerRect.top - 80)
-      : (window.scrollY + 200);
-
-    // Asegurar que no quede fuera de los límites
-    currentTop = Math.max(120, currentTop);
-    dialog.style.top = currentTop + 'px';
+    // Posicionar el modal directamente sobre la sección de Guías y Tutoriales
+    var guidesSec = document.getElementById('guias');
+    var targetTop = 720; // Posición de respaldo estándar
+    if (guidesSec) {
+      targetTop = guidesSec.offsetTop + 10;
+    }
+    dialog.style.top = targetTop + 'px';
 
     if (typeof dialog.showModal === 'function') { dialog.showModal(); }
     else { dialog.setAttribute('open', ''); }
-
-    // Scroll suave para asegurar que el modal esté perfectamente encuadrado
-    try {
-      dialog.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } catch (e) {}
   }
 
   /* Cerrar al hacer clic en el fondo del modal */
   if (dialog) {
     dialog.addEventListener('close', function () {
       document.body.style.overflow = '';
-      window.scrollTo(modalScroll.x, modalScroll.y);
-      try { window.parent.scrollTo(parentScroll.x, parentScroll.y); } catch (errPSC) {}
       window.dispatchEvent(new Event('resize'));
     });
     dialog.addEventListener('click', function (e) {
