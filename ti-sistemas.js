@@ -559,6 +559,13 @@
      ------------------------------------------------------------------ */
   (function setupEmbedHeight() {
     if (window.parent === window) return; // página completa: nada que avisar
+
+    // Desactivar restauración de scroll del navegador para evitar que cargue a mitad de página
+    if ('scrollRestoration' in history) {
+      try { history.scrollRestoration = 'manual'; } catch (e) {}
+    }
+    window.scrollTo(0, 0);
+
     var lastH = 0, timer = null, count = 0;
     function currentHeight() {
       return Math.ceil(Math.max(
@@ -575,16 +582,19 @@
            sin depender de ningún script en la página padre. */
         try {
           var f = window.parent.document.getElementById('tranesFrame');
-          if (f) { f.style.height = h + 'px'; f.style.minHeight = '0'; }
+          if (f) { f.style.height = h + 'px'; f.style.minHeight = h + 'px'; }
         } catch (errSame) {}
         window.parent.postMessage({ tranes: 1, height: h }, '*');
       } catch (e) {}
     }
     function schedule() {
       window.clearTimeout(timer);
-      timer = window.setTimeout(notify, 120);
+      timer = window.setTimeout(notify, 100);
     }
-    window.addEventListener('load', notify);
+    window.addEventListener('load', function () {
+      window.scrollTo(0, 0);
+      notify();
+    });
     window.addEventListener('resize', schedule);
     if (document.fonts && document.fonts.ready) { document.fonts.ready.then(schedule); }
     if ('ResizeObserver' in window) {
@@ -593,6 +603,9 @@
     if ('MutationObserver' in window) {
       new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true, attributes: true });
     }
+    [50, 200, 500, 1000, 2000].forEach(function (ms) {
+      window.setTimeout(notify, ms);
+    });
     var keepAlive = window.setInterval(function () {
       count += 1;
       notify();

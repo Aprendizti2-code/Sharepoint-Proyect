@@ -1,19 +1,38 @@
 <!-- ==========================================================================
-     TRANES — Micrositio TI / Sistemas en SharePoint (SIN JavaScript padre)
+     TRANES — Micrositio «TI / Sistemas» incrustado en SharePoint
      --------------------------------------------------------------------------
-     1. Sube estos archivos a UNA sola carpeta (p. ej. Site Assets/micrositio-ti),
-        SIN subcarpetas (todo plano):
-          ti-sistemas.html, ti-config.js, ti-sistemas.js, ti-sistemas.css,
-          app.js, styles.css, logo-tranes-oficial.png, Principal.jpg,
-          hero-c.jpg, guide-planner.jpg, guide-funciones.jpg,
-          guide-seguridad.jpg, guide-firma.jpg, equipo-lider.jpg,
-          equipo-redes.jpg, equipo-automatizacion.jpg, equipo-desarrollo.jpg
-     2. Reemplaza LA_URL_DE_TU_SITIO por la de tu sitio y pega SOLO este
-        iframe (sin <script>: la CSP de SharePoint bloquea scripts en línea
-        del padre; la página hija se auto-ajusta sola al ser mismo origen).
+     COPIA Y PEGA ESTE CÓDIGO EN EL SCRIPT EDITOR / EMBED DE SHAREPOINT
+     
+     ¿Por qué esta versión es perfecta?
+     1. Altura base de 3550px: si SharePoint bloquea o retrasa los scripts,
+        la página NO SE CORTA A LA MITAD; se muestra completa desde el segundo 0.
+     2. Sin scroll interno forzado: el banner hero y la barra quedan arriba
+        y el usuario se desplaza naturalmente por toda la página.
+     3. Auto-ajuste dinámico: si el script se ejecuta, ajusta la altura exacta.
      ========================================================================== -->
 <iframe id="tranesFrame"
   title="Micrositio TI / Sistemas TRANES"
-  src="https://tranes1.sharepoint.com/sites/Intranet/SiteAssets/micrositio-ti/ti-sistemas.html"
-  style="width:100%;min-height:1200px;border:0;display:block;overflow:hidden"
-  scrolling="no"></iframe>
+  src="https://aprendizti2-code.github.io/Sharepoint-Proyect/ti-sistemas.html"
+  style="width: 100%; height: 3550px; min-height: 3550px; border: 0; display: block; overflow: hidden;"
+  scrolling="no">
+</iframe>
+
+<script>
+(function () {
+  var f = document.getElementById('tranesFrame');
+  if (!f) return;
+
+  function setHeight(h) {
+    if (!h || isNaN(h)) return;
+    var finalHeight = Math.max(3400, Math.ceil(h));
+    f.style.height = finalHeight + 'px';
+    f.style.minHeight = finalHeight + 'px';
+  }
+
+  // Escuchar mensaje del iframe de GitHub Pages
+  window.addEventListener('message', function (e) {
+    if (!e.data || e.data.tranes !== 1 || !e.data.height) return;
+    setHeight(e.data.height);
+  });
+})();
+</script>

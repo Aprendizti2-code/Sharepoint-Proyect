@@ -28,6 +28,12 @@
   background-color: var(--page-bg);
 }
 
+html,
+body.ti-page {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 .ti-page h1,
 .ti-page h2,
 .ti-page h3 {
