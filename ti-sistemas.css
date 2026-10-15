@@ -40,6 +40,10 @@
   line-height: 1;
 }
 
+/* El atributo hidden pierde contra display:flex de las reglas de autor:
+   esta guarda garantiza que lo oculto quede oculto. */
+.ti-page [hidden] { display: none !important; }
+
 /* --------------------------------------------------------------------------
    1. ESTRUCTURA GENERAL
    -------------------------------------------------------------------------- */
