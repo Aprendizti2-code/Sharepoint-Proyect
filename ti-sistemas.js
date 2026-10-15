@@ -519,7 +519,61 @@
       t.classList.add('ti-reveal');
       observer.observe(t);
     });
+
+    /* Red de seguridad: si el observador no dispara (contenedor incrustado,
+       pestaña en segundo plano), todo queda visible de todos modos. */
+    window.setTimeout(function () {
+      document.querySelectorAll('.ti-reveal:not(.is-in)').forEach(function (t) {
+        t.classList.add('is-in');
+      });
+    }, 3000);
   }
+
+  /* ------------------------------------------------------------------
+     11. AVISO DE ALTURA AL CONTENEDOR (SharePoint: Script Editor / Embed)
+     El padre fija la altura del marco; sin estos avisos el contenido se
+     corta abajo. Se reenvía ante cualquier cambio (imágenes, fuentes,
+     redimensionado) durante los primeros ~60 segundos.
+     En la página padre debe existir quien escuche { tranes: 1, height }
+     y ajuste la altura del iframe (ver snippet al final del reporte).
+     ------------------------------------------------------------------ */
+  (function setupEmbedHeight() {
+    if (window.parent === window) return; // página completa: nada que avisar
+    var lastH = 0, timer = null, count = 0;
+    function currentHeight() {
+      return Math.ceil(Math.max(
+        document.documentElement.scrollHeight,
+        document.body ? document.body.scrollHeight : 0
+      ));
+    }
+    function notify() {
+      try {
+        var h = currentHeight();
+        if (Math.abs(h - lastH) < 4) return;
+        lastH = h;
+        window.parent.postMessage({ tranes: 1, height: h }, '*');
+      } catch (e) {}
+    }
+    function schedule() {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(notify, 120);
+    }
+    window.addEventListener('load', notify);
+    window.addEventListener('resize', schedule);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(schedule); }
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(schedule).observe(document.documentElement);
+    }
+    if ('MutationObserver' in window) {
+      new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+    }
+    var keepAlive = window.setInterval(function () {
+      count += 1;
+      notify();
+      if (count > 40) window.clearInterval(keepAlive);
+    }, 1500);
+    notify();
+  })();
 
   /* ------------------------------------------------------------------
      ARRANQUE
