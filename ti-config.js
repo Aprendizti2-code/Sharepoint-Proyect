@@ -435,9 +435,12 @@
         icon: 'key',
         title: 'Confidencialidad y credenciales',
         desc: 'Manejo de contraseñas, accesos e información confidencial.',
-        doc: { status: 'pending', href: '', label: 'Ver documento', note: 'Documento pendiente de publicar por el área responsable.' }
-      }
-    ],
+        doc: {
+          status: 'ok',
+          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQAMOb2OhN-YQIhz5Aab4_0GAZL1tgebCWZ6JmIxZ02ruZM?e=pAxDdC',
+          label: 'Ver documento',
+          external: true
+        }
 
     resources: [
       { label: 'Intranet corporativa',   href: 'index.html', status: 'ok' },
