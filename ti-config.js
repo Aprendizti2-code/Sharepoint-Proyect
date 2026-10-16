@@ -402,7 +402,12 @@
         icon: 'person',
         title: 'Tratamiento de datos personales',
         desc: 'Cómo recolectamos, usamos y protegemos los datos personales en TRANES.',
-        doc: { status: 'pending', href: '', label: 'Ver documento', note: 'Documento pendiente de publicar por el área responsable.' }
+        doc: {
+          status: 'ok',
+          href: 'https://tranes1-my.sharepoint.com/:b:/g/personal/auxiliarti_tranes_com_co/IQBAqYSZvdNvT68C0pioMdE6AV1-6nm8AtGMrhqozCvPJUg?e=ZZ5HOm',
+          label: 'Ver documento',
+          external: true
+        }
       },
       {
         icon: 'security',
