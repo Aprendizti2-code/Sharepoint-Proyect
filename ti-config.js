@@ -419,7 +419,12 @@
         icon: 'laptop',
         title: 'Uso aceptable de herramientas',
         desc: 'Uso correcto del correo, los equipos y las plataformas corporativas.',
-        doc: { status: 'pending', href: '', label: 'Ver documento', note: 'Documento pendiente de publicar por el área responsable.' }
+        doc: {
+          status: 'ok',
+          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQCGBIXLt_caS6Y9zOFf6WHiAXaDumdw4A82crI9SdaBSmo?e=vC1lhf',
+          label: 'Ver documento',
+          external: true
+        }
       },
       {
         icon: 'key',
