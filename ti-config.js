@@ -408,7 +408,12 @@
         icon: 'security',
         title: 'Seguridad de la información',
         desc: 'Reglas para proteger la información y prevenir incidentes de seguridad.',
-        doc: { status: 'pending', href: '', label: 'Ver documento', note: 'Documento pendiente de publicar por el área responsable.' }
+        doc: {
+          status: 'ok',
+          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQAx-3T6ScrYT6V9QvijCXdMAS066TAA2F8G0NVVRY_q748?e=x0vvuU',
+          label: 'Ver documento',
+          external: true
+        }
       },
       {
         icon: 'laptop',
