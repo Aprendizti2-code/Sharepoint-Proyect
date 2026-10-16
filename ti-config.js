@@ -98,7 +98,7 @@
         href: '',
         label: 'Ver todas las guías',
         note: 'Falta configurar la biblioteca o página donde vivirán todas las guías.'
-      },
+      }
       /* Canales de contacto retirados junto con la seccion anterior: los correos viven en las tarjetas del equipo. */
     },
 
