@@ -402,25 +402,45 @@
         icon: 'person',
         title: 'Tratamiento de datos personales',
         desc: 'Cómo recolectamos, usamos y protegemos los datos personales en TRANES.',
-        doc: { status: 'pending', href: '', label: 'Ver documento', note: 'Documento pendiente de publicar por el área responsable.' }
+        doc: {
+          status: 'ok',
+          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQAx-3T6ScrYT6V9QvijCXdMAS066TAA2F8G0NVVRY_q748?e=jxfa7K',
+          label: 'Ver documento',
+          external: true
+        }
       },
       {
         icon: 'security',
         title: 'Seguridad de la información',
         desc: 'Reglas para proteger la información y prevenir incidentes de seguridad.',
-        doc: { status: 'pending', href: '', label: 'Ver documento', note: 'Documento pendiente de publicar por el área responsable.' }
+        doc: {
+          status: 'ok',
+          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQCGBIXLt_caS6Y9zOFf6WHiAXaDumdw4A82crI9SdaBSmo?e=X9gmW9',
+          label: 'Ver documento',
+          external: true
+        }
       },
       {
         icon: 'laptop',
         title: 'Uso aceptable de herramientas',
         desc: 'Uso correcto del correo, los equipos y las plataformas corporativas.',
-        doc: { status: 'pending', href: '', label: 'Ver documento', note: 'Documento pendiente de publicar por el área responsable.' }
+        doc: {
+          status: 'ok',
+          href: 'https://tranes1-my.sharepoint.com/:b:/g/personal/auxiliarti_tranes_com_co/IQBAqYSZvdNvT68C0pioMdE6AV1-6nm8AtGMrhqozCvPJUg?e=H1ioV8',
+          label: 'Ver documento',
+          external: true
+        }
       },
       {
         icon: 'key',
         title: 'Confidencialidad y credenciales',
         desc: 'Manejo de contraseñas, accesos e información confidencial.',
-        doc: { status: 'pending', href: '', label: 'Ver documento', note: 'Documento pendiente de publicar por el área responsable.' }
+        doc: {
+          status: 'ok',
+          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQAMOb2OhN-YQIhz5Aab4_0GAZL1tgebCWZ6JmIxZ02ruZM?e=0tEsIM',
+          label: 'Ver documento',
+          external: true
+        }
       }
     ],
 
