@@ -1,4 +1,4 @@
-﻿(function (root) {
+(function (root) {
   'use strict';
 
   root.PUB_CONFIG = {
@@ -191,24 +191,26 @@
     /* ── Equipo creativo ───────────────────────────────────────────── */
     team: [
       {
-        name: 'Liderazgo de Publicidad',
-        role: 'Estrategia de Marca & Comunicación',
-        initials: 'LC',
-        tag: 'Líder de Área',
+        name: 'Luisa Fernanda García Arrubla',
+        role: 'Analista de Publicidad',
+        image: 'assets/team-luisa.jpg',
+        initials: 'LG',
+        tag: 'Publicidad & Medios',
         tagColor: '#ff6600',
-        summary: 'Coordina la identidad visual y la comunicación de TRANES, y acompaña las solicitudes desde el concepto hasta su publicación.',
-        specialty: 'Dirección creativa, marca y campañas',
+        summary: 'Gestión y coordinación de estrategias publicitarias, identidad corporativa y desarrollo de campañas visuales para TRANES.',
+        specialty: 'Estrategia de marca, campañas y contenidos',
         email: 'publicidad@tranes.com.co'
       },
       {
-        name: 'Diseño y Contenidos',
-        role: 'Diseño Gráfico & Producción Audiovisual',
-        initials: 'DG',
-        tag: 'Diseño y medios',
+        name: 'María Camila Zapata Betancur',
+        role: 'Analista de Publicidad',
+        image: 'assets/team-camila.jpg',
+        initials: 'CZ',
+        tag: 'Publicidad & Medios',
         tagColor: '#1f6fd0',
-        summary: 'Desarrolla piezas gráficas y contenidos para los canales internos y externos, y apoya la fotografía y el video institucional.',
-        specialty: 'Diseño visual, redes y audiovisuales',
-        email: 'diseno@tranes.com.co'
+        summary: 'Producción gráfica, piezas publicitarias y gestión de medios para los diferentes canales corporativos internos y externos.',
+        specialty: 'Diseño publicitario, medios y contenidos',
+        email: 'publicidad@tranes.com.co'
       }
     ],
 
@@ -352,10 +354,13 @@
     box.classList.toggle('pub-team-grid--solo', team.length === 1);
     box.classList.toggle('pub-team-grid--pair', team.length === 2);
     box.innerHTML = team.map(function (m) {
+      var photoHtml = m.image
+        ? '<img src="' + esc(m.image) + '" alt="Foto de ' + esc(m.name) + '" loading="lazy">'
+        : '<div class="pub-member-initials">' + esc(m.initials) + '</div><span class="pub-member-demo">Foto pendiente</span>';
+
       return '<article class="pub-member">' +
         '<div class="pub-member-photo">' +
-          '<div class="pub-member-initials">' + esc(m.initials) + '</div>' +
-          '<span class="pub-member-demo">Foto pendiente</span>' +
+          photoHtml +
         '</div>' +
         '<div class="pub-member-body">' +
           '<h3 class="pub-member-name">' + esc(m.name) + '</h3>' +
