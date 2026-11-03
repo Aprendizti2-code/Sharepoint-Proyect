@@ -2093,59 +2093,195 @@ body.font-xlarge { font-size: 20px; }
 /* ============================================
    TEMAS DE FONDO (Configuración)
    ============================================ */
-/* Tema Oscuro */
+/* Tema Oscuro Completo */
 body[data-theme="dark"] {
-  --page-bg: #14181d;
-  --surface-dark: #0c0e12;
-  --footer-dark: #0c0e12;
-  --text-dark: #f0f2f5;
-  --text-gray: #a0aec0;
-  --border: #2d3748;
-  --light-bg: #1a202c;
-  --light-blue-box: #1e293b;
+  --page-bg: #0f1318;
+  --surface-dark: #090c0f;
+  --footer-dark: #090c0f;
+  --text-dark: #f1f5f9;
+  --text-gray: #94a3b8;
+  --border: #27313f;
+  --light-bg: #161c24;
+  --light-blue-box: #131922;
+  --card-bg: #161c24;
 }
-body[data-theme="dark"] .area-card,
-body[data-theme="dark"] .fmt-btn-card,
-body[data-theme="dark"] .eco-col,
-body[data-theme="dark"] .news-card,
-body[data-theme="dark"] .topbar-panel,
-body[data-theme="dark"] .a11y-panel,
+
+/* Contenedores principales en modo oscuro */
+body[data-theme="dark"] .mainnav {
+  background: #12171e;
+  border-bottom: 1px solid var(--border);
+}
+body[data-theme="dark"] .navlinks > a,
+body[data-theme="dark"] .dropdown-toggle {
+  color: #f1f5f9;
+}
 body[data-theme="dark"] .dropdown-menu {
-  background: #1a202c !important;
-  color: #f0f2f5 !important;
-  border-color: #2d3748 !important;
+  background: #161c24 !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
-body[data-theme="dark"] .area-card h3,
-body[data-theme="dark"] .news-info h3,
-body[data-theme="dark"] .eco-col-header,
-body[data-theme="dark"] .header-title h2,
 body[data-theme="dark"] .dropdown-menu a {
-  color: #ffffff !important;
+  color: #f1f5f9 !important;
 }
 body[data-theme="dark"] .dropdown-menu a:hover {
-  background: #2d3748 !important;
+  background: #232c39 !important;
+  color: var(--orange) !important;
 }
+
+/* Sección de Comunicaciones */
+body[data-theme="dark"] .col-comunicaciones {
+  background: #161c24;
+  border-color: var(--border);
+}
+body[data-theme="dark"] .news-item {
+  background: #1b222d;
+  border-color: var(--border);
+}
+body[data-theme="dark"] .news-item:hover {
+  background: #202936;
+  border-color: #3b4758;
+}
+body[data-theme="dark"] .news-info h3 {
+  color: #ffffff !important;
+}
+body[data-theme="dark"] .news-info p,
+body[data-theme="dark"] .news-info small {
+  color: #94a3b8 !important;
+}
+
+/* Ecosistema Digital y Nuestras Áreas */
+body[data-theme="dark"] .areas-container {
+  background: #131922;
+  border-color: #27313f;
+}
+body[data-theme="dark"] .area-card {
+  background: #1a222e !important;
+  border-color: var(--border) !important;
+  color: #f1f5f9 !important;
+}
+body[data-theme="dark"] .area-card:hover {
+  background: #202936 !important;
+  border-color: var(--orange) !important;
+}
+body[data-theme="dark"] .area-card h3 {
+  color: #ffffff !important;
+}
+body[data-theme="dark"] .eco-col {
+  background: #161c24 !important;
+  border-color: var(--border) !important;
+}
+body[data-theme="dark"] .eco-col-header {
+  color: #ffffff !important;
+  border-bottom-color: var(--border) !important;
+}
+body[data-theme="dark"] .eco-tool {
+  background: #1a222e;
+  border-color: var(--border);
+  color: #f1f5f9;
+}
+body[data-theme="dark"] .eco-tool:hover {
+  background: #232c39;
+  border-color: var(--orange);
+}
+
+/* Centro de Formatos */
+body[data-theme="dark"] .formatos-prominente-full {
+  background: #161c24 !important;
+  border-color: var(--border) !important;
+}
+body[data-theme="dark"] .formatos-prominente-full .subtitle {
+  color: #94a3b8 !important;
+}
+body[data-theme="dark"] .fmt-group-label h3 {
+  color: #ffffff !important;
+}
+body[data-theme="dark"] .fmt-group-count {
+  background: #222b37;
+  color: #94a3b8;
+  border-color: var(--border);
+}
+body[data-theme="dark"] .fmt-btn-card {
+  background: #1b222d !important;
+  border-color: var(--border) !important;
+  color: #f1f5f9 !important;
+}
+body[data-theme="dark"] .fmt-btn-card:hover {
+  background: #222b37 !important;
+  border-color: var(--orange) !important;
+}
+body[data-theme="dark"] .fmt-btn-card strong {
+  color: #ffffff !important;
+}
+body[data-theme="dark"] .fmt-btn-card small {
+  color: #94a3b8 !important;
+}
+body[data-theme="dark"] .fmt-search-box {
+  background: #1b222d;
+  border-color: var(--border);
+}
+body[data-theme="dark"] .fmt-search-box input {
+  color: #ffffff;
+}
+body[data-theme="dark"] .fmt-search-box input::placeholder {
+  color: #64748b;
+}
+
+/* Widgets laterales */
+body[data-theme="dark"] .widget-calendar {
+  border: 1px solid var(--border);
+}
+
+/* Topbar & Config Panel */
 body[data-theme="dark"] .search input {
-  background: #2d3748;
+  background: #222b37;
   color: #ffffff;
 }
 body[data-theme="dark"] .search input::placeholder {
-  color: #a0aec0;
+  color: #94a3b8;
 }
-body[data-theme="dark"] .topbar .topbar-panel button {
-  background: #2d3748;
-  color: #f0f2f5;
-  border-color: #4a5568;
-}
-body[data-theme="dark"] .pref-name,
-body[data-theme="dark"] .tp-switch,
-body[data-theme="dark"] .tp-head strong {
-  color: #f0f2f5 !important;
+body[data-theme="dark"] .topbar-panel {
+  background: #161c24 !important;
+  border-color: var(--border) !important;
+  color: #f1f5f9 !important;
 }
 body[data-theme="dark"] .tp-head {
-  background: #14181d !important;
-  border-bottom-color: #2d3748 !important;
+  background: #12171e !important;
+  border-bottom-color: var(--border) !important;
 }
+body[data-theme="dark"] .tp-head strong,
+body[data-theme="dark"] .pref-name,
+body[data-theme="dark"] .tp-switch,
+body[data-theme="dark"] .header-title h2 {
+  color: #ffffff !important;
+}
+body[data-theme="dark"] .topbar .topbar-panel button {
+  background: #222b37;
+  color: #f1f5f9;
+  border-color: #3b4758;
+}
+body[data-theme="dark"] .topbar .topbar-panel .tp-reset {
+  background: #222b37;
+  border-color: #3b4758;
+  color: #94a3b8;
+}
+body[data-theme="dark"] .a11y-panel {
+  background: #161c24 !important;
+  border-color: var(--border) !important;
+  color: #f1f5f9 !important;
+}
+body[data-theme="dark"] .a11y-panel-title {
+  color: #ffffff !important;
+}
+body[data-theme="dark"] .a11y-btn {
+  background: #1b222d;
+  border-color: var(--border);
+  color: #f1f5f9;
+}
+body[data-theme="dark"] .a11y-btn:hover {
+  background: #222b37;
+  color: var(--orange);
+}
+
 body[data-theme="blue"] {
   --surface-dark: #10263f;
   --footer-dark: #0d1e33;
