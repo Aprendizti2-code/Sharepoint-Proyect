@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    TRANES S.A.S. — Micrositio «Publicidad & Medios»
    Estilos exactos y 100% consistentes con TI / Sistemas y Gestión Humana
    ========================================================================== */
@@ -694,7 +694,7 @@ body.pub-page {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center 10%;
 }
 
 .pub-member-initials {

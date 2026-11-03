@@ -194,6 +194,7 @@
         name: 'Luisa Fernanda García Arrubla',
         role: 'Analista de Publicidad',
         image: 'assets/team-luisa.jpg',
+        photoPos: '10%',
         initials: 'LG',
         tag: 'Publicidad & Medios',
         tagColor: '#ff6600',
@@ -205,6 +206,7 @@
         name: 'María Camila Zapata Betancur',
         role: 'Analista de Publicidad',
         image: 'assets/team-camila.jpg',
+        photoPos: '5%',
         initials: 'CZ',
         tag: 'Publicidad & Medios',
         tagColor: '#1f6fd0',
@@ -355,7 +357,7 @@
     box.classList.toggle('pub-team-grid--pair', team.length === 2);
     box.innerHTML = team.map(function (m) {
       var photoHtml = m.image
-        ? '<img src="' + esc(m.image) + '" alt="Foto de ' + esc(m.name) + '" loading="lazy">'
+        ? '<img src="' + esc(m.image) + '" alt="Foto de ' + esc(m.name) + '" loading="lazy" style="object-position: center ' + (m.photoPos || '10%') + ';">'
         : '<div class="pub-member-initials">' + esc(m.initials) + '</div><span class="pub-member-demo">Foto pendiente</span>';
 
       return '<article class="pub-member">' +
