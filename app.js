@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------
   // 4. BOTONES CON DATA-SHAREPOINT-ID
   // ------------------------------------------
+
   document.querySelectorAll('.fmt-btn-card').forEach(btn => {
     btn.addEventListener('click', () => {
       const spId = btn.getAttribute('data-sharepoint-id');

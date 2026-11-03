@@ -296,7 +296,7 @@ body.ti-page {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% 42%;
+  object-position: right center;
 }
 .ti-hero-scrim {
   position: absolute;
@@ -304,27 +304,14 @@ body.ti-page {
   background:
     linear-gradient(
       90deg,
-      #0f141b 0%,
-      #0f141b 34%,
-      rgba(15, 20, 27, 0.86) 50%,
-      rgba(15, 20, 27, 0.5) 70%,
-      rgba(15, 20, 27, 0.2) 100%
+      rgba(15, 20, 27, 0.95) 0%,
+      rgba(15, 20, 27, 0.78) 45%,
+      rgba(15, 20, 27, 0.3) 70%,
+      transparent 100%
     );
 }
 .ti-hero-stripes {
-  position: absolute;
-  right: -30px;
-  bottom: -40px;
-  width: 300px;
-  height: 220px;
-  background: repeating-linear-gradient(
-    135deg,
-    var(--orange) 0 16px,
-    rgba(255, 102, 0, 0) 16px 44px
-  );
-  -webkit-mask-image: linear-gradient(to top left, #000 25%, transparent 85%);
-  mask-image: linear-gradient(to top left, #000 25%, transparent 85%);
-  opacity: 0.9;
+  display: none;
 }
 .ti-hero-script {
   position: absolute;
@@ -1233,10 +1220,15 @@ body.ti-page {
 /* --------------------------------------------------------------------------
    14. ESTADOS: PENDIENTES, VACÍOS, AVISOS Y REVELADO
    -------------------------------------------------------------------------- */
-button.is-pending {
-  border-style: dashed !important;
-  border-color: #f0c67a !important;
-  background: #fffdf7 !important;
+/* Enlaces pendientes de configuración: ya no se dibuja el recuadro punteado.
+   :where() deja la especificidad en 0, así se anula el aspecto nativo del <button>
+   sin pisar los estilos propios de cada componente (tarjeta, botón outline, etc.). */
+:where(button.is-pending) {
+  border: 0;
+  background: transparent;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .ti-empty {

@@ -1,0 +1,2468 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Micrositio corporativo de Gestión Humana de TRANES S.A.S.: bienestar, talento, nómina, certificados laborales, SST y equipo." />
+  <title>Gestión Humana | Intranet Corporativa TRANES</title>
+
+  <!-- =========================================================
+       PRECONNECT: Conexión temprana a dominios de fuentes
+       ========================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- =========================================================
+       FUENTES: Inter (UI) + Caveat (eslóganes manuscritos corporativos)
+       ========================================================= -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- =========================================================
+       MATERIAL SYMBOLS OUTLINED: Iconografía corporativa Google
+       ========================================================= -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- =========================================================
+       ESTILOS DEL SISTEMA DE DISEÑO TRANES (Variables, Reset, Layout)
+       ========================================================= -->
+  <style>
+    /* ==========================================================================
+       0. DESIGN TOKENS Y VARIABLES CSS
+       ========================================================================== */
+    :root {
+      /* Colores Corporativos TRANES */
+      --orange: #ff6600;
+      --orange-hover: #e65c00;
+      --orange-light: #fff3eb;
+      --orange-border: #ffd4b8;
+
+      /* Escala de grises y superficies */
+      --page-bg: #f4f6f9;
+      --white: #ffffff;
+      --ti-soft: #f7f9fc;
+      --ti-line: #e4e9f0;
+      --ti-ink: #14181f;
+      --ti-muted: #67707c;
+
+      /* Fondos oscuros institucionales */
+      --ti-dark: #12161b;         /* Barra nav y footer */
+      --ti-night: #0f141b;        /* Hero principal */
+      --ti-navy: #0e1a2b;         /* Sección proceso */
+
+      /* Colores funcionales / categorías */
+      --color-blue: #1f6fd0;
+      --color-green: #187a52;
+      --color-violet: #7b1fa2;
+      --color-amber: #d97706;
+
+      /* Dimensiones, radios y sombras */
+      --container-max: 1700px;
+      --side-padding: 36px;
+      --ti-radius: 16px;
+      --ti-radius-md: 12px;
+      --ti-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+      --ti-shadow-hover: 0 12px 26px rgba(16, 24, 40, 0.12);
+    }
+
+    /* Reset básico y accesibilidad */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body.gh-page {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--page-bg);
+      color: var(--ti-ink);
+      line-height: 1.5;
+      overflow-x: hidden;
+      max-width: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    /* Enlace de accesibilidad para saltar navegación */
+    .skip-nav {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 18px;
+      font-weight: 700;
+      border-radius: 8px;
+      z-index: 9999;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-nav:focus {
+      top: 16px;
+    }
+
+    /* ==========================================================================
+       1. BARRA DE NAVEGACIÓN SUPERIOR (OSCURA)
+       ========================================================================== */
+    .ti-nav {
+      position: sticky;
+      top: 0;
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 9px var(--side-padding);
+      background: linear-gradient(180deg, #171c23 0%, var(--ti-dark) 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+    }
+
+    .ti-brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    /* Logo TRANES sobre placa blanca */
+    .ti-logo-clip {
+      position: relative;
+      display: block;
+      width: 186px;
+      height: 40px;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .ti-logo-clip img {
+      position: absolute;
+      width: 211px;
+      height: 91px;
+      max-width: none;
+      left: -13px;
+      top: -21px;
+    }
+    .ti-logo-clip--sm {
+      width: 152px;
+      height: 33px;
+    }
+    .ti-logo-clip--sm img {
+      width: 172px;
+      height: 74px;
+      left: -11px;
+      top: -17px;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .navlinks > a,
+    .dropdown-toggle {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      color: #e9edf2;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      text-decoration: none;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.18s ease, border-color 0.18s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .navlinks > a .material-symbols-outlined {
+      font-size: 1.1rem;
+      color: var(--orange);
+    }
+    .navlinks > a:hover,
+    .dropdown-toggle:hover {
+      color: var(--orange);
+    }
+    .navlinks > a.active {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+    .dropdown-toggle .material-symbols-outlined {
+      font-size: 1rem;
+      color: inherit;
+    }
+
+    /* Menús Desplegables */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: #ffffff;
+      border: 1px solid var(--ti-line);
+      border-radius: 8px;
+      box-shadow: 0 18px 40px rgba(10, 15, 22, 0.28);
+      min-width: 250px;
+      padding: 8px 0;
+      z-index: 350;
+      flex-direction: column;
+    }
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      display: flex;
+    }
+    .dropdown-menu a {
+      color: var(--ti-ink);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 9px 18px;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dropdown-menu a:hover {
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .dropdown-menu a.current {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* Botón Línea de Atención en Nav */
+    .navright {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-left: auto;
+    }
+    .nav-btn-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 102, 0, 0.12);
+      border: 1px solid rgba(255, 102, 0, 0.6);
+      color: var(--orange) !important;
+      border-radius: 22px;
+      padding: 7px 16px;
+      font-size: 0.85rem;
+      font-weight: 700 !important;
+      text-decoration: none;
+      transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+      white-space: nowrap;
+    }
+    .nav-btn-highlight .material-symbols-outlined {
+      font-size: 1.1rem;
+    }
+    .nav-btn-highlight:hover {
+      background: var(--orange);
+      color: #ffffff !important;
+      border-color: var(--orange);
+      box-shadow: 0 6px 16px rgba(255, 102, 0, 0.35);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      color: #fff;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       2. CONTENEDOR PRINCIPAL Y PANELES
+       ========================================================================== */
+    .ti-main {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 16px var(--side-padding) 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .ti-panel {
+      background: var(--white);
+      border: 1px solid var(--ti-line);
+      border-radius: var(--ti-radius);
+      box-shadow: var(--ti-shadow);
+      padding: 22px 24px;
+    }
+
+    .ti-sec-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .ti-sec-icon {
+      flex: 0 0 auto;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .ti-sec-icon .material-symbols-outlined {
+      font-size: 1.3rem;
+    }
+
+    .ti-sec-titles h2 {
+      font-size: 1.16rem;
+      font-weight: 800;
+      color: var(--ti-ink);
+      letter-spacing: -0.2px;
+    }
+    .ti-sec-titles p {
+      font-size: 0.85rem;
+      color: var(--ti-muted);
+      margin-top: 3px;
+    }
+
+    .ti-view-all {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      color: var(--orange);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      padding-top: 6px;
+      transition: color 0.18s ease;
+    }
+    .ti-view-all .material-symbols-outlined {
+      font-size: 1.05rem;
+      transition: transform 0.18s ease;
+    }
+    .ti-view-all:hover {
+      color: var(--orange-hover);
+    }
+    .ti-view-all:hover .material-symbols-outlined {
+      transform: translateX(3px);
+    }
+
+    .ti-panel-foot {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--ti-line);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.83rem;
+      color: var(--ti-muted);
+    }
+    .ti-panel-foot > .material-symbols-outlined {
+      color: var(--orange);
+      font-size: 1.1rem;
+    }
+    .ti-panel-foot a {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      color: var(--orange);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .ti-panel-foot a:hover {
+      text-decoration: underline;
+    }
+    .ti-panel-foot a .material-symbols-outlined {
+      color: inherit;
+      font-size: 1rem;
+    }
+
+    /* ==========================================================================
+       3. BANNER HERO
+       ========================================================================== */
+    .ti-hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-radius: var(--ti-radius);
+      background: var(--ti-night);
+      color: #ffffff;
+      min-height: 430px;
+      display: flex;
+      align-items: center;
+      box-shadow: var(--ti-shadow);
+    }
+
+    .ti-hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+    .ti-hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 80% 30%;
+    }
+
+    /* Scrim degradado oscuro de izquierda a derecha optimizado para GH */
+    .ti-hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        #0f141b 0%,
+        #0f141b 40%,
+        rgba(15, 20, 27, 0.90) 56%,
+        rgba(15, 20, 27, 0.58) 75%,
+        rgba(15, 20, 27, 0.22) 100%
+      );
+    }
+
+    /* Franja diagonal de rayas naranjas en esquina inferior derecha */
+    .ti-hero-stripes {
+      position: absolute;
+      right: -30px;
+      bottom: -40px;
+      width: 320px;
+      height: 230px;
+      background: repeating-linear-gradient(
+        135deg,
+        var(--orange) 0 16px,
+        rgba(255, 102, 0, 0) 16px 44px
+      );
+      -webkit-mask-image: linear-gradient(to top left, #000 25%, transparent 85%);
+      mask-image: linear-gradient(to top left, #000 25%, transparent 85%);
+      opacity: 0.9;
+    }
+
+    /* Eslogan cursiva sobre la foto */
+    .ti-hero-script {
+      position: absolute;
+      right: 42px;
+      bottom: 34px;
+      max-width: 320px;
+      text-align: right;
+      font-family: 'Caveat', cursive;
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.05;
+      color: #ffffff;
+      transform: rotate(-5deg);
+      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.6);
+      user-select: none;
+    }
+
+    .ti-hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 34px;
+      padding: 46px 48px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    /* Badge grande del hero */
+    .ti-hero-badge {
+      position: relative;
+      flex: 0 0 auto;
+      width: 96px;
+      height: 96px;
+      border: 3px solid var(--orange);
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      color: var(--orange);
+      background: rgba(255, 102, 0, 0.08);
+      margin-top: 6px;
+    }
+    .ti-hero-badge > .material-symbols-outlined {
+      font-size: 3.2rem;
+      font-variation-settings: 'FILL' 0, 'wght' 300;
+    }
+    .ti-hero-badge-gear {
+      position: absolute;
+      right: -14px;
+      bottom: -14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #ffffff !important;
+      font-size: 1.4rem !important;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 16px rgba(255, 102, 0, 0.4);
+    }
+
+    .ti-hero-text {
+      max-width: 760px;
+      min-width: 0;
+    }
+    .ti-hero-text h1 {
+      color: #ffffff;
+      font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.05;
+    }
+    .ti-hero-slash {
+      color: var(--orange);
+      font-weight: 700;
+      margin: 0 4px;
+    }
+    .ti-hero-accent {
+      color: var(--orange);
+    }
+
+    .ti-hero-rule {
+      display: block;
+      width: 92px;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--orange);
+      margin: 16px 0 14px;
+    }
+
+    .ti-hero-sub {
+      font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .ti-hero-bullets {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 22px;
+      list-style: none;
+      margin-top: 14px;
+    }
+    .ti-hero-bullets li {
+      position: relative;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #eef1f5;
+      padding-left: 16px;
+    }
+    .ti-hero-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .ti-hero-bullets li:first-child {
+      padding-left: 0;
+    }
+    .ti-hero-bullets li:first-child::before {
+      display: none;
+    }
+
+    .ti-hero-lead {
+      margin-top: 22px;
+      max-width: 550px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #d7dde5;
+    }
+
+    /* ==========================================================================
+       4. ACCESOS RÁPIDOS (4 Columnas)
+       ========================================================================== */
+    .ti-quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .ti-quick-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 92px;
+      padding: 14px 14px 14px 16px;
+      background: var(--white);
+      border: 1px solid var(--ti-line);
+      border-radius: var(--ti-radius-md);
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    }
+    .ti-quick-card:hover {
+      border-color: var(--orange-border);
+      box-shadow: var(--ti-shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .ti-quick-icon {
+      flex: 0 0 auto;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      box-shadow: 0 6px 14px rgba(16, 24, 40, 0.16);
+    }
+    .ti-quick-icon .material-symbols-outlined {
+      font-size: 1.55rem;
+    }
+
+    .ti-quick-text {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+    .ti-quick-text h3 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--ti-ink);
+    }
+    .ti-quick-text p {
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--ti-muted);
+      margin-top: 3px;
+    }
+
+    .ti-arrow {
+      flex: 0 0 auto;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--orange-light);
+      color: var(--orange);
+      border: 1px solid var(--orange-border);
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+    .ti-arrow .material-symbols-outlined {
+      font-size: 1.05rem;
+    }
+    .ti-quick-card:hover .ti-arrow {
+      background: var(--orange);
+      color: #ffffff;
+      border-color: var(--orange);
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       5. GUÍAS Y TUTORIALES (4 Columnas con imagen superior)
+       ========================================================================== */
+    .ti-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .ti-guide-card {
+      min-width: 0;
+      display: flex;
+    }
+
+    .ti-guide-link {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 10px;
+      background: var(--white);
+      border: 1px solid var(--ti-line);
+      border-radius: var(--ti-radius-md);
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    }
+    .ti-guide-link:hover {
+      border-color: var(--orange-border);
+      box-shadow: var(--ti-shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .ti-guide-media {
+      position: relative;
+      display: block;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--ti-soft);
+    }
+    .ti-guide-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .ti-guide-link:hover .ti-guide-media img {
+      transform: scale(1.06);
+    }
+
+    .ti-guide-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      padding: 12px 4px 4px;
+    }
+
+    .ti-tag {
+      align-self: flex-start;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 4px 9px;
+      text-transform: uppercase;
+    }
+
+    .ti-guide-body h3 {
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--ti-ink);
+      margin-top: 10px;
+      line-height: 1.35;
+    }
+    .ti-guide-body p {
+      font-size: 0.79rem;
+      line-height: 1.5;
+      color: var(--ti-muted);
+      margin-top: 6px;
+    }
+
+    .ti-guide-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: auto;
+      padding-top: 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+    .ti-guide-cta .material-symbols-outlined {
+      font-size: 1rem;
+      transition: transform 0.18s ease;
+    }
+    .ti-guide-link:hover .ti-guide-cta .material-symbols-outlined {
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       6. ¿QUÉ HACE EL ÁREA DE GESTIÓN HUMANA? (Grid 3x2)
+       ========================================================================== */
+    .ti-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .ti-service {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      background: var(--ti-soft);
+      border: 1px solid var(--ti-line);
+      border-radius: var(--ti-radius-md);
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .ti-service:hover {
+      background: #ffffff;
+      border-color: var(--orange-border);
+      transform: translateY(-3px);
+      box-shadow: var(--ti-shadow);
+    }
+
+    .ti-service-icon {
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+    }
+    .ti-service-icon .material-symbols-outlined {
+      font-size: 1.4rem;
+    }
+
+    .ti-service-text h3 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--ti-ink);
+    }
+    .ti-service-text p {
+      font-size: 0.8rem;
+      color: var(--ti-muted);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       7. NUESTRO EQUIPO (Grid Dinámica / Carrusel Touch)
+       ========================================================================== */
+    .ti-team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .ti-member {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--ti-line);
+      border-radius: var(--ti-radius-md);
+      overflow: hidden;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    }
+    .ti-member:hover {
+      border-color: var(--orange-border);
+      box-shadow: var(--ti-shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .ti-member-photo {
+      position: relative;
+      aspect-ratio: 16 / 11;
+      background: var(--ti-soft);
+      overflow: hidden;
+    }
+    .ti-member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+    }
+
+    .ti-member-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      padding: 14px 16px 16px;
+    }
+
+    .ti-member-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ti-ink);
+    }
+    .ti-member-role {
+      font-size: 0.8rem;
+      color: var(--ti-muted);
+      margin-top: 2px;
+    }
+
+    .ti-member-tag {
+      align-self: flex-start;
+      margin-top: 10px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 4px 10px;
+    }
+
+    .ti-member-summary {
+      font-size: 0.79rem;
+      line-height: 1.5;
+      color: var(--ti-muted);
+      margin-top: 10px;
+    }
+
+    .ti-member-specialty {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--ti-ink);
+    }
+    .ti-member-specialty .material-symbols-outlined {
+      font-size: 1rem;
+      color: var(--orange);
+      flex: 0 0 auto;
+    }
+
+    .ti-member-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px dashed var(--ti-line);
+    }
+    .ti-member-contact a {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.76rem;
+      color: var(--ti-ink);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .ti-member-contact a:hover {
+      color: var(--orange);
+      text-decoration: underline;
+    }
+    .ti-member-contact .material-symbols-outlined {
+      font-size: 1rem;
+      color: var(--orange);
+      flex: 0 0 auto;
+    }
+
+    .ti-member-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 9px 14px;
+      border: 1.5px solid var(--orange);
+      border-radius: 22px;
+      background: transparent;
+      color: var(--orange);
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+    .ti-member-action:hover {
+      background: var(--orange);
+      color: #ffffff;
+    }
+    .ti-member-action .material-symbols-outlined {
+      font-size: 1rem;
+    }
+
+    /* ==========================================================================
+       8. NUESTRO PROCESO DE ATENCIÓN (Banda Oscura Corporativa)
+       ========================================================================== */
+    .ti-process {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-radius: var(--ti-radius);
+      background: var(--ti-navy);
+      color: #ffffff;
+      box-shadow: var(--ti-shadow);
+    }
+
+    .ti-process-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+    .ti-process-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+    .ti-process-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        100deg,
+        var(--ti-navy) 28%,
+        rgba(14, 26, 43, 0.92) 58%,
+        rgba(14, 26, 43, 0.74) 100%
+      );
+    }
+
+    .ti-process-inner {
+      position: relative;
+      z-index: 1;
+      padding: 26px 30px 30px;
+    }
+
+    .ti-process-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    .ti-process-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .ti-process-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 102, 0, 0.16);
+      color: var(--orange);
+    }
+    .ti-process-icon .material-symbols-outlined {
+      font-size: 1.5rem;
+    }
+    .ti-process-title h2 {
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .ti-process-title p {
+      color: #b9c3d1;
+      font-size: 0.86rem;
+      margin-top: 4px;
+    }
+
+    .ti-process-sign {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .ti-script {
+      font-family: 'Caveat', cursive;
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--orange);
+      text-align: right;
+      max-width: 250px;
+      transform: rotate(-3deg);
+    }
+
+    .ti-steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+    .ti-step {
+      position: relative;
+      padding-right: 26px;
+    }
+    .ti-step::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: 16px;
+      width: 24px;
+      height: 12px;
+      background:
+        linear-gradient(var(--orange), var(--orange)) left center / 16px 2px no-repeat,
+        linear-gradient(45deg, transparent 45%, var(--orange) 45%, var(--orange) 55%, transparent 55%) right top / 9px 9px no-repeat,
+        linear-gradient(-45deg, transparent 45%, var(--orange) 45%, var(--orange) 55%, transparent 55%) right bottom / 9px 9px no-repeat;
+      opacity: 0.9;
+    }
+    .ti-step:last-child {
+      padding-right: 0;
+    }
+    .ti-step:last-child::after {
+      display: none;
+    }
+
+    .ti-step-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ti-step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--orange);
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 800;
+      box-shadow: 0 8px 18px rgba(255, 102, 0, 0.35);
+    }
+    .ti-step-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+    }
+    .ti-step-icon .material-symbols-outlined {
+      font-size: 1.25rem;
+    }
+    .ti-step h3 {
+      color: #ffffff;
+      font-size: 0.94rem;
+      font-weight: 700;
+      margin-top: 14px;
+    }
+    .ti-step p {
+      color: #b9c3d1;
+      font-size: 0.8rem;
+      line-height: 1.55;
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       9. CENTRO DE POLÍTICAS Y RECURSOS
+       ========================================================================== */
+    .ti-policies-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .ti-policy-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px;
+      background: var(--ti-soft);
+      border: 1px solid var(--ti-line);
+      border-radius: var(--ti-radius-md);
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .ti-policy-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--orange-border);
+      box-shadow: var(--ti-shadow);
+      background: #ffffff;
+    }
+    .ti-policy-item > .material-symbols-outlined {
+      color: var(--orange);
+      font-size: 1.5rem;
+    }
+    .ti-policy-item h3 {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--ti-ink);
+    }
+    .ti-policy-item p {
+      font-size: 0.8rem;
+      color: var(--ti-muted);
+      line-height: 1.5;
+    }
+    .ti-policy-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--orange);
+      text-decoration: none;
+    }
+    .ti-policy-link:hover {
+      text-decoration: underline;
+    }
+    .ti-policy-link .material-symbols-outlined {
+      font-size: 0.95rem;
+    }
+
+    /* Recursos Internos Autorizados (Chips) */
+    .ti-resources {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--ti-line);
+    }
+    .ti-resources h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ti-ink);
+      margin-bottom: 12px;
+    }
+    .ti-resources h3 .material-symbols-outlined {
+      color: var(--orange);
+      font-size: 1.15rem;
+    }
+    .resource-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .resource-list a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--ti-soft);
+      border: 1px solid var(--ti-line);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ti-ink);
+      text-decoration: none;
+      transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+    }
+    .resource-list a:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      background: var(--orange-light);
+    }
+    .resource-list a .material-symbols-outlined {
+      font-size: 0.9rem;
+      color: var(--orange);
+    }
+
+    /* ==========================================================================
+       10. PIE DE PÁGINA (OSCURO)
+       ========================================================================== */
+    .ti-footer {
+      background: var(--ti-dark);
+      border-top: 3px solid var(--orange);
+      padding: 24px var(--side-padding);
+      margin-top: 24px;
+      color: #dfe5ec;
+    }
+
+    .ti-footer-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .ti-footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .ti-footer-copy {
+      font-size: 0.8rem;
+      color: #98a2b3;
+    }
+    .ti-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: #67707c;
+      margin-top: 4px;
+    }
+    .ti-breadcrumb span.current {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .ti-footer-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .ti-footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: color 0.18s ease;
+    }
+    .ti-footer-links a:hover {
+      color: var(--orange);
+    }
+    .ti-footer-links span.dot {
+      color: #475467;
+      font-size: 0.8rem;
+    }
+
+    .ti-footer-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .ti-footer-help {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--orange);
+      font-size: 0.83rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 6px 14px;
+      background: rgba(255, 102, 0, 0.1);
+      border: 1px solid rgba(255, 102, 0, 0.3);
+      border-radius: 20px;
+      transition: background 0.18s ease;
+    }
+    .ti-footer-help:hover {
+      background: var(--orange);
+      color: #ffffff;
+    }
+    .ti-footer-help .material-symbols-outlined {
+      font-size: 1rem;
+    }
+    .ti-footer-current {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      color: #98a2b3;
+    }
+    .ti-footer-current .material-symbols-outlined {
+      font-size: 1.05rem;
+      color: var(--orange);
+    }
+
+    /* ==========================================================================
+       11. MODAL DETALLE DE GUÍA
+       ========================================================================== */
+    .ti-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(10, 15, 22, 0.7);
+      backdrop-filter: blur(4px);
+      place-items: center;
+      padding: 18px;
+    }
+    .ti-modal-overlay.open {
+      display: grid;
+    }
+
+    .ti-dialog {
+      background: #ffffff;
+      border-radius: var(--ti-radius);
+      max-width: 620px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+      position: relative;
+      animation: modalFadeIn 0.22s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .ti-dialog-media {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: var(--ti-soft);
+    }
+    .ti-dialog-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ti-dialog-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(15, 20, 27, 0.75);
+      color: #ffffff;
+      border: 0;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 0.18s ease;
+    }
+    .ti-dialog-close:hover {
+      background: var(--orange);
+    }
+
+    .ti-dialog-body {
+      padding: 22px 26px 26px;
+      max-height: calc(88vh - 220px);
+      overflow-y: auto;
+    }
+    .ti-dialog-body h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-top: 10px;
+      color: var(--ti-ink);
+    }
+    .ti-dialog-desc {
+      font-size: 0.86rem;
+      color: var(--ti-muted);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+    .ti-dialog-steps {
+      margin-top: 16px;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--ti-ink);
+      line-height: 1.5;
+    }
+    .ti-dialog-actions {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .ti-dialog-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .ti-dialog-btn--primary {
+      background: var(--orange);
+      color: #ffffff;
+      border: 1px solid var(--orange);
+    }
+    .ti-dialog-btn--primary:hover {
+      background: var(--orange-hover);
+    }
+    .ti-dialog-btn--secondary {
+      background: var(--ti-soft);
+      color: var(--ti-ink);
+      border: 1px solid var(--ti-line);
+    }
+    .ti-dialog-btn--secondary:hover {
+      background: #eef2f6;
+    }
+
+    /* ==========================================================================
+       12. RESPONSIVO
+       ========================================================================== */
+    @media (max-width: 1400px) {
+      .ti-team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 1280px) {
+      .ti-quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ti-guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ti-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ti-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ti-policies-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ti-hero-content { padding: 40px 36px; gap: 26px; }
+      .ti-hero-badge { width: 80px; height: 80px; }
+      .ti-hero-badge > .material-symbols-outlined { font-size: 2.6rem; }
+    }
+
+    @media (max-width: 1100px) {
+      .ti-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 20px; }
+      .ti-step:nth-child(2)::after { display: none; }
+    }
+
+    @media (max-width: 980px) {
+      .ti-nav { flex-wrap: wrap; gap: 12px; padding: 9px 18px; }
+      .mobile-toggle { display: flex; order: 2; margin-left: auto; }
+      .navright { order: 1; margin-left: auto; }
+      .navlinks {
+        order: 3;
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--ti-dark);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 8px 0;
+      }
+      .navlinks.open {
+        display: flex;
+      }
+      .navlinks > a,
+      .dropdown-toggle {
+        padding: 12px 18px;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        background: #181d24;
+      }
+      .dropdown.open .dropdown-menu {
+        display: flex;
+      }
+      .dropdown-menu a {
+        color: #e9edf2;
+        padding: 10px 24px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      :root { --side-padding: 18px; }
+      .ti-hero { min-height: 0; }
+      .ti-hero-content { flex-direction: column; gap: 20px; padding: 32px 24px 140px; }
+      .ti-hero-scrim {
+        background: linear-gradient(180deg, rgba(15, 20, 27, 0.96) 0%, rgba(15, 20, 27, 0.9) 55%, rgba(15, 20, 27, 0.65) 100%);
+      }
+      .ti-hero-script { right: 24px; bottom: 26px; font-size: 1.6rem; max-width: 260px; }
+      .ti-hero-stripes { width: 220px; height: 170px; }
+      .ti-process-head { flex-direction: column; align-items: flex-start; }
+      .ti-process-sign { width: 100%; justify-content: space-between; }
+      .ti-script { text-align: left; max-width: none; }
+      .ti-footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .ti-quick-grid,
+      .ti-guide-grid,
+      .ti-services-grid,
+      .ti-team-grid,
+      .ti-policies-grid { grid-template-columns: minmax(0, 1fr); }
+      .ti-steps { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+      .ti-step { padding-right: 0; padding-left: 54px; }
+      .ti-step::after { display: none; }
+      .ti-step-top { position: absolute; left: 0; top: 0; flex-direction: column; gap: 8px; }
+      .ti-step h3 { margin-top: 0; }
+      .ti-step p { margin-top: 4px; }
+      .ti-sec-head { flex-wrap: wrap; }
+      .ti-view-all, .ti-panel-foot a { margin-left: 0; }
+      .ti-logo-clip { width: 145px; height: 32px; }
+      .ti-logo-clip img { width: 165px; height: 72px; left: -10px; top: -16px; }
+    }
+  </style>
+</head>
+<body class="gh-page">
+  <a href="#contenido" class="skip-nav">Saltar al contenido principal</a>
+
+  <!-- =========================================================
+       3.1 BARRA DE NAVEGACIÓN SUPERIOR (OSCURA)
+       ========================================================= -->
+  <header class="ti-nav" role="banner">
+    <!-- EDITAR: Enlace logo TRANES a inicio de intranet -->
+    <a class="ti-brand" href="index.html" aria-label="TRANES — Volver a la intranet">
+      <span class="ti-logo-clip">
+        <!-- EDITAR: Archivo de logo institucional -->
+        <img src="logo-tranes-oficial.png" alt="TRANES" width="396" height="170" />
+      </span>
+    </a>
+
+    <!-- Botón responsive móvil -->
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <nav class="navlinks" id="navlinks" aria-label="Navegación principal">
+      <!-- EDITAR: Enlace al portal general -->
+      <a href="index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span> Inicio</a>
+
+      <!-- Dropdown: Nuestras Áreas -->
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" aria-expanded="false">
+          Nuestras Áreas <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="dropdown-menu" role="menu">
+          <!-- EDITAR: Enlaces a las diferentes áreas corporativas -->
+          <a href="index.html#area-operaciones">Operaciones</a>
+          <a href="index.html#area-comercial">Comercial</a>
+          <a href="ti-sistemas.html">TI / Sistemas</a>
+          <a href="gestion-humana.html" class="current" aria-current="page">Gestión Humana</a>
+          <a href="index.html#area-admon">Admon. Servicio</a>
+          <a href="index.html#area-flota">Flota Propia</a>
+          <a href="index.html#area-infraestructura">Infraestructura</a>
+          <a href="index.html#area-contabilidad">Contabilidad</a>
+          <a href="index.html#area-financiera">Financiera</a>
+          <a href="index.html#area-control">Control Interno</a>
+          <a href="index.html#area-calidad">Calidad / SGI</a>
+          <a href="index.html#area-gerencia">Gerencia</a>
+          <a href="publicidad.html">Publicidad &amp; Medios</a>
+        </div>
+      </div>
+
+      <!-- Dropdown: Centro de Formatos -->
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" aria-expanded="false">
+          Centro de Formatos <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="dropdown-menu" role="menu">
+          <!-- EDITAR: Enlaces a repositorios de formatos -->
+          <a href="index.html#formatos">Centro de Formatos y Plantillas</a>
+          <a href="index.html#formatos-vacaciones">Formatos de vacaciones</a>
+          <a href="index.html#solicitar-formato">Solicitar un formato nuevo</a>
+        </div>
+      </div>
+
+      <!-- Área Activa: Gestión Humana -->
+      <a class="active" href="gestion-humana.html" aria-current="page">Gestión Humana</a>
+
+      <!-- Dropdown: SGI -->
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" aria-expanded="false">
+          SGI <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="dropdown-menu" role="menu">
+          <!-- EDITAR: Enlaces a SGI -->
+          <a href="index.html#sgi">Sistema de Gestión Integrado (SGI)</a>
+          <a href="index.html#politicas-sgi">Políticas de Calidad y Seguridad</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Botón de acción destacado a la derecha -->
+    <div class="navright">
+      <!-- Formulario de solicitudes de Gestión Humana -->
+      <a class="nav-btn-highlight" href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" title="Línea de Atención GH — Radica tu solicitud">
+        <span class="material-symbols-outlined" aria-hidden="true">support_agent</span> Línea de Atención GH
+      </a>
+    </div>
+  </header>
+
+  <main class="ti-main" id="contenido">
+
+    <!-- =========================================================
+         3.2 HERO BANNER (Gestión / Humana)
+         ========================================================= -->
+    <section class="ti-hero" aria-labelledby="hero-title">
+      <div class="ti-hero-media">
+        <!-- Imagen de cabecera representativa de talento/oficina/colaboradores -->
+        <img src="gh-hero-banner.jpg" 
+             alt="Equipo de Gestión Humana y colaboradores de TRANES en ambiente corporativo cálido" 
+             width="1600" height="900" 
+             onerror="this.src='banner-gente.jpg';" />
+        <span class="ti-hero-scrim" aria-hidden="true"></span>
+        <span class="ti-hero-stripes" aria-hidden="true"></span>
+        <!-- EDITAR: Eslogan cursiva corporativo -->
+        <p class="ti-hero-script" aria-hidden="true">Tu bienestar también cuenta con nosotros</p>
+      </div>
+
+      <div class="ti-hero-content">
+        <!-- Ícono principal del Hero -->
+        <span class="ti-hero-badge" aria-hidden="true">
+          <span class="material-symbols-outlined">diversity_3</span>
+          <span class="material-symbols-outlined ti-hero-badge-gear">favorite</span>
+        </span>
+
+        <div class="ti-hero-text">
+          <h1 id="hero-title">Gestión <span class="ti-hero-slash">/</span> <span class="ti-hero-accent">Humana</span></h1>
+          <span class="ti-hero-rule" aria-hidden="true"></span>
+          <!-- EDITAR: Subtítulo principal -->
+          <p class="ti-hero-sub">Personas que impulsan el movimiento de Tranes</p>
+          
+          <!-- EDITAR: Palabras clave separadas por puntos -->
+          <ul class="ti-hero-bullets">
+            <li>Bienestar</li>
+            <li>Desarrollo</li>
+            <li>Cultura</li>
+            <li>Talento</li>
+          </ul>
+
+          <!-- EDITAR: Párrafo de descripción del área -->
+          <p class="ti-hero-lead" id="hero-lead">
+            En Tranes, creemos en el valor único de nuestra gente. Acompañamos tu ciclo laboral con cercanía, calidez y oportunidad, cuidando tu bienestar integral y promoviendo un ambiente donde todos crecemos juntos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3.3 ACCESOS RÁPIDOS (4 tarjetas)
+         ========================================================= -->
+    <section class="ti-panel" id="accesos" aria-labelledby="accesos-title">
+      <header class="ti-sec-head">
+        <span class="ti-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">bolt</span></span>
+        <div class="ti-sec-titles">
+          <h2 id="accesos-title">Accesos rápidos</h2>
+          <p>Encuentra aquí las herramientas y enlaces más usados.</p>
+        </div>
+        <!-- EDITAR: Enlace a ver todos los accesos o repositorio general -->
+        <a class="ti-view-all" href="#guias">Todo en un solo lugar <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </header>
+
+      <div class="ti-quick-grid">
+        <!-- 1. Solicitudes a Gestión Humana -->
+        <a class="ti-quick-card" href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" title="Radica tu solicitud a Gestión Humana">
+          <div class="ti-quick-icon" style="background: var(--color-green);">
+            <span class="material-symbols-outlined">how_to_reg</span>
+          </div>
+          <div class="ti-quick-text">
+            <h3>Solicitudes a Gestión Humana</h3>
+            <p>Radica tu solicitud aquí.</p>
+          </div>
+          <div class="ti-arrow" aria-hidden="true">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+        </a>
+
+        <!-- 2. Certificados laborales -->
+        <!-- EDITAR: Enlace a portal de certificados o descarga directa -->
+        <a class="ti-quick-card" href="#guias" onclick="openGuideModal(0); return false;" title="Certificados laborales">
+          <div class="ti-quick-icon" style="background: var(--color-blue);">
+            <span class="material-symbols-outlined">badge</span>
+          </div>
+          <div class="ti-quick-text">
+            <h3>Certificados laborales</h3>
+            <p>Descarga o solicita tus certificados.</p>
+          </div>
+          <div class="ti-arrow" aria-hidden="true">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+        </a>
+
+        <!-- 3. Bienestar y beneficios -->
+        <!-- EDITAR: Enlace a sección de convenios o beneficios -->
+        <a class="ti-quick-card" href="#guias" onclick="openGuideModal(2); return false;" title="Bienestar y beneficios">
+          <div class="ti-quick-icon" style="background: var(--color-violet);">
+            <span class="material-symbols-outlined">volunteer_activism</span>
+          </div>
+          <div class="ti-quick-text">
+            <h3>Bienestar y beneficios</h3>
+            <p>Conoce todo lo que tenemos para ti.</p>
+          </div>
+          <div class="ti-arrow" aria-hidden="true">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+        </a>
+
+        <!-- 4. Nuestro equipo -->
+        <a class="ti-quick-card" href="#equipo" title="Ir al directorio del equipo">
+          <div class="ti-quick-icon" style="background: var(--orange);">
+            <span class="material-symbols-outlined">groups</span>
+          </div>
+          <div class="ti-quick-text">
+            <h3>Nuestro equipo</h3>
+            <p>Habla directamente con quien puede apoyarte.</p>
+          </div>
+          <div class="ti-arrow" aria-hidden="true">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3.4 GUÍAS Y TUTORIALES (4 tarjetas con imagen)
+         ========================================================= -->
+    <section class="ti-panel" id="guias" aria-labelledby="guias-title">
+      <header class="ti-sec-head">
+        <span class="ti-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">menu_book</span></span>
+        <div class="ti-sec-titles">
+          <h2 id="guias-title">Guías y tutoriales</h2>
+          <p>Te apoyamos de forma sencilla.</p>
+        </div>
+        <!-- EDITAR: Enlace a biblioteca completa de guías -->
+        <a class="ti-view-all" href="#politicas">Ver todas las guías <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </header>
+
+      <div class="ti-guide-grid">
+        <!-- Guía 1: Certificado Laboral -->
+        <article class="ti-guide-card">
+          <button type="button" class="ti-guide-link" onclick="openGuideModal(0)">
+            <span class="ti-guide-media">
+              <!-- Imagen temática de trámites / certificados -->
+              <img src="gh-guide-tramites.png" alt="Trámite de certificados y solicitudes laborales" onerror="this.src='banner-formatos.jpg';" />
+            </span>
+            <span class="ti-guide-body">
+              <span class="ti-tag" style="background: var(--orange);">TRÁMITES</span>
+              <h3>Cómo solicitar un certificado laboral</h3>
+              <p>Conoce los canales autorizados y el paso a paso para obtener tu certificación al día.</p>
+              <span class="ti-guide-cta">Ver guía <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+            </span>
+          </button>
+        </article>
+
+        <!-- Guía 2: Funciones GH -->
+        <article class="ti-guide-card">
+          <button type="button" class="ti-guide-link" onclick="openGuideModal(1)">
+            <span class="ti-guide-media">
+              <!-- Imagen temática de inducción, encuesta y equipo GH -->
+              <img src="gh-guide-conocenos.png" alt="Equipo y gestión de personas en TRANES" />
+            </span>
+            <span class="ti-guide-body">
+              <span class="ti-tag" style="background: var(--color-blue);">CONÓCENOS</span>
+              <h3>Funciones del área de Gestión Humana</h3>
+              <p>Conoce los servicios, líneas de atención y acompañamiento que brindamos a cada trabajador.</p>
+              <span class="ti-guide-cta">Ver funciones <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+            </span>
+          </button>
+        </article>
+
+        <!-- Guía 3: Beneficios y Auxilios -->
+        <article class="ti-guide-card">
+          <button type="button" class="ti-guide-link" onclick="openGuideModal(2)">
+            <span class="ti-guide-media">
+              <!-- Imagen de celebraciones, integración y bienestar -->
+              <img src="gh-guide-bienestar.jpg" alt="Celebraciones, bienestar y auxilios familiares para colaboradores" onerror="this.src='news_amor_amistad.jpg';" />
+            </span>
+            <span class="ti-guide-body">
+              <span class="ti-tag" style="background: var(--color-green);">BIENESTAR</span>
+              <h3>Beneficios y auxilios para colaboradores</h3>
+              <p>Descubre los convenios vigentes, apoyos educativos, fechas especiales y programas de salud.</p>
+              <span class="ti-guide-cta">Ver beneficios <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+            </span>
+          </button>
+        </article>
+
+        <!-- Guía 4: Nómina -->
+        <article class="ti-guide-card">
+          <button type="button" class="ti-guide-link" onclick="openGuideModal(3)">
+            <span class="ti-guide-media">
+              <!-- Imagen temática de documentos y comprobantes de nómina -->
+              <img src="guide-firma.jpg" alt="Consulta y descarga de desprendible de nómina" />
+            </span>
+            <span class="ti-guide-body">
+              <span class="ti-tag" style="background: var(--color-violet);">TUTORIALES</span>
+              <h3>Cómo consultar tu desprendible de nómina</h3>
+              <p>Aprende a ingresar a la plataforma de nómina y descargar tus comprobantes quincenales.</p>
+              <span class="ti-guide-cta">Ver tutorial <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+            </span>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3.5 ¿QUÉ HACE EL ÁREA DE GESTIÓN HUMANA? (Grid 3x2)
+         ========================================================= -->
+    <section class="ti-panel" id="servicios" aria-labelledby="servicios-title">
+      <header class="ti-sec-head">
+        <span class="ti-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">work</span></span>
+        <div class="ti-sec-titles">
+          <h2 id="servicios-title">¿Qué hace el área de Gestión Humana?</h2>
+          <p>Nuestros servicios y compromisos con cada colaborador de TRANES.</p>
+        </div>
+      </header>
+
+      <div class="ti-services-grid">
+        <!-- Servicio 1: Selección y contratación -->
+        <div class="ti-service">
+          <div class="ti-service-icon" style="background: var(--orange);">
+            <span class="material-symbols-outlined">person_search</span>
+          </div>
+          <div class="ti-service-text">
+            <h3>Selección y contratación</h3>
+            <p>Atracción e incorporación del mejor talento, inducción corporativa y gestión de contratos de trabajo.</p>
+          </div>
+        </div>
+
+        <!-- Servicio 2: Nómina y seguridad social -->
+        <div class="ti-service">
+          <div class="ti-service-icon" style="background: var(--color-blue);">
+            <span class="material-symbols-outlined">payments</span>
+          </div>
+          <div class="ti-service-text">
+            <h3>Nómina y seguridad social</h3>
+            <p>Liquidación oportuna de salarios, aportes a EPS, AFP, ARL, caja de compensación y cesantías.</p>
+          </div>
+        </div>
+
+        <!-- Servicio 3: Bienestar y calidad de vida -->
+        <div class="ti-service">
+          <div class="ti-service-icon" style="background: var(--color-green);">
+            <span class="material-symbols-outlined">favorite</span>
+          </div>
+          <div class="ti-service-text">
+            <h3>Bienestar y calidad de vida</h3>
+            <p>Planes de recreación, convenios con cajas de compensación, celebraciones institucionales y auxilios.</p>
+          </div>
+        </div>
+
+        <!-- Servicio 4: Capacitación y desarrollo -->
+        <div class="ti-service">
+          <div class="ti-service-icon" style="background: var(--color-violet);">
+            <span class="material-symbols-outlined">school</span>
+          </div>
+          <div class="ti-service-text">
+            <h3>Capacitación y desarrollo</h3>
+            <p>Entrenamiento continuo, planes de carrera, evaluación de competencias y desarrollo de liderazgo.</p>
+          </div>
+        </div>
+
+        <!-- Servicio 5: Cultura y clima organizacional -->
+        <div class="ti-service">
+          <div class="ti-service-icon" style="background: #0284c7;">
+            <span class="material-symbols-outlined">psychology</span>
+          </div>
+          <div class="ti-service-text">
+            <h3>Cultura y clima organizacional</h3>
+            <p>Fortalecimiento de valores, comités de convivencia laboral, encuestas de clima y comunicación interna.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="ti-panel-foot">
+        <span class="material-symbols-outlined" aria-hidden="true">help</span>
+        ¿No encuentras lo que necesitas? Radica tu solicitud y te respondemos.
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener">Ir al formulario de solicitud <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </p>
+    </section>
+
+    <!-- =========================================================
+         3.6 NUESTRO EQUIPO (4 tarjetas de personas)
+         ========================================================= -->
+    <section class="ti-panel" id="equipo" aria-labelledby="equipo-title">
+      <header class="ti-sec-head">
+        <span class="ti-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">groups</span></span>
+        <div class="ti-sec-titles">
+          <h2 id="equipo-title">Nuestro equipo</h2>
+          <p>Personas dedicadas a acompañarte en cada momento de tu trayectoria en TRANES.</p>
+        </div>
+      </header>
+
+      <div class="ti-team-grid">
+        <!-- Tarjeta 1: Karen - Líder de Gestión Humana -->
+        <article class="ti-member">
+          <div class="ti-member-photo">
+            <img src="gh-team-karen.jpg" alt="Foto de Karen — Líder de Gestión Humana" onerror="this.src='assets/gh-team-karen.jpg';" />
+          </div>
+          <div class="ti-member-body">
+            <h3 class="ti-member-name">Karen Andrea Giraldo Henao</h3>
+            <p class="ti-member-role">Dirección &amp; Estrategia de Personas</p>
+            <span class="ti-member-tag" style="background: var(--orange);">Líder de Gestión Humana</span>
+            <p class="ti-member-summary">
+              Lidera la estrategia integral de talento humano y cultura organizacional. Asegura el bienestar de los colaboradores, el cumplimiento de la normatividad laboral y el crecimiento armónico del equipo TRANES.
+            </p>
+            <div class="ti-member-specialty">
+              <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+              <span>Sede Principal — Oficina Gestión Humana</span>
+            </div>
+            <div class="ti-member-contact">
+              <a href="mailto:direccionhseq@tranes.com.co" title="Escribir a Karen">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span> direccionhseq@tranes.com.co
+              </a>
+            </div>
+            <a href="mailto:direccionhseq@tranes.com.co" class="ti-member-action">
+              <span class="material-symbols-outlined" aria-hidden="true">chat</span> Contactar a Karen
+            </a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2: Daniela - Analista de Contratación y Selección -->
+        <article class="ti-member">
+          <div class="ti-member-photo">
+            <img src="gh-team-daniela.jpg" alt="Foto de Daniela — Analista de Contratación" onerror="this.src='assets/gh-team-daniela.jpg';" />
+          </div>
+          <div class="ti-member-body">
+            <h3 class="ti-member-name">Daniela Valencia Zapata</h3>
+            <p class="ti-member-role">Atracción y Vinculación</p>
+            <span class="ti-member-tag" style="background: var(--color-blue);">Analista de Gestión Humana</span>
+            <p class="ti-member-summary">
+              Gestiona convocatorias internas y externas, procesos de entrevistas, contratación formal y el plan de inducción y bienvenida de nuevos integrantes a TRANES.
+            </p>
+            <div class="ti-member-specialty">
+              <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+              <span>Sede Principal — Talento y Selección</span>
+            </div>
+            <div class="ti-member-contact">
+              <a href="mailto:analistagh@tranes.com.co" title="Escribir a Daniela">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span> analistagh@tranes.com.co
+              </a>
+            </div>
+            <a href="mailto:analistagh@tranes.com.co" class="ti-member-action">
+              <span class="material-symbols-outlined" aria-hidden="true">chat</span> Contactar a Daniela
+            </a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3: Vanesa - Analista de Contratación y Talento -->
+        <article class="ti-member">
+          <div class="ti-member-photo">
+            <img src="gh-team-vanesa.jpg" alt="Foto de Vanesa — Analista de Contratación" onerror="this.src='assets/gh-team-vanesa.jpg';" />
+          </div>
+          <div class="ti-member-body">
+            <h3 class="ti-member-name">Astrid Vanesa Restrepo Arredondo</h3>
+            <p class="ti-member-role">Gestión de Talento y Vinculación</p>
+            <span class="ti-member-tag" style="background: var(--color-violet);">Analista de Contrataciones</span>
+            <p class="ti-member-summary">
+              Acompaña los procesos de vinculación, gestión de documentación laboral, inducción de personal y seguimiento a requerimientos de los colaboradores.
+            </p>
+            <div class="ti-member-specialty">
+              <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+              <span>Sede Principal — Gestión Humana</span>
+            </div>
+            <div class="ti-member-contact">
+              <a href="mailto:analistacontrataciones@tranes.com.co" title="Escribir a Vanesa">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span> analistacontrataciones@tranes.com.co
+              </a>
+            </div>
+            <a href="mailto:analistacontrataciones@tranes.com.co" class="ti-member-action">
+              <span class="material-symbols-outlined" aria-hidden="true">chat</span> Contactar a Vanesa
+            </a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 4: Verónica - Bienestar y Relaciones Laborales -->
+        <article class="ti-member">
+          <div class="ti-member-photo">
+            <img src="gh-team-veronica.jpg" alt="Foto de Verónica — Bienestar y Clima Laboral" onerror="this.src='assets/gh-team-veronica.jpg';" />
+          </div>
+          <div class="ti-member-body">
+            <h3 class="ti-member-name">Verónica Mejía Valencia</h3>
+            <p class="ti-member-role">Nómina y Seguridad Social</p>
+            <span class="ti-member-tag" style="background: var(--color-green);">Analista de Nómina</span>
+            <p class="ti-member-summary">
+              Coordina iniciativas de bienestar integral, clima organizacional, beneficios corporativos, pausas activas y acompañamiento en novedades del personal.
+            </p>
+            <div class="ti-member-specialty">
+              <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+              <span>Sede Administrativa — Nómina</span>
+            </div>
+            <div class="ti-member-contact">
+              <a href="mailto:analistanomina@tranes.com.co" title="Escribir a Verónica">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span> analistanomina@tranes.com.co
+              </a>
+            </div>
+            <a href="mailto:analistanomina@tranes.com.co" class="ti-member-action">
+              <span class="material-symbols-outlined" aria-hidden="true">chat</span> Contactar a Verónica
+            </a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 5: Gerson - Aprendiz de Gestión Humana -->
+        <article class="ti-member">
+          <div class="ti-member-photo">
+            <img src="gh-team-jerson.jpg" alt="Foto de Gerson — Aprendiz de Gestión Humana" onerror="this.src='assets/gh-team-jerson.jpg';" />
+          </div>
+          <div class="ti-member-body">
+            <h3 class="ti-member-name">Gerson Humberto Cardona Ceron</h3>
+            <p class="ti-member-role">Apoyo Operativo &amp; Administrativo</p>
+            <span class="ti-member-tag" style="background: var(--color-amber);">Aprendiz de Gestión Humana</span>
+            <p class="ti-member-summary">
+              Brinda apoyo en archivo documental, atención inicial de solicitudes de colaboradores, soporte en eventos corporativos y procesos internos del área.
+            </p>
+            <div class="ti-member-specialty">
+              <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+              <span>Sede Principal — Oficina Gestión Humana</span>
+            </div>
+            <div class="ti-member-contact">
+              <a href="mailto:Aprendizgh@tranes.com.co" title="Escribir a Gerson">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span> Aprendizgh@tranes.com.co
+              </a>
+            </div>
+            <a href="mailto:Aprendizgh@tranes.com.co" class="ti-member-action">
+              <span class="material-symbols-outlined" aria-hidden="true">chat</span> Contactar a Gerson
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3.7 NUESTRO PROCESO DE ATENCIÓN (Banda Oscura)
+         ========================================================= -->
+    <section class="ti-process" id="proceso" aria-labelledby="proceso-title">
+      <div class="ti-process-bg" aria-hidden="true">
+        <!-- EDITAR: Imagen de fondo de flota de transporte con overlay institucional -->
+        <img src="Principal.jpg" alt="Flota de transporte corporativo TRANES" width="1972" height="720" loading="lazy" />
+      </div>
+
+      <div class="ti-process-inner">
+        <header class="ti-process-head">
+          <div class="ti-process-title">
+            <span class="ti-process-icon" aria-hidden="true">
+              <span class="material-symbols-outlined">how_to_reg</span>
+            </span>
+            <div>
+              <h2 id="proceso-title">Nuestro proceso de atención</h2>
+              <p>Desde que radicas tu solicitud hasta que la resolvemos.</p>
+            </div>
+          </div>
+
+          <div class="ti-process-sign">
+            <p class="ti-script">¡Juntos hacemos que transporte suceda!</p>
+            <span class="ti-logo-clip ti-logo-clip--sm">
+              <img src="logo-tranes-oficial.png" alt="TRANES" width="396" height="170" loading="lazy" />
+            </span>
+          </div>
+        </header>
+
+        <!-- 4 Pasos del Proceso de Atención GH -->
+        <ol class="ti-steps">
+          <!-- Paso 1 -->
+          <li class="ti-step">
+            <div class="ti-step-top">
+              <span class="ti-step-num">1</span>
+              <span class="ti-step-icon"><span class="material-symbols-outlined">edit_note</span></span>
+            </div>
+            <h3>Radicas tu solicitud</h3>
+            <p>Ingresas a través de nuestro <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" style="color: var(--orange); font-weight: 600; text-decoration: underline;">formulario de solicitudes</a> o canales autorizados detallando tu requerimiento.</p>
+          </li>
+
+          <!-- Paso 2 -->
+          <li class="ti-step">
+            <div class="ti-step-top">
+              <span class="ti-step-num">2</span>
+              <span class="ti-step-icon"><span class="material-symbols-outlined">manage_search</span></span>
+            </div>
+            <h3>Revisamos y clasificamos</h3>
+            <p>El equipo asigna tu caso al responsable correspondiente (Nómina, Bienestar, SST o Selección) según la prioridad.</p>
+          </li>
+
+          <!-- Paso 3 -->
+          <li class="ti-step">
+            <div class="ti-step-top">
+              <span class="ti-step-num">3</span>
+              <span class="ti-step-icon"><span class="material-symbols-outlined">handshake</span></span>
+            </div>
+            <h3>Gestionamos</h3>
+            <p>Generamos el documento, resolvemos la consulta o adelantamos el trámite informándote el estado oportunamente.</p>
+          </li>
+
+          <!-- Paso 4 -->
+          <li class="ti-step">
+            <div class="ti-step-top">
+              <span class="ti-step-num">4</span>
+              <span class="ti-step-icon"><span class="material-symbols-outlined">verified</span></span>
+            </div>
+            <h3>Respondemos y cerramos</h3>
+            <p>Te entregamos la respuesta formal o certificado requerido y garantizamos el cierre satisfactorio de tu caso.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3.8 CENTRO DE POLÍTICAS Y RECURSOS
+         ========================================================= -->
+    <section class="ti-panel" id="politicas" aria-labelledby="politicas-title">
+      <header class="ti-sec-head">
+        <span class="ti-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">policy</span></span>
+        <div class="ti-sec-titles">
+          <h2 id="politicas-title">Centro de políticas</h2>
+          <p>Conoce los lineamientos institucionales, derechos y deberes que rigen nuestra labor diaria.</p>
+        </div>
+      </header>
+
+      <!-- 4 Tarjetas de Políticas -->
+      <div class="ti-policies-grid">
+        <!-- Política 1 -->
+        <article class="ti-policy-item">
+          <span class="material-symbols-outlined" aria-hidden="true">person</span>
+          <h3>Política de tratamiento de datos personales</h3>
+          <p>Lineamientos claros sobre cómo protegemos, almacenamos y custodiamos la información sensible de nuestros colaboradores.</p>
+          <!-- EDITAR: Enlace al documento real en SharePoint -->
+          <a class="ti-policy-link" href="#" target="_blank" rel="noopener noreferrer">
+            Ver documento <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+          </a>
+        </article>
+
+        <!-- Política 2 -->
+        <article class="ti-policy-item">
+          <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
+          <h3>Reglamento interno de trabajo</h3>
+          <p>Normas, pautas de convivencia, horarios, deberes y derechos acordados para garantizar un clima laboral armónico.</p>
+          <!-- EDITAR: Enlace al documento real en SharePoint -->
+          <a class="ti-policy-link" href="#" target="_blank" rel="noopener noreferrer">
+            Ver documento <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+          </a>
+        </article>
+
+        <!-- Política 3 -->
+        <article class="ti-policy-item">
+          <span class="material-symbols-outlined" aria-hidden="true">health_and_safety</span>
+          <h3>Política de SST</h3>
+          <p>Compromiso corporativo con la seguridad integral, prevención de accidentes y cuidado de la salud en cada puesto de trabajo.</p>
+          <!-- EDITAR: Enlace al documento real en SharePoint -->
+          <a class="ti-policy-link" href="#" target="_blank" rel="noopener noreferrer">
+            Ver documento <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+          </a>
+        </article>
+
+        <!-- Política 4 -->
+        <article class="ti-policy-item">
+          <span class="material-symbols-outlined" aria-hidden="true">gavel</span>
+          <h3>Código de conducta y convivencia</h3>
+          <p>Principios éticos, respeto mutuo, no discriminación y canales confidenciales del Comité de Convivencia Laboral.</p>
+          <!-- EDITAR: Enlace al documento real en SharePoint -->
+          <a class="ti-policy-link" href="#" target="_blank" rel="noopener noreferrer">
+            Ver documento <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+          </a>
+        </article>
+      </div>
+
+      <!-- Recursos Internos Autorizados (Chips) -->
+      <div class="ti-resources">
+        <h3><span class="material-symbols-outlined" aria-hidden="true">folder_open</span> Recursos internos autorizados</h3>
+        <ul class="resource-list">
+          <!-- EDITAR: Enlaces a recursos internos -->
+          <li><a href="index.html"><span class="material-symbols-outlined">north_east</span> Intranet corporativa</a></li>
+          <li><a href="index.html#formatos"><span class="material-symbols-outlined">north_east</span> Centro de Formatos</a></li>
+          <li><a href="index.html#areas"><span class="material-symbols-outlined">north_east</span> Nuestras Áreas</a></li>
+          <li><a href="index.html#sgi"><span class="material-symbols-outlined">north_east</span> Sistema de Gestión (SGI)</a></li>
+          <li><a href="#"><span class="material-symbols-outlined">north_east</span> Portal de nómina</a></li>
+          <li><a href="#"><span class="material-symbols-outlined">north_east</span> Documentos de GH (SharePoint)</a></li>
+          <li><a href="#"><span class="material-symbols-outlined">north_east</span> Biblioteca de guías</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       3.9 PIE DE PÁGINA (OSCURO)
+       ========================================================= -->
+  <footer class="ti-footer" role="contentinfo">
+    <div class="ti-footer-inner">
+      <div class="ti-footer-brand">
+        <span class="ti-logo-clip">
+          <!-- EDITAR: Logo institucional -->
+          <img src="logo-tranes-oficial.png" alt="TRANES" width="396" height="170" loading="lazy" />
+        </span>
+        <div>
+          <p class="ti-footer-copy">Intranet Corporativa &amp; Ecosistema Digital | TRANES S.A.S.</p>
+          <!-- Breadcrumb accesible -->
+          <nav class="ti-breadcrumb" aria-label="Ubicación dentro de la intranet">
+            <span>Intranet Corporativa</span> ›
+            <span>Nuestras Áreas</span> ›
+            <span class="current">Gestión Humana</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Enlaces centrales -->
+      <nav class="ti-footer-links" aria-label="Ejes corporativos">
+        <a href="ti-sistemas.html">Tecnología</a>
+        <span class="dot" aria-hidden="true">·</span>
+        <a href="#equipo">Personas</a>
+        <span class="dot" aria-hidden="true">·</span>
+        <a href="index.html">Transporte</a>
+      </nav>
+
+      <!-- Enlaces derecha -->
+      <div class="ti-footer-right">
+        <!-- EDITAR: Línea de atención GH -->
+        <a class="ti-footer-help" href="#proceso">
+          <span class="material-symbols-outlined" aria-hidden="true">support_agent</span> Línea de Atención GH
+        </a>
+        <span class="ti-footer-current">
+          <span class="material-symbols-outlined" aria-hidden="true">diversity_3</span> Gestión Humana
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       MODAL DINÁMICO DE GUÍAS (AUTOCONTENIDO EN JS)
+       ========================================================= -->
+  <div class="ti-modal-overlay" id="guide-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="ti-dialog">
+      <div class="ti-dialog-media">
+        <img id="modal-img" src="" alt="" />
+        <button type="button" class="ti-dialog-close" onclick="closeGuideModal()" aria-label="Cerrar modal">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="ti-dialog-body">
+        <span class="ti-tag" id="modal-tag"></span>
+        <h2 id="modal-title"></h2>
+        <p class="ti-dialog-desc" id="modal-desc"></p>
+        <ol class="ti-dialog-steps" id="modal-steps"></ol>
+        <div class="ti-dialog-actions" id="modal-actions"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SCRIPT INTERACTIVO AUTOCONTENIDO (Sin dependencias externas)
+       ========================================================= -->
+  <script>
+    // Datos de las 4 guías para visualización interactiva en el modal
+    const guidesData = [
+      {
+        tag: 'TRÁMITES',
+        tagColor: 'var(--orange)',
+        title: 'Cómo solicitar un certificado laboral',
+        desc: 'Sigue estos sencillos pasos para solicitar tu certificado de trabajo con salario, funciones o antigüedad:',
+        img: 'gh-guide-tramites.png',
+        steps: [
+          'Ingresa a la Línea de Atención GH o envía un correo a nomina@tranes.com.co con tu número de identificación.',
+          'Especifica a quién va dirigido el certificado (A quien interese o entidad bancaria/arrendamiento específica).',
+          'Indica si requieres detalle de funciones, promedio de ingresos o únicamente salario básico.',
+          'El tiempo estándar de entrega es de 2 días hábiles en formato digital PDF firmado.'
+        ],
+        actions: [
+          { text: 'Radicar solicitud (Formulario)', href: 'https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header', primary: true, external: true },
+          { text: 'Solicitar por correo', href: 'mailto:nomina@tranes.com.co?subject=Solicitud%20de%20Certificado%20Laboral', primary: false }
+        ]
+      },
+      {
+        tag: 'CONÓCENOS',
+        tagColor: 'var(--color-blue)',
+        title: 'Funciones del área de Gestión Humana',
+        desc: 'Conoce los pilares estratégicos mediante los cuales acompañamos tu bienestar en TRANES:',
+        img: 'gh-guide-conocenos.png',
+        steps: [
+          'Gestión y atracción de talento humano alineado a los valores corporativos de la empresa.',
+          'Aseguramiento oportuno y transparente de la liquidación de nómina y seguridad social.',
+          'Fomento de planes de bienestar, celebraciones, auxilios e integración de los trabajadores y sus familias.',
+          'Liderazgo del Sistema de Gestión de Seguridad y Salud en el Trabajo (SST).',
+          'Desarrollo de planes de capacitación continua y fortalecimiento del clima laboral.'
+        ],
+        actions: [
+          { text: 'Ver servicios del área', href: '#servicios', primary: true }
+        ]
+      },
+      {
+        tag: 'BIENESTAR',
+        tagColor: 'var(--color-green)',
+        title: 'Beneficios y auxilios para colaboradores',
+        desc: 'En TRANES nos preocupamos por ti y tu familia. Conoce el portafolio de beneficios activos:',
+        img: 'gh-guide-bienestar.jpg',
+        steps: [
+          'Convenios con cajas de compensación familiar para turismo, subsidio monetario y recreación.',
+          'Auxilios educativos y becas de desarrollo para hijos de colaboradores.',
+          'Días libres remunerados por fechas especiales (cumpleaños, matrimonio o grado).',
+          'Campañas periódicas de salud preventiva, optometría, vacunación y salud visual.',
+          'Jornadas de integración y actividades deportivas interáreas.'
+        ],
+        actions: [
+          { text: 'Hablar con Bienestar', href: 'mailto:bienestar.sst@tranes.com.co?subject=Consulta%20Beneficios', primary: true }
+        ]
+      },
+      {
+        tag: 'TUTORIALES',
+        tagColor: 'var(--color-violet)',
+        title: 'Cómo consultar tu desprendible de nómina',
+        desc: 'Guía rápida para consultar y descargar tus comprobantes de pago de nómina quincenal:',
+        img: 'guide-firma.jpg',
+        steps: [
+          'Accede al portal institucional de nómina desde la sección de recursos o enlaces autorizados.',
+          'Digita tu número de documento de identidad como usuario y tu contraseña corporativa asignada.',
+          'Selecciona la pestaña «Comprobantes de Pago» y el año correspondiente.',
+          'Descarga el comprobante en formato PDF para tu archivo personal.'
+        ],
+        actions: [
+          { text: 'Ir al Portal de Nómina', href: '#', primary: true }
+        ]
+      }
+    ];
+
+    // Funciones del Modal
+    function openGuideModal(index) {
+      const data = guidesData[index];
+      if (!data) return;
+
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-desc').textContent = data.desc;
+      document.getElementById('modal-tag').textContent = data.tag;
+      document.getElementById('modal-tag').style.background = data.tagColor;
+      
+      const imgEl = document.getElementById('modal-img');
+      imgEl.src = data.img;
+      imgEl.alt = data.title;
+
+      const stepsContainer = document.getElementById('modal-steps');
+      stepsContainer.innerHTML = '';
+      data.steps.forEach(function (step) {
+        const li = document.createElement('li');
+        li.textContent = step;
+        stepsContainer.appendChild(li);
+      });
+
+      const actionsContainer = document.getElementById('modal-actions');
+      actionsContainer.innerHTML = '';
+      data.actions.forEach(function (act) {
+        const btn = document.createElement('a');
+        btn.textContent = act.text;
+        btn.href = act.href;
+        if (act.external || act.href.startsWith('http')) {
+          btn.target = '_blank';
+          btn.rel = 'noopener';
+        }
+        if (act.href.startsWith('#')) {
+          btn.addEventListener('click', function () {
+            closeGuideModal();
+          });
+        }
+        actionsContainer.appendChild(btn);
+      });
+
+      const modal = document.getElementById('guide-modal');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGuideModal() {
+      const modal = document.getElementById('guide-modal');
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Cerrar modal al hacer clic en el backdrop
+    document.getElementById('guide-modal').addEventListener('click', function (e) {
+      if (e.target === this) {
+        closeGuideModal();
+      }
+    });
+
+    // Cerrar modal al presionar la tecla Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeGuideModal();
+      }
+    });
+
+    // Menú móvil toggle
+    const toggleBtn = document.getElementById('mobile-toggle');
+    const navlinks = document.getElementById('navlinks');
+
+    if (toggleBtn && navlinks) {
+      toggleBtn.addEventListener('click', function () {
+        const isOpen = navlinks.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // Soporte para dropdowns en pantallas táctiles / móviles
+    document.querySelectorAll('.dropdown-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        if (window.innerWidth <= 980) {
+          e.preventDefault();
+          const parent = btn.closest('.dropdown');
+          parent.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

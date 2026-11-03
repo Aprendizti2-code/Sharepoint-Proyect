@@ -735,6 +735,11 @@ a:focus:not(:focus-visible) {
   color: var(--col-accent, var(--orange));
   background: #fff;
 }
+.area-ti-folder[aria-disabled="true"] {
+  opacity: 0.62;
+  pointer-events: none;
+  cursor: not-allowed;
+}
 
 /* WIDGETS LATERALES */
 .col-widgets { 
@@ -958,6 +963,8 @@ a.fmt-cta .material-symbols-outlined { font-size: 1.05rem; }
   transition: all 0.2s ease;
   width: 100%;
   font-family: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 .fmt-btn-card span:first-child {
   font-size: 1.4rem;

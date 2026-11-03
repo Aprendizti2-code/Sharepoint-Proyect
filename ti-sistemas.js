@@ -42,7 +42,7 @@
       areas: [
         { label: 'Operaciones',        href: 'index.html#area-operaciones' },
         { label: 'Comercial',          href: 'index.html#area-comercial' },
-        { label: 'Gestión Humana',     href: 'index.html#area-gh' },
+        { label: 'Gestión Humana',     href: 'gestion-humana.html' },
         { label: 'Admon. Servicio',    href: 'index.html#area-admon' },
         { label: 'Flota Propia',       href: 'index.html#area-flota' },
         { label: 'Infraestructura',    href: 'index.html#area-infraestructura' },
@@ -52,7 +52,7 @@
         { label: 'Control Interno',    href: 'index.html#area-control' },
         { label: 'Calidad / SGI',      href: 'index.html#area-calidad' },
         { label: 'Gerencia',           href: 'index.html#area-gerencia' },
-        { label: 'Publicidad & Medios',href: 'index.html#area-publicidad' }
+        { label: 'Publicidad & Medios',href: 'publicidad.html' }
       ],
       formatos: [
         { label: 'Centro de Formatos y Plantillas', href: 'index.html#formatos' },
@@ -106,14 +106,14 @@
        3. BANNER PRINCIPAL (HERO)
        --------------------------------------------------------------------- */
     hero: {
-      image: 'hero-c.jpg',
+      image: 'banner-ti.png',
       imageAlt:
-        'Profesionales de tecnología trabajando frente a computadores en una estación de trabajo corporativa',
+        'TI / Sistemas — Tecnología que nos conecta y nos impulsa',
       title: { first: 'TI', slash: '/', accent: 'Sistemas' },
       subtitle: 'Tecnología que nos conecta y nos impulsa',
       bullets: ['Soporte', 'Soluciones', 'Seguridad', 'Innovación'],
       lead:
-        'En TRANES, el área de TI trabaja para que todos podamos hacer nuestro trabajo de forma segura, eficiente y sin interrupciones.',
+        'En Tranes, conectamos procesos y protegemos personas: tecnología segura y eficiente al servicio de cada empleado.',
       signature: 'Tu trabajo también cuenta con nosotros'
     },
 
@@ -125,8 +125,8 @@
         id: 'planner',
         icon: 'view_kanban',
         color: '#187a52',
-        title: 'Crear ticket en Planner',
-        desc: 'Reporta tu solicitud de soporte de forma rápida y sencilla.',
+        title: 'Tickets para mesa de servicio',
+        desc: 'Crea tu ticket aquí.',
         action: 'link',
         linkKey: 'planner'
       },
@@ -144,7 +144,7 @@
         icon: 'shield',
         color: '#1e232a',
         title: 'Seguridad digital',
-        desc: 'Protege tu información y tus equipos.',
+        desc: 'Protección integral de identidad, datos e infraestructura.',
         action: 'guide',
         guideId: 'seguridad'
       },
@@ -153,7 +153,7 @@
         icon: 'groups',
         color: '#ff6600',
         title: 'Nuestro equipo',
-        desc: 'Habla directamente con quien te puede ayudar.',
+        desc: 'Habla directamente con quien puede apoyarte.',
         action: 'anchor',
         href: '#equipo'
       }
@@ -200,7 +200,8 @@
         title: 'Funciones del área de TI',
         desc: 'Conoce todo lo que hacemos por ti y por la empresa.',
         image: 'guide-funciones.jpg',
-        imageAlt: 'Pantalla con código y sistemas en desarrollo',
+        imagePosition: 'center 75%',
+        imageAlt: 'Programador trabajando en código y sistemas del área de TI',
         cta: 'Ver funciones',
         steps: [
           'Soporte técnico de computadores, impresoras y periféricos.',
@@ -238,7 +239,7 @@
         title: 'Cómo configurar tu firma de correo',
         desc: 'Personaliza tu firma con los datos y el formato institucional.',
         image: 'guide-firma.jpg',
-        imageAlt: 'Icono de aplicación de correo electrónico',
+        imageAlt: 'Firma de documento institucional con pluma estilográfica',
         cta: 'Ver guía',
         steps: [
           'Abre el video instructivo desde esta guía y síguelo paso a paso.',
@@ -310,10 +311,11 @@
         photoPosition: 'center 31%',
         photoAlt: 'Retrato de Estiven Álvarez Martínez',
         name: 'Estiven Álvarez Martínez',
-        role: 'Líder TI',
-        tag: 'Líder',
+        role: 'Liderazgo',
+        tag: 'Lider TI',
         tagColor: '#ff6600',
-        summary: 'Coordina y monitorea la ejecución de todos los proyectos del área, supervisando el cumplimiento de tiempos, presupuestos y entregables, y velando por la calidad de las soluciones tecnológicas que impulsan el crecimiento de la empresa.',
+        summary:
+          'Lidera la planeación estratégica y ejecución del portafolio de proyectos de TI. Asegura la alineación de las soluciones tecnológicas con los objetivos de negocio, garantizando altos estándares de calidad, eficiencia operativa y cumplimiento de metas.',
         specialty: 'Gestión de proyectos tecnológicos',
         email: { status: 'ok', value: 'liderti@tranes.com.co' },
         extension: { status: 'pending', value: null }
@@ -324,10 +326,11 @@
         photoPosition: 'center 27%',
         photoAlt: 'Retrato de Santiago Urrutia Urrutia',
         name: 'Santiago Urrutia Urrutia',
-        role: 'Sistemas y Automatización',
-        tag: 'Automatización',
+        role: '',
+        tag: 'Soporte y Automatizaciones',
         tagColor: '#7b1fa2',
-        summary: 'Desarrolla soluciones de software, implementa flujos de automatización en n8n e integra los sistemas informáticos de la empresa, optimizando procesos para elevar la eficiencia operativa y tecnológica de la organización.',
+        summary:
+          'Gestiona la integración de sistemas y el desarrollo de automatizaciones en TRANES, convirtiendo procesos operativos en flujos ágiles, seguros y eficientes, y brinda soporte a los usuarios en el uso diario de las herramientas.',
         specialty: 'Sistemas y automatizaciones',
         email: { status: 'ok', value: 'aprendizti@tranes.com.co' },
         extension: { status: 'pending', value: null }
@@ -338,10 +341,11 @@
         photoPosition: 'center 37%',
         photoAlt: 'Retrato de Eliobys Ogaza Cogollo',
         name: 'Eliobys Ogaza Cogollo',
-        role: 'Desarrollo y Redes',
-        tag: 'Líder Sistemas',
+        role: '',
+        tag: 'Gestión de servidores e infraestructura',
         tagColor: '#2e7d32',
-        summary: 'Encargado de la gestión de servidores, configuración de redes y VPN, así como del control y asignación de accesos a las plataformas; asegura la disponibilidad constante y vela por el óptimo rendimiento de todos los sistemas de la organización.',
+        summary:
+          'Lidera la operatividad y estabilidad de la infraestructura tecnológica. Asegura una conectividad segura y eficiente mediante la gestión de redes, accesos y servidores, respaldando la continuidad del negocio y el trabajo colaborativo de todos los equipos.',
         specialty: 'Redes, VPN e infraestructura',
         email: { status: 'ok', value: 'auxiliarti@tranes.com.co' },
         extension: { status: 'pending', value: null }
@@ -352,10 +356,11 @@
         photoPosition: 'center 23%',
         photoAlt: 'Retrato de Emmanuel Muñoz Lopez',
         name: 'Emmanuel Muñoz Lopez',
-        role: 'Desarrollo Web',
-        tag: 'Desarrollo Web',
+        role: '',
+        tag: 'Soluciones Web',
         tagColor: '#1f6fd0',
-        summary: 'Apoya activamente el flujo de desarrollo web mediante la implementación de diseños, la programación de la lógica interna y el mantenimiento de proyectos, combinando esta labor con el soporte y la atención a los requerimientos del área de sistemas.',
+        summary:
+          'Participa en el diseño, programación y despliegue de soluciones web corporativas. Gestiona el mantenimiento preventivo y evolutivo de los sitios institucionales, complementando su gestión con la atención y resolución de incidentes del área de sistemas.',
         specialty: 'Sitios y aplicaciones web',
         email: { status: 'ok', value: 'Aprendizti2@tranes.com.co' },
         extension: { status: 'pending', value: null }
@@ -372,13 +377,13 @@
     process: [
       {
         icon: 'edit_note',
-        title: 'Reportas en Planner',
+        title: 'Reportas en mesa de servicio (Planner)',
         desc: 'Describe el problema y adjunta la información necesaria.'
       },
       {
         icon: 'search',
         title: 'Revisamos y priorizamos',
-        desc: 'Analizamos la solicitud y la asignamos al equipo correspondiente.'
+        desc: 'Analizamos la solicitud y la asignamos al equipo correspondiente, de acuerdo con los Acuerdos de Niveles de Servicio (ANS) establecidos en nuestro proceso.'
       },
       {
         icon: 'build',
@@ -388,7 +393,7 @@
       {
         icon: 'task_alt',
         title: 'Cerramos',
-        desc: 'Confirmamos la solución y damos por finalizada la solicitud.'
+        desc: 'Confirmamos la gestión y cerramos la solicitud.'
       }
     ],
 
@@ -404,9 +409,9 @@
         desc: 'Cómo recolectamos, usamos y protegemos los datos personales en TRANES.',
         doc: {
           status: 'ok',
-          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQAx-3T6ScrYT6V9QvijCXdMAS066TAA2F8G0NVVRY_q748?e=jxfa7K',
+          href: 'politicas/politicas-completas-seguridad.pdf',
           label: 'Ver documento',
-          external: true
+          external: false
         }
       },
       {
@@ -415,9 +420,9 @@
         desc: 'Reglas para proteger la información y prevenir incidentes de seguridad.',
         doc: {
           status: 'ok',
-          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQCGBIXLt_caS6Y9zOFf6WHiAXaDumdw4A82crI9SdaBSmo?e=X9gmW9',
+          href: 'politicas/politicas-completas-seguridad.pdf',
           label: 'Ver documento',
-          external: true
+          external: false
         }
       },
       {
@@ -426,9 +431,9 @@
         desc: 'Uso correcto del correo, los equipos y las plataformas corporativas.',
         doc: {
           status: 'ok',
-          href: 'https://tranes1-my.sharepoint.com/:b:/g/personal/auxiliarti_tranes_com_co/IQBAqYSZvdNvT68C0pioMdE6AV1-6nm8AtGMrhqozCvPJUg?e=H1ioV8',
+          href: 'politicas/politica-restriccion-acceso-paginas-web.pdf',
           label: 'Ver documento',
-          external: true
+          external: false
         }
       },
       {
@@ -437,9 +442,9 @@
         desc: 'Manejo de contraseñas, accesos e información confidencial.',
         doc: {
           status: 'ok',
-          href: 'https://tranes1-my.sharepoint.com/:w:/g/personal/auxiliarti_tranes_com_co/IQAMOb2OhN-YQIhz5Aab4_0GAZL1tgebCWZ6JmIxZ02ruZM?e=0tEsIM',
+          href: 'politicas/politica-accesos-carpetas-nube.pdf',
           label: 'Ver documento',
-          external: true
+          external: false
         }
       }
     ],
@@ -644,7 +649,7 @@
       return '<article class="ti-guide-card">' +
         '<button type="button" class="ti-guide-open" data-guide="' + esc(g.id) + '" aria-label="Abrir la guía: ' + esc(g.title) + '">' +
           '<span class="ti-guide-media">' +
-            '<img src="' + esc(g.image) + '" alt="' + esc(g.imageAlt || g.title) + '" width="800" height="500" loading="lazy" />' +
+            '<img src="' + esc(g.image) + '"' + (g.imagePosition ? ' style="object-position:' + esc(g.imagePosition) + ';"' : '') + ' alt="' + esc(g.imageAlt || g.title) + '" width="800" height="500" loading="lazy" />' +
           '</span>' +
           '<span class="ti-guide-body">' +
             '<span class="ti-tag" style="--tag-color:' + esc(g.categoryColor || 'var(--orange)') + '">' + esc(g.category) + '</span>' +
@@ -674,7 +679,11 @@
     if (!g) return;
 
     var img = document.getElementById('dlg-img');
-    if (img) { img.src = g.image || ''; img.alt = g.imageAlt || g.title || ''; }
+    if (img) {
+      img.src = g.image || '';
+      img.alt = g.imageAlt || g.title || '';
+      img.style.objectPosition = g.imagePosition || 'center center';
+    }
 
     var tag = document.getElementById('dlg-tag');
     if (tag) {
@@ -827,7 +836,7 @@
       /* Acción de contacto: mailto solo cuando el correo es real;
          si no, canal oficial configurado (Mesa de Ayuda TI). */
       var action = (m.email && m.email.status === 'ok' && m.email.value)
-        ? actionTag({ status: 'ok', href: 'mailto:' + m.email.value }, 'ti-member-action', icon('mail') + ' Escribir a ' + esc(m.name.split(' ')[0]))
+        ? actionTag({ status: 'ok', href: 'mailto:' + m.email.value }, 'ti-member-action', icon('mail') + ' Contactar a ' + esc(m.name.split(' ')[0]))
         : actionTag(CFG.links ? CFG.links.mesaDeAyuda : null, 'ti-member-action', icon('headset_mic') + ' Contactar');
 
       var photoHtml;
@@ -839,11 +848,15 @@
           '<span class="ti-member-demo ti-member-demo--pending">Foto pendiente</span>';
       }
 
+      var roleHtml = m.role
+        ? '<p class="ti-member-role">' + esc(m.role) + '</p>'
+        : '';
+
       return '<article class="ti-member">' +
         '<div class="ti-member-photo">' + photoHtml + '</div>' +
         '<div class="ti-member-body">' +
           '<h3 class="ti-member-name">' + esc(m.name) + '</h3>' +
-          '<p class="ti-member-role">' + esc(m.role) + '</p>' +
+          roleHtml +
           '<span class="ti-member-tag" style="--tag-color:' + esc(m.tagColor || 'var(--orange)') + '">' + esc(m.tag) + '</span>' +
           '<p class="ti-member-summary">' + esc(m.summary) + '</p>' +
           '<p class="ti-member-specialty">' + icon('workspace_premium') + '<span>' + esc(m.specialty) + '</span></p>' +
