@@ -46,88 +46,28 @@
     </div>
     <div class="top-actions">
       <div class="top-action">
-        <button class="top-action-btn" aria-label="Notificaciones" aria-expanded="false" aria-controls="panel-notif" data-panel="panel-notif">
-          <span class="material-symbols-outlined">notifications</span>
-          <span class="topbar-badge" id="notif-badge">4</span>
-        </button>
-        <div class="topbar-panel" id="panel-notif" role="dialog" aria-label="Notificaciones">
-          <div class="tp-head">
-            <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
-            <strong>Notificaciones</strong>
-            <small>Novedades y cambios</small>
-          </div>
-          <ul class="tp-list">
-            <li>
-              <a href="#comunicaciones" class="notif-item is-new">
-                <span class="notif-dot" aria-hidden="true"></span>
-                <span class="notif-body">
-                  <strong>Nuevo horario laboral: 8:30 a.m. a 6:00 p.m.</strong>
-                  <small>Comunicado · 24 sep 2026</small>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#comunicaciones" class="notif-item is-new">
-                <span class="notif-dot" aria-hidden="true"></span>
-                <span class="notif-body">
-                  <strong>Celebración de Amor y Amistad</strong>
-                  <small>Cultura Tranes · 20 sep 2026</small>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#comunicaciones" class="notif-item is-new">
-                <span class="notif-dot" aria-hidden="true"></span>
-                <span class="notif-body">
-                  <strong>Salud mental y compañerismo</strong>
-                  <small>SGI / SST · 15 sep 2026</small>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#comunicaciones" class="notif-item is-new">
-                <span class="notif-dot" aria-hidden="true"></span>
-                <span class="notif-body">
-                  <strong>Actualización código de vestimenta</strong>
-                  <small>Noticias · 10 sep 2026</small>
-                </span>
-              </a>
-            </li>
-          </ul>
-          <a href="#comunicaciones" class="tp-footer">Ver todas las comunicaciones <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
-        </div>
-      </div>
-
-      <div class="top-action">
-        <button class="top-action-btn" aria-label="Configuración" aria-expanded="false" aria-controls="panel-config" data-panel="panel-config">
+        <button class="top-action-btn" aria-label="Configuración y accesibilidad" aria-expanded="false" aria-controls="panel-config" data-panel="panel-config" title="Configuración y accesibilidad">
           <span class="material-symbols-outlined">settings</span>
         </button>
-        <div class="topbar-panel" id="panel-config" role="dialog" aria-label="Configuración">
+        <div class="topbar-panel" id="panel-config" role="dialog" aria-label="Configuración y accesibilidad">
           <div class="tp-head">
-            <span class="material-symbols-outlined" aria-hidden="true">settings</span>
+            <span class="material-symbols-outlined" aria-hidden="true">tune</span>
             <strong>Configuración</strong>
-            <small>Personaliza tu vista</small>
+            <small>Personaliza tu vista y accesibilidad</small>
           </div>
           <div class="tp-body">
-            <p class="tp-label">Fondo de la intranet</p>
-            <div class="theme-options" role="group" aria-label="Fondo de la intranet">
+            <p class="tp-label">Tema de visualización</p>
+            <div class="theme-options" role="group" aria-label="Tema de visualización">
               <button type="button" class="theme-opt is-active" data-theme="default">
-                <span class="swatch swatch-default" aria-hidden="true"></span> Clásico
+                <span class="swatch swatch-default" aria-hidden="true"></span> Claro
               </button>
-              <button type="button" class="theme-opt" data-theme="carbon">
-                <span class="swatch swatch-carbon" aria-hidden="true"></span> Carbón
+              <button type="button" class="theme-opt" data-theme="dark">
+                <span class="swatch swatch-dark" aria-hidden="true"></span> Oscuro
               </button>
               <button type="button" class="theme-opt" data-theme="blue">
                 <span class="swatch swatch-blue" aria-hidden="true"></span> Azul
               </button>
             </div>
-
-            <p class="tp-label">Botones</p>
-            <label class="tp-switch">
-              <input type="checkbox" id="opt-classic" />
-              <span class="tp-slider" aria-hidden="true"></span>
-              <span>Estilo clásico (sin bordes redondeados ni sombras)</span>
-            </label>
 
             <p class="tp-label">Texto y accesibilidad</p>
             <div class="pref-row">
@@ -143,51 +83,20 @@
               <span class="tp-slider" aria-hidden="true"></span>
               <span>Alto contraste</span>
             </label>
+
+            <p class="tp-label">Estilo visual</p>
             <label class="tp-switch">
-              <input type="checkbox" data-notif />
+              <input type="checkbox" id="opt-classic" />
               <span class="tp-slider" aria-hidden="true"></span>
-              <span>Notificaciones activadas</span>
+              <span>Botones clásicos (planos)</span>
             </label>
 
             <button type="button" class="tp-reset" id="opt-reset">
-              <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span> Restablecer
+              <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span> Restablecer preferencias
             </button>
           </div>
         </div>
       </div>
-
-      <div class="top-action">
-        <button class="top-action-btn" aria-label="Ayuda" aria-expanded="false" aria-controls="panel-help" data-panel="panel-help">
-          <span class="material-symbols-outlined">help</span>
-        </button>
-        <div class="topbar-panel" id="panel-help" role="dialog" aria-label="Ayuda">
-          <div class="tp-head">
-            <span class="material-symbols-outlined" aria-hidden="true">help</span>
-            <strong>Ayuda</strong>
-            <small>¿Necesitas soporte?</small>
-          </div>
-          <div class="tp-body tp-links">
-            <a href="https://m365.cloud.microsoft/m365apps/75f31797-37c9-498e-8dc9-53c16a36afca?auth=2&amp;home=1&amp;origindomain=microsoft365&amp;client-request-id=19eeea6b-6a4e-407d-900d-0381fd544701" target="_blank" rel="noopener">
-              <span class="material-symbols-outlined" aria-hidden="true">confirmation_number</span> Mesa de Ayuda TI (tickets)
-            </a>
-            <a href="#comunicaciones">
-              <span class="material-symbols-outlined" aria-hidden="true">campaign</span> Comunicaciones y novedades
-            </a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener">
-              <span class="material-symbols-outlined" aria-hidden="true">assignment</span> Formulario de Solicitudes
-            </a>
-            <a href="#formatos">
-              <span class="material-symbols-outlined" aria-hidden="true">description</span> Centro de Formatos
-            </a>
-            <a href="#ecosistema">
-              <span class="material-symbols-outlined" aria-hidden="true">hub</span> Ecosistema Digital
-            </a>
-            <p class="tp-hint">Presiona <kbd>Esc</kbd> para cerrar cualquier panel.</p>
-          </div>
-        </div>
-      </div>
-
-      <span class="avatar" title="Emmanuel Muñoz" role="img" aria-label="Avatar de usuario">EM</span>
     </div>
   </header>
 
@@ -244,75 +153,6 @@
       <a href="https://m365.cloud.microsoft/m365apps/75f31797-37c9-498e-8dc9-53c16a36afca?auth=2&amp;home=1&amp;origindomain=microsoft365&amp;client-request-id=19eeea6b-6a4e-407d-900d-0381fd544701" target="_blank" class="nav-btn nav-btn-highlight" title="Mesa de Ayuda TI — Crear y consultar tickets" rel="noopener">
         <span class="material-symbols-outlined">headset_mic</span> Mesa de Ayuda TI
       </a>
-      <div class="dropdown profile-dropdown">
-        <button class="nav-btn dropdown-toggle" aria-expanded="false" aria-controls="menu-perfil"><span class="material-symbols-outlined">person</span> Mi Perfil <span class="material-symbols-outlined">expand_more</span></button>
-        <div class="dropdown-menu profile-menu" id="menu-perfil" role="menu">
-          <div class="profile-head">
-            <span class="avatar profile-avatar" aria-hidden="true">EM</span>
-            <div class="profile-id">
-              <strong>Emmanuel Muñoz</strong>
-              <small>Colaborador · TRANES S.A.S.</small>
-            </div>
-          </div>
-
-          <p class="profile-subtitle">
-            <span class="material-symbols-outlined" aria-hidden="true">badge</span>
-            Datos del colaborador
-          </p>
-          <ul class="profile-assets">
-            <li><span>Cargo</span><strong>Aprendiz TI</strong></li>
-            <li><span>Área / Departamento</span><strong>TI / Sistemas</strong></li>
-            <li><span>Correo corporativo</span><strong>Aprendizti2@tranes.com.co</strong></li>
-            <li><span>Sede</span><strong>Medellín</strong></li>
-            <li><span>Código de empleado</span><strong>—</strong></li>
-          </ul>
-
-          <p class="profile-subtitle">
-            <span class="material-symbols-outlined" aria-hidden="true">tune</span>
-            Preferencias
-          </p>
-          <div class="pref-block">
-            <div class="pref-row">
-              <span class="pref-name">Fondo</span>
-              <div class="theme-options" role="group" aria-label="Fondo de la intranet">
-                <button type="button" class="theme-opt is-active" data-theme="default" aria-label="Fondo clásico">
-                  <span class="swatch swatch-default" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="theme-opt" data-theme="carbon" aria-label="Fondo carbón">
-                  <span class="swatch swatch-carbon" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="theme-opt" data-theme="blue" aria-label="Fondo azul">
-                  <span class="swatch swatch-blue" aria-hidden="true"></span>
-                </button>
-              </div>
-            </div>
-
-            <div class="pref-row">
-              <span class="pref-name">Tamaño de texto</span>
-              <div class="textsize-group" role="group" aria-label="Tamaño de texto">
-                <button type="button" data-textsize="0">A</button>
-                <button type="button" data-textsize="1">A+</button>
-                <button type="button" data-textsize="2">A++</button>
-              </div>
-            </div>
-
-            <label class="tp-switch">
-              <input type="checkbox" data-contrast />
-              <span class="tp-slider" aria-hidden="true"></span>
-              <span>Alto contraste</span>
-            </label>
-            <label class="tp-switch">
-              <input type="checkbox" data-notif />
-              <span class="tp-slider" aria-hidden="true"></span>
-              <span>Notificaciones activadas</span>
-            </label>
-          </div>
-
-          <button type="button" class="profile-link" role="menuitem" data-panel-close>
-            <span class="material-symbols-outlined" aria-hidden="true">badge</span> Ver mi perfil completo
-          </button>
-        </div>
-      </div>
     </div>
   </nav>
 
