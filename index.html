@@ -1,575 +1,270 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>TRÁNES S.A.S. | Intranet Corporativa & Ecosistema Digital</title>
+  <meta name="description" content="Micrositio corporativo de Publicidad y Mercadeo de TRANES S.A.S.: marca, diseño, redes sociales, guías y equipo." />
+  <title>Publicidad y Mercadeo | Intranet Corporativa TRANES</title>
+  <script src="../micrositios-theme.js"></script>
 
-  <!-- PRECONNECT: conexión temprana a dominios externos -->
+  <!-- Preconnect y Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-  <!-- PRELOAD: recurso crítico de fuentes (font-display=swap evita bloqueo) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" media="print" onload="this.media='all'" />
+  <!-- Estilos del sistema de diseño -->
+  <link rel="stylesheet" href="../styles.css?v=25" />
+  <link rel="stylesheet" href="publicidad.css?v=8" />
+  <link rel="stylesheet" href="../micrositios-theme.css?v=2" />
 
-  <!-- CSS CRÍTICO: carga síncrona -->
-  <link rel="stylesheet" href="styles.css?v=16" />
-
-  <!-- Material Symbols: carga asíncrona para no bloquear renderizado -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" media="print" onload="this.media='all'" />
-
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" />
-    <link rel="stylesheet" href="styles.css?v=16" />
-  </noscript>
-
-  <!-- PRELOAD: imágenes LCP ( Largest Contentful Paint ) -->
-  <link rel="preload" as="image" href="banner-hero.jpg" />
-  <link rel="preload" as="image" href="assets/1 (1).jpg" />
+  <!-- Preload banner de fondo -->
+  <link rel="preload" as="image" href="assets/hero-publicidad.jpg" />
 </head>
-<body>
-  <a href="#inicio" class="skip-nav">Saltar al contenido principal</a>
+<body class="pub-page">
+  <a href="#contenido" class="skip-nav">Saltar al contenido principal</a>
 
-  <!-- BARRA SUPERIOR DE SHAREPOINT -->
-  <header class="topbar" role="banner">
-    <div class="topbar-left">
-      <button class="app-grid" aria-label="Aplicaciones"><span class="material-symbols-outlined">apps</span></button>
-      <span>SharePoint | TRANES S.A.S.</span>
-    </div>
-    <div class="search">
-      <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
-      <input placeholder="Buscar en el Ecosistema Digital..." aria-label="Buscar en el Ecosistema Digital" />
-    </div>
-    <div class="top-actions">
-      <div class="top-action">
-        <button class="top-action-btn" aria-label="Configuración y accesibilidad" aria-expanded="false" aria-controls="panel-config" data-panel="panel-config" title="Configuración y accesibilidad">
-          <span class="material-symbols-outlined">settings</span>
-        </button>
-        <div class="topbar-panel" id="panel-config" role="dialog" aria-label="Configuración y accesibilidad">
-          <div class="tp-head">
-            <span class="material-symbols-outlined" aria-hidden="true">tune</span>
-            <strong>Configuración</strong>
-            <small>Personaliza tu vista y accesibilidad</small>
-          </div>
-          <div class="tp-body">
-            <p class="tp-label">Tema de visualización</p>
-            <div class="theme-options" role="group" aria-label="Tema de visualización">
-              <button type="button" class="theme-opt is-active" data-theme="default">
-                <span class="swatch swatch-default" aria-hidden="true"></span> Claro
-              </button>
-              <button type="button" class="theme-opt" data-theme="dark">
-                <span class="swatch swatch-dark" aria-hidden="true"></span> Oscuro
-              </button>
-              <button type="button" class="theme-opt" data-theme="blue">
-                <span class="swatch swatch-blue" aria-hidden="true"></span> Azul
-              </button>
-            </div>
-
-            <p class="tp-label">Texto y accesibilidad</p>
-            <div class="pref-row">
-              <span class="pref-name">Tamaño de texto</span>
-              <div class="textsize-group" role="group" aria-label="Tamaño de texto">
-                <button type="button" data-textsize="0">A</button>
-                <button type="button" data-textsize="1">A+</button>
-                <button type="button" data-textsize="2">A++</button>
-              </div>
-            </div>
-            <label class="tp-switch">
-              <input type="checkbox" data-contrast />
-              <span class="tp-slider" aria-hidden="true"></span>
-              <span>Alto contraste</span>
-            </label>
-
-            <p class="tp-label">Estilo visual</p>
-            <label class="tp-switch">
-              <input type="checkbox" id="opt-classic" />
-              <span class="tp-slider" aria-hidden="true"></span>
-              <span>Botones clásicos (planos)</span>
-            </label>
-
-            <button type="button" class="tp-reset" id="opt-reset">
-              <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span> Restablecer preferencias
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- NAVEGACIÓN PRINCIPAL -->
-  <nav class="mainnav" role="navigation" aria-label="Navegación principal">
-    <a class="brand" href="#inicio" aria-label="TRÁNES - Inicio">
-      <img src="assets/logo-tranes-oficial.png" alt="TRANES" class="brand-logo-img" />
+  <!-- =========================================================
+       BARRA DE NAVEGACIÓN SUPERIOR (OSCURA — IDÉNTICA A TI Y GH)
+       ========================================================= -->
+  <header class="ti-nav" role="banner">
+    <a class="ti-brand" href="../index.html" aria-label="TRANES — Volver a la intranet">
+      <span class="ti-logo-clip">
+        <img src="assets/logo-tranes-oficial.png" alt="TRANES" width="396" height="170" />
+      </span>
     </a>
 
     <button class="mobile-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navlinks">
       <span class="material-symbols-outlined">menu</span>
     </button>
-    
+
     <div class="navlinks" id="navlinks">
-      <a class="active" href="#inicio"><span class="material-symbols-outlined">home</span> Inicio</a>
-      
+      <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span> Inicio</a>
+
       <div class="dropdown">
-        <button class="dropdown-toggle" aria-expanded="false" aria-controls="menu-areas">
-          Nuestras Áreas <span class="material-symbols-outlined">expand_more</span>
+        <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-areas">
+          Nuestras Áreas <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
         </button>
         <div class="dropdown-menu menu-grid-areas" id="menu-areas" role="menu">
-          <a href="#area-operaciones" role="menuitem"><span class="material-symbols-outlined">conveyor_belt</span> Operaciones</a>
-          <a href="#area-comercial" role="menuitem"><span class="material-symbols-outlined">handshake</span> Comercial</a>
-          <a href="gestion-humana.html" role="menuitem"><span class="material-symbols-outlined">groups</span> Gestión Humana</a>
-          <a href="#area-admon" role="menuitem"><span class="material-symbols-outlined">assignment_ind</span> Admon. Servicio</a>
-          <a href="#area-flota" role="menuitem"><span class="material-symbols-outlined">local_shipping</span> Flota Propia</a>
-          <a href="#area-infraestructura" role="menuitem"><span class="material-symbols-outlined">precision_manufacturing</span> Infraestructura</a>
-          <a href="#area-contabilidad" role="menuitem"><span class="material-symbols-outlined">account_balance</span> Contabilidad</a>
-          <a href="#area-financiera" role="menuitem"><span class="material-symbols-outlined">payments</span> Financiera</a>
-          <a href="ti-sistemas.html" role="menuitem"><span class="material-symbols-outlined">computer</span> TI / Sistemas</a>
-          <a href="#area-control" role="menuitem"><span class="material-symbols-outlined">fact_check</span> Control Interno</a>
-          <a href="#area-calidad" role="menuitem"><span class="material-symbols-outlined">verified</span> Calidad / SGI</a>
-          <a href="#area-gerencia" role="menuitem"><span class="material-symbols-outlined">trending_up</span> Gerencia</a>
-          <a href="publicidad.html" role="menuitem"><span class="material-symbols-outlined">campaign</span> Publicidad & Medios</a>
+          <!-- Renderizado dinámicamente desde publicidad.js -->
         </div>
       </div>
 
-      <a href="#formatos">Centro de Formatos</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-formatos">
+          Centro de Formatos <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="dropdown-menu" id="menu-formatos" role="menu">
+          <!-- Renderizado dinámicamente desde publicidad.js -->
+        </div>
+      </div>
+
+      <a class="active" href="index.html" aria-current="page">Publicidad y Mercadeo</a>
 
       <div class="dropdown">
-        <button class="dropdown-toggle" aria-expanded="false" aria-controls="menu-sgi">
-          SGI <span class="material-symbols-outlined">expand_more</span>
+        <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-sgi">
+          SGI <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
         </button>
         <div class="dropdown-menu" id="menu-sgi" role="menu">
-          <a href="#sgi-reglamento" role="menuitem"><span class="material-symbols-outlined">policy</span> Reglamento interno</a>
-          <a href="#sgi-privacidad" role="menuitem"><span class="material-symbols-outlined">security</span> Privacidad de datos y IA</a>
-          <a href="#sgi-riesgos" role="menuitem"><span class="material-symbols-outlined">warning</span> Matriz de riesgos</a>
-          <a href="#sgi-calidad" role="menuitem"><span class="material-symbols-outlined">verified</span> Calidad y certificaciones</a>
+          <!-- Renderizado dinámicamente desde publicidad.js -->
         </div>
       </div>
     </div>
 
     <div class="navright">
-      <a href="https://m365.cloud.microsoft/m365apps/75f31797-37c9-498e-8dc9-53c16a36afca?auth=2&amp;home=1&amp;origindomain=microsoft365&amp;client-request-id=19eeea6b-6a4e-407d-900d-0381fd544701" target="_blank" class="nav-btn nav-btn-highlight" title="Mesa de Ayuda TI — Crear y consultar tickets" rel="noopener">
-        <span class="material-symbols-outlined">headset_mic</span> Mesa de Ayuda TI
+      <a class="nav-btn-highlight" href="https://forms.cloud.microsoft/r/9v1tzA7sRX?origin=lprLink" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined" aria-hidden="true">palette</span> Solicitar pieza publicitaria
       </a>
     </div>
-  </nav>
+  </header>
 
-  <main id="inicio">
-    <!-- HERO BANNER INSTITUCIONAL TRANES (16:9, recortado a 4:1 en desktop) -->
-    <section class="hero" role="region" aria-label="Banner de bienvenida de la intranet TRANES">
-      <div class="hero-frame">
-        <img class="hero-bg" src="banner-hero.jpg" width="2000" height="1125" alt="Aquí comienza cada día: con las personas que hacen posible todo lo que somos" fetchpriority="high" />
-        <span class="hero-site">WWW.TRANES.COM.CO</span>
-      </div>
-    </section>
+  <!-- =========================================================
+       CONTENIDO PRINCIPAL
+       ========================================================= -->
+  <main class="pub-main" id="contenido">
 
-    <!-- BANNERS DE ACCESO RÁPIDO (3 BANNERS SUPERIORES) -->
-    <section class="feature-grid" aria-label="Accesos destacados">
-      <a href="https://m365.cloud.microsoft/m365apps/75f31797-37c9-498e-8dc9-53c16a36afca?auth=2&amp;home=1&amp;origindomain=microsoft365&amp;client-request-id=19eeea6b-6a4e-407d-900d-0381fd544701" target="_blank" rel="noopener" class="feature-card feature-card-with-text" title="Soporte TI" aria-label="Banner de Soporte TI">
-        <img src="assets/1 (1).jpg" class="card-bg-img-absolute" alt="Consulta tu Flota y Monitoreo GPS" width="1200" height="630" />
-        <div class="card-overlay-mimic">
-          <div class="card-icon-mimic"><span class="material-symbols-outlined" aria-hidden="true">support_agent</span></div>
-          <div class="card-text-mimic">
-              <h3>Soporte TI</h3>
-          </div>
-          <div class="banner-btn-mimic">Solicitar soporte</div>
-        </div>
-      </a>
-
-      <a href="https://tranes1.sharepoint.com/sites/TIDESARROLLOSOFTWARE/_layouts/15/listforms.aspx?cid=MTQ2ZjBjMjktMDczYy00MTQ2LWI5MmUtMjlhNjA2YmQ4NGUx&amp;nav=M2ZlZGUwN2MtMzE5Ny00MWFlLThjZGMtM2Y4ZTBjMTNkYTRk&amp;TeamsCID=5e632a9c-2fc9-4bac-93bb-3dbb7768507d&amp;OR=Teams-HL&amp;CT=1790869530429&amp;xsdata=MDV8MDJ8fDI3NDkzM2M2ZjU3YzRmYzQ5ZmViMDhkZjFmZDMyNjlifDUwNjM1NjQxY2FlZDRiZDk5NjM2ZWYwNmY1MmI5MTk5fDB8MHw2MzkyNjQ2NjM4NTYxOTM1MTV8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T2pjd1lUZzRZekkyTFRBME56a3RORGhtTnkxaVptTTJMVFZqWTJaa09UWXpaV0psWVY5a1lXWmpORFF3WlMwd016Z3pMVFJsWmpZdFlqTm1PQzB5TkRZNE1XVXhObVUxWXpSQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNU1EZzJPVFU0TWprM09BPT18MDkzYTExOTFlNjU0NDE2MDlmZWIwOGRmMWZkMzI2OWJ8ZjIxZTU1Y2RhYzk5NDgyZTg4NTgxYTNmMjNlMDBlYjE%3D&amp;sdata=OWN5WUkvSzdOdGFWam0remRlbVlIS0srVWFIYUw1T3BzTEgzdkFSRUtWRT0%3D&amp;ovuser=50635641-caed-4bd9-9636-ef06f52b9199%2CAprendizti2%40tranes.com.co&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtV2ViIiwiQXBwVmVyc2lvbiI6IjE0MTUvMjYxMDAyMTIwMTgiLCJIYXNGZWRlcmF0ZWRVc2VyIjpmYWxzZX0%3D" target="_blank" rel="noopener" class="feature-card feature-card-with-text" title="Solicitud permisos laborales" aria-label="Banner de solicitud de permisos laborales">
-        <img src="assets/bg_tramites.png" class="card-bg-img-absolute" alt="Solicitud permisos laborales" width="1200" height="630" />
-        <div class="card-overlay-mimic">
-          <div class="card-icon-mimic"><span class="material-symbols-outlined" aria-hidden="true">assignment</span></div>
-          <div class="card-text-mimic">
-              <h3>Solicitud permisos laborales</h3>
-          </div>
-          <div class="banner-btn-mimic">Solicitar permiso laboral</div>
-        </div>
-      </a>
-
-      <a href="#sgi" class="feature-card feature-card-with-text" id="sgi" title="Sistema de Gestión Integrado (SGI)" aria-label="Banner del Sistema de Gestión Integrado">
-        <img src="assets/bg_sgi.png" class="card-bg-img-absolute" alt="Sistema de Gestión Integrado (SGI)" width="1200" height="630" />
-        <div class="card-overlay-mimic">
-          <div class="card-icon-mimic"><span class="material-symbols-outlined" aria-hidden="true">verified</span></div>
-          <div class="card-text-mimic">
-              <h3>Sistema de Gestión (SGI)</h3>
-          </div>
-          <div class="banner-btn-mimic">Ver SGI</div>
-        </div>
-      </a>
-    </section>
-
-    <!-- LAYOUT PRINCIPAL (COMUNICACIONES, ECOSISTEMA DIGITAL Y WIDGETS) -->
-    <section class="main-content-layout">
-      <!-- COMUNICACIONES INTERNAS -->
-      <div class="col-comunicaciones" id="comunicaciones">
-        <div class="section-header">
-          <div class="header-title">
-            <span class="material-symbols-outlined orange-icon" aria-hidden="true">campaign</span>
-            <h2>Comunicaciones</h2>
-          </div>
-        </div>
-        
-        <div class="news-list">
-          <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news_horario_nuevo.jpg');" role="img" aria-label="Nuevo horario laboral" loading="lazy"></div>
-            <div class="news-info">
-              <span class="tag tag-red">Comunicado</span>
-              <h3>Nuevo horario laboral: 8:30 a.m. a 6:00 p.m.</h3>
-              <p>Informamos a todos los colaboradores que a partir de la próxima semana nuestro horario de oficina será actualizado para todos los equipos.</p>
-              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> 24 sep 2026</small>
-            </div>
-          </article>
-          <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news_amor_amistad.jpg');" role="img" aria-label="Celebración de Amor y Amistad" loading="lazy"></div>
-            <div class="news-info">
-              <span class="tag tag-orange">Cultura Tranes</span>
-              <h3>Celebración de Amor y Amistad</h3>
-              <p>Acompáñanos este viernes a compartir, jugar y celebrar juntos una jornada especial del Día de Amor y Amistad.</p>
-              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> 20 sep 2026</small>
-            </div>
-          </article>
-          <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news_salud_mental.jpg');" role="img" aria-label="Salud mental y compañerismo" loading="lazy"></div>
-            <div class="news-info">
-              <span class="tag tag-yellow">SGI / SST</span>
-              <h3>Salud mental y compañerismo</h3>
-              <p>Fomentamos espacios seguros para cuidar nuestra salud mental, hablar abiertamente y apoyarnos mutuamente en nuestro día a día.</p>
-              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> 15 sep 2026</small>
-            </div>
-          </article>
-          <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news_vestimenta.jpg');" role="img" aria-label="Código de vestimenta" loading="lazy"></div>
-            <div class="news-info">
-              <span class="tag tag-blue">Noticias</span>
-              <h3>Actualización código de vestimenta</h3>
-              <p>Conoce las nuevas pautas de nuestro código de vestimenta "Business Casual" para mayor comodidad y profesionalismo en la oficina.</p>
-              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> 10 sep 2026</small>
-            </div>
-          </article>
-        </div>
+    <!-- 1. BANNER PRINCIPAL (HERO CON ESTRUCTURA EXACTA A TI) -->
+    <section class="pub-hero" aria-labelledby="hero-title">
+      <div class="pub-hero-media">
+        <img src="assets/hero-publicidad.jpg" alt="Flota de vehículos TRANES en carretera" width="1972" height="720" fetchpriority="high" />
+        <span class="pub-hero-scrim" aria-hidden="true"></span>
       </div>
 
-      <!-- MÓDULO CENTRAL: ECOSISTEMA DIGITAL & NUESTRAS ÁREAS -->
-      <div class="col-center" id="ecosistema">
-        <div class="areas-container" id="areas">
-          <div class="section-header">
-            <div class="header-title">
-              <span class="material-symbols-outlined orange-icon" aria-hidden="true">hub</span>
-              <h2>Ecosistema Digital TRANES</h2>
-            </div>
-            <a href="#formatos" class="view-all">Centro de Formatos <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
-          </div>
+      <div class="pub-hero-content">
+        <span class="pub-hero-badge" aria-hidden="true">
+          <span class="material-symbols-outlined">campaign</span>
+          <span class="material-symbols-outlined pub-hero-badge-sub">brush</span>
+        </span>
 
-          <div class="area-grid-13">
-            <a class="area-card" id="area-operaciones" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/Forms/AllItems.aspx?d=w69fc63b8a96c5936bd11598d515c6d57&amp;csf=1&amp;web=1&amp;e=qfbnEu&amp;ovuser=50635641%2Dcaed%2D4bd9%2D9636%2Def06f52b9199%2CAprendizti2%40tranes%2Ecom%2Eco&amp;TeamsCID=e3631169%2Deabb%2D42eb%2D8deb%2D8d2508c8ceef&amp;OR=Teams%2DHL&amp;CT=1791396782035&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MDMxNTgyMCIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&amp;CID=e79b42a2%2D108d%2Df000%2D7d4c%2Dbe20db371247&amp;cidOR=SPO&amp;FolderCTID=0x0120009D626C6DF11AB5438265727F0FFD326C&amp;id=%2Fsites%2FIntranet%2FDocumentos%20compartidos%2FOPERACIONES%2FLOGISTICA%20Y%20TRAMITES%202024" target="_blank" rel="noopener" style="--col-accent: #1565c0;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">conveyor_belt</span> Operaciones</div>
-            </a>
-
-            <a class="area-card" id="area-comercial" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/Forms/AllItems.aspx?d=w04b3a7c2f59d42e2a7b603bf8b419037&amp;csf=1&amp;web=1&amp;e=KhSMST&amp;ovuser=50635641%2Dcaed%2D4bd9%2D9636%2Def06f52b9199%2CAprendizti2%40tranes%2Ecom%2Eco&amp;TeamsCID=c59682c3%2D33ba%2D49f8%2D98ec%2D8ddd5d1d101b&amp;OR=Teams%2DHL&amp;CT=1791406014583&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MDMxNTgyMCIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&amp;CID=b5a442a2%2Db0a2%2Df000%2D7d4c%2Db21d87c0c52f&amp;cidOR=SPO&amp;FolderCTID=0x0120009D626C6DF11AB5438265727F0FFD326C&amp;id=%2Fsites%2FIntranet%2FDocumentos%20compartidos%2FCOMERCIAL" target="_blank" rel="noopener" style="--col-accent: #2e7d32;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">handshake</span> Comercial</div>
-            </a>
-
-            <div class="area-card" id="area-gh" style="--col-accent: #f57f17;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">groups</span> Gestión Humana</div>
-              <div class="area-ti-links">
-                <a class="area-ti-go" href="gestion-humana.html" title="Abrir el micrositio de Gestión Humana"><span class="material-symbols-outlined" aria-hidden="true">web</span> Micrositio</a>
-                <a class="area-ti-folder" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/Forms/AllItems.aspx?d=wf2eaa67b1f844e4eba2dae4f08d41323&amp;csf=1&amp;web=1&amp;e=vaGWC0&amp;ovuser=50635641%2Dcaed%2D4bd9%2D9636%2Def06f52b9199%2CAprendizti2%40tranes%2Ecom%2Eco&amp;TeamsCID=5bf9e025%2D524d%2D449c%2D947c%2D02582bf9744f&amp;OR=Teams%2DHL&amp;CT=1791557725346&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MTcxMjIxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&amp;CID=643543a2%2Dc052%2Df000%2Dc4b1%2D7fd9b5bd6ddc&amp;cidOR=SPO&amp;FolderCTID=0x0120009D626C6DF11AB5438265727F0FFD326C&amp;id=%2Fsites%2FIntranet%2FDocumentos%20compartidos%2FGESTI%C3%93N%20HUMANA" target="_blank" rel="noopener" title="Abrir la carpeta de documentos de Gestión Humana en SharePoint"><span class="material-symbols-outlined" aria-hidden="true">folder_open</span> Carpeta</a>
-              </div>
-            </div>
-
-            <a class="area-card" id="area-admon" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/Forms/AllItems.aspx?d=wf2c07b371757443e8c7f8fe1ed202d38&amp;csf=1&amp;web=1&amp;e=WYE6WF&amp;ovuser=50635641%2Dcaed%2D4bd9%2D9636%2Def06f52b9199%2CAprendizti2%40tranes%2Ecom%2Eco&amp;TeamsCID=5b3e606b%2D93b3%2D40b8%2Db46c%2D83f2b498e726&amp;OR=Teams%2DHL&amp;CT=1791557364844&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MTcxMjIxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&amp;CID=0c3543a2%2Dc04f%2Df000%2D7d4c%2Dbcb42031ac53&amp;cidOR=SPO&amp;FolderCTID=0x0120009D626C6DF11AB5438265727F0FFD326C&amp;id=%2Fsites%2FIntranet%2FDocumentos%20compartidos%2FTR%C3%81MITES" target="_blank" rel="noopener" style="--col-accent: #00897b;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">assignment_ind</span> Admon. Servicio</div></a>
-
-            <a class="area-card" id="area-flota" href="https://tranes1.sharepoint.com/:f:/r/sites/Intranet/Documentos%20compartidos/FLOTA%20PROPIA?d=w7da3fb46e50f436a878a8850b0ada885&amp;csf=1&amp;web=1&amp;e=8VM78w&amp;xsdata=MDV8MDJ8fDhkOGMwOWQxZmI1MjQyMTVlZjZjMDhkZjI2MTQwODIxfDUwNjM1NjQxY2FlZDRiZDk5NjM2ZWYwNmY1MmI5MTk5fDB8MHw2MzkyNzE1Mzk1ODc1NDI4OTJ8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T21OaVpqTTVaRGM1TFRKbE1EWXROR0V5TWkwNFl6azRMV0ZpWkdSaFltSmlNREV6WkY5a1lXWmpORFF3WlMwd016Z3pMVFJsWmpZdFlqTm1PQzB5TkRZNE1XVXhObVUxWXpSQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNU1UVTFOekUxTmpnME53PT18ZDg1ZGE1ZDhhNDQwNGJiNDFkYWYwOGRmMjYxNDA4MjF8MzFjNWE1N2U2OTUxNGE0YzhjNzM2NTYxYmZmMjc5ZTQ%3D&amp;sdata=MlcvSnBIeGpMTy9MSUVBVjYrK29ZT0ttd0RuUzJnRGt3Z293U1IvczJxMD0%3D&amp;ovuser=50635641-caed-4bd9-9636-ef06f52b9199%2CAprendizti2%40tranes.com.co&amp;TeamsCID=ed97ee92-ab7b-4ff1-a905-09258cd256c3&amp;OR=Teams-HL&amp;CT=1791557610716&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MTcxMjIxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D" target="_blank" rel="noopener" style="--col-accent: #e65100;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">local_shipping</span> Flota Propia</div></a>
-
-            <a class="area-card" id="area-infraestructura" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/INFRAESTRUCTURA?d=w4f946c033efa4209870d7a5488136c95&amp;csf=1&amp;web=1&amp;e=GJwBhR&amp;ovuser=50635641-caed-4bd9-9636-ef06f52b9199%2cAprendizti2%40tranes.com.co&amp;TeamsCID=da9fcbb5-a2f7-4552-a7db-b5a1e5cfb826&amp;OR=Teams-HL&amp;CT=1791557804019&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MTcxMjIxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3d%3d&amp;CID=773543a2-908a-f000-c4b1-7b93dee6299c&amp;cidOR=SPO" target="_blank" rel="noopener" style="--col-accent: #c62828;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">precision_manufacturing</span> Infraest. & Carga</div></a>
-
-            <a class="area-card" id="area-contabilidad" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/Forms/AllItems.aspx?d=wbde98bdf7e95470faa2c743044d64bf3&amp;csf=1&amp;web=1&amp;e=hhrnVi&amp;ovuser=50635641%2Dcaed%2D4bd9%2D9636%2Def06f52b9199%2CAprendizti2%40tranes%2Ecom%2Eco&amp;TeamsCID=a8f2549a%2D2dfa%2D4a66%2D8928%2Da03db0b2232a&amp;OR=Teams%2DHL&amp;CT=1791406167895&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MDMxNTgyMCIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&amp;CID=daa442a2%2D90fc%2Df000%2D7d4c%2Db0bc0d00c94f&amp;cidOR=SPO&amp;FolderCTID=0x0120009D626C6DF11AB5438265727F0FFD326C&amp;id=%2Fsites%2FIntranet%2FDocumentos%20compartidos%2FCONTABILIDAD" target="_blank" rel="noopener" style="--col-accent: #6a1b9a;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">account_balance</span> Contabilidad</div>
-            </a>
-
-            <a class="area-card" id="area-financiera" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/Forms/AllItems.aspx?d=wafacccf7761444e09f6de248abd61b7a&amp;csf=1&amp;web=1&amp;e=RhozPf&amp;ovuser=50635641%2Dcaed%2D4bd9%2D9636%2Def06f52b9199%2CAprendizti2%40tranes%2Ecom%2Eco&amp;TeamsCID=26a1ac5c%2Dab4f%2D477e%2D9933%2D2275b3a18742&amp;OR=Teams%2DHL&amp;CT=1791557833225&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MTcxMjIxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&amp;CID=7e3543a2%2Dd0a9%2Df000%2D7d4c%2Dbe83dadb215b&amp;cidOR=SPO&amp;FolderCTID=0x0120009D626C6DF11AB5438265727F0FFD326C&amp;id=%2Fsites%2FIntranet%2FDocumentos%20compartidos%2FFINANCIERA" target="_blank" rel="noopener" style="--col-accent: #0277bd;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">payments</span> Financiera</div></a>
-
-            <div class="area-card" id="area-ti" style="--col-accent: #37474f;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">computer</span> TI / Sistemas</div>
-              <div class="area-ti-links">
-                <a class="area-ti-go" href="ti-sistemas.html" title="Abrir el micrositio de TI / Sistemas"><span class="material-symbols-outlined" aria-hidden="true">web</span> Micrositio</a>
-                <a class="area-ti-folder" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/Forms/AllItems.aspx?d=wcb74b119df114ecf91ba1bcb0e72edf7&amp;csf=1&amp;web=1&amp;e=XUKYFr&amp;ovuser=50635641%2Dcaed%2D4bd9%2D9636%2Def06f52b9199%2CAprendizti2%40tranes%2Ecom%2Eco&amp;TeamsCID=498f9764%2D4614%2D4d19%2D858e%2D86454789db9f&amp;OR=Teams%2DHL&amp;CT=1791399932276&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MDMxNTgyMCIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&amp;CID=e89e42a2%2Df09e%2Df000%2D7d4c%2Db787d52e565d&amp;cidOR=SPO&amp;FolderCTID=0x0120009D626C6DF11AB5438265727F0FFD326C&amp;id=%2Fsites%2FIntranet%2FDocumentos%20compartidos%2FTI" target="_blank" rel="noopener" title="Abrir la carpeta de documentos del área TI en SharePoint"><span class="material-symbols-outlined" aria-hidden="true">folder_open</span> Carpeta</a>
-              </div>
-            </div>
-
-            <a class="area-card" id="area-control" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/CONTROL%20INTERNO?d=w5dedbd7e1d65483d8aa7b394ff925e9d&amp;csf=1&amp;web=1&amp;e=IbfcHx&amp;ovuser=50635641-caed-4bd9-9636-ef06f52b9199%2cAprendizti2%40tranes.com.co&amp;TeamsCID=a8916489-c742-4958-a5a2-a7a0f5c30157&amp;OR=Teams-HL&amp;CT=1791557427893&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MTcxMjIxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3d%3d&amp;CID=1b3543a2-10b3-f000-7d4c-b9b1dc1cd13b&amp;cidOR=SPO" target="_blank" rel="noopener" style="--col-accent: #795548;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">fact_check</span> Control Interno</div></a>
-
-            <a class="area-card" id="area-calidad" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/Forms/AllItems.aspx?d=wc7687181e4ca4eab82b5ce8bee0712d8&amp;csf=1&amp;web=1&amp;e=KL5hP1&amp;ovuser=50635641%2Dcaed%2D4bd9%2D9636%2Def06f52b9199%2CAprendizti2%40tranes%2Ecom%2Eco&amp;TeamsCID=209994f4%2Da9b0%2D4789%2Db5f0%2D5f370c59d112&amp;OR=Teams%2DHL&amp;CT=1791557576053&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MTcxMjIxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&amp;CID=3f3543a2%2D10e2%2Df000%2Dc4b1%2D7a4d60c214ed&amp;cidOR=SPO&amp;FolderCTID=0x0120009D626C6DF11AB5438265727F0FFD326C&amp;id=%2Fsites%2FIntranet%2FDocumentos%20compartidos%2FSGI" target="_blank" rel="noopener" style="--col-accent: #ef6c00;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">verified</span> Calidad (SGI)</div></a>
-
-            <a class="area-card" id="area-gerencia" href="https://tranes1.sharepoint.com/sites/Intranet/Documentos%20compartidos/GERENCIA?d=w4e5e8e15a4574abe92a275b95cb60715&amp;csf=1&amp;web=1&amp;e=iQX4uM&amp;ovuser=50635641-caed-4bd9-9636-ef06f52b9199%2cAprendizti2%40tranes.com.co&amp;TeamsCID=00c60435-ca81-4fba-aaf7-8ba5d7c28233&amp;OR=Teams-HL&amp;CT=1791557899825&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA5MTcxMjIxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3d%3d&amp;CID=8e3543a2-70eb-f000-7d4c-bbf96346c596&amp;cidOR=SPO" target="_blank" rel="noopener" style="--col-accent: #d84315;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span> Gerencia</div></a>
-
-            <div class="area-card" id="area-publicidad" style="--col-accent: #ad1457;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">campaign</span> Publicidad & Medios</div>
-              <div class="area-ti-links">
-                <a class="area-ti-go" href="publicidad/index.html" title="Abrir el micrositio de Publicidad &amp; Medios"><span class="material-symbols-outlined" aria-hidden="true">web</span> Micrositio</a>
-                <a class="area-ti-folder" aria-disabled="true" tabindex="-1" title="Enlace a la carpeta de Publicidad pendiente de configurar"><span class="material-symbols-outlined" aria-hidden="true">folder_open</span> Carpeta</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WIDGETS LATERALES DERECHOS -->
-      <div class="col-widgets">
-
-        <div class="widget widget-calendar">
-          <div class="w-icon-title">
-            <span class="material-symbols-outlined orange-icon" aria-hidden="true">calendar_month</span>
-            <h3>Calendario Corporativo</h3>
-          </div>
-          <p>Consulta los eventos y fechas importantes de la empresa</p>
-          <a href="calendario.html" class="view-all">Ver calendario <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        <div class="pub-hero-text">
+          <h1 id="hero-title">Publicidad <span class="pub-hero-conjunction">y</span> <span class="pub-hero-accent">Mercadeo</span></h1>
+          <span class="pub-hero-rule" aria-hidden="true"></span>
+          <ul class="pub-hero-bullets">
+            <li>Marca</li>
+            <li>Diseño</li>
+            <li>Redes</li>
+            <li>Comunicación</li>
+          </ul>
+          <p class="pub-hero-lead">Gestionamos la identidad visual y la comunicación estratégica de TRANES, asegurando que nuestra marca inspire confianza y profesionalismo en cada punto de contacto.</p>
         </div>
       </div>
     </section>
 
-    <!-- CENTRO DE FORMATOS EXTENDIDO CON BUSCADOR INTERACTIVO EN TIEMPO REAL -->
-    <section class="formatos-full-wrapper" id="formatos">
-      <div class="formatos-container formatos-prominente-full">
-        <div class="section-header format-header-with-search">
-          <div class="header-title">
-            <span class="material-symbols-outlined orange-icon" aria-hidden="true">folder_open</span>
-            <h2>Centro de Formatos & Plantillas Oficiales</h2>
-          </div>
-          
-          <div class="fmt-search-box">
-            <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
-            <input type="text" id="fmt-search-input" placeholder="Buscar formato por nombre o área (ej. Vacaciones, ISO)..." aria-label="Buscar formato por nombre o área" />
-          </div>
-
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" class="view-all fmt-cta" target="_blank" rel="noopener">Solicitar un formato <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span></a>
+    <!-- 2. ACCESOS RÁPIDOS (4 CARDS CON ICONO, TEXTO Y FLECHA CIRCULAR) -->
+    <section class="pub-panel" id="accesos" aria-labelledby="accesos-title">
+      <header class="pub-sec-head">
+        <span class="pub-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">bolt</span></span>
+        <div class="pub-sec-titles">
+          <h2 id="accesos-title">Accesos rápidos</h2>
+          <p>Encuentre en este espacio las herramientas y los recursos de mayor uso.</p>
         </div>
-        <p class="subtitle">Formatos y plantillas oficiales de TRANES S.A.S. — haz clic en el formato que necesitas y solicítalo en un solo paso</p>
+        <a class="pub-view-all" href="#guias">Todo en un solo lugar <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </header>
+      <div class="pub-quick-grid" id="quick-grid"></div>
+    </section>
 
-        <div class="fmt-groups">
-          <div class="fmt-group">
-            <div class="fmt-group-label">
-              <span class="material-symbols-outlined" aria-hidden="true">badge</span>
-              <h3>Talento Humano</h3>
-              <span class="fmt-group-count">6 formatos</span>
-            </div>
-            <div class="fmt-flat-grid">
-              <a href="formatos-vacaciones/F-120%20SOLICITUD%20DE%20PERMISOS.pdf" target="_blank" download class="fmt-btn-card" data-sharepoint-id="fmt-permisos" aria-label="Solicitud de Permisos F-120">
-                <span class="material-symbols-outlined" aria-hidden="true">assignment</span>
-                <div class="fmt-info">
-                  <strong>Solicitud de Permisos</strong>
-                  <small>Formato F-120 (PDF oficial)</small>
-                </div>
-              </a>
-              <a href="formatos-vacaciones/Tranes_Medellin.pdf" download class="fmt-btn-card" data-sharepoint-id="fmt-vacaciones" aria-label="Formulario de Vacaciones Tranes">
-                <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
-                <div class="fmt-info">
-                  <strong>Formulario de Vacaciones</strong>
-                  <small>Formato TRANES (Descarga directa)</small>
-                </div>
-              </a>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" class="fmt-btn-card" data-sharepoint-id="fmt-nomina" aria-label="Recibo de Nómina">
-                <span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>
-                <div class="fmt-info">
-                  <strong>Recibo de Nómina</strong>
-                  <small>Solicitar desprendibles</small>
-                </div>
-              </a>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" class="fmt-btn-card" data-sharepoint-id="fmt-cert-laboral" aria-label="Certificado Laboral">
-                <span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>
-                <div class="fmt-info">
-                  <strong>Certificado Laboral</strong>
-                  <small>Radicar solicitud oficial</small>
-                </div>
-              </a>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" class="fmt-btn-card" data-sharepoint-id="fmt-paz-salvo" aria-label="Paz y Salvo">
-                <span class="material-symbols-outlined" aria-hidden="true">task_alt</span>
-                <div class="fmt-info">
-                  <strong>Paz y Salvo</strong>
-                  <small>Solicitar paz y salvo</small>
-                </div>
-              </a>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" class="fmt-btn-card" data-sharepoint-id="fmt-incapacidad" aria-label="Incapacidad Médica">
-                <span class="material-symbols-outlined" aria-hidden="true">medical_services</span>
-                <div class="fmt-info">
-                  <strong>Incapacidad Médica</strong>
-                  <small>Reporte y radicación</small>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="fmt-group">
-            <div class="fmt-group-label">
-              <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
-              <h3>Operaciones &amp; Flota</h3>
-              <span class="fmt-group-count">2 formatos</span>
-            </div>
-            <div class="fmt-flat-grid">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" class="fmt-btn-card" data-sharepoint-id="fmt-flota-cambio" aria-label="Cambio de Flota">
-                <span class="material-symbols-outlined" aria-hidden="true">rv_hookup</span>
-                <div class="fmt-info">
-                  <strong>Cambio de Flota</strong>
-                  <small>Solicitud y mantenimiento</small>
-                </div>
-              </a>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" class="fmt-btn-card" data-sharepoint-id="fmt-flota-reembolso" aria-label="Reembolso de Flota">
-                <span class="material-symbols-outlined" aria-hidden="true">currency_exchange</span>
-                <div class="fmt-info">
-                  <strong>Reembolso de Flota</strong>
-                  <small>Legalización y gastos</small>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="fmt-group">
-            <div class="fmt-group-label">
-              <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
-              <h3>Calidad, Cumplimiento &amp; Jurídico</h3>
-              <span class="fmt-group-count">3 formatos</span>
-            </div>
-            <div class="fmt-flat-grid">
-              <button class="fmt-btn-card" data-sharepoint-id="fmt-sgi-calidad" aria-label="Formatos SGI e ISO">
-                <span class="material-symbols-outlined" aria-hidden="true">security</span>
-                <div class="fmt-info">
-                  <strong>Formatos SGI &amp; ISO</strong>
-                  <small>Procedimientos de Calidad</small>
-                </div>
-              </button>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" class="fmt-btn-card" data-sharepoint-id="fmt-planes" aria-label="Formulario de Planes">
-                <span class="material-symbols-outlined" aria-hidden="true">description</span>
-                <div class="fmt-info">
-                  <strong>Formulario de Planes</strong>
-                  <small>Planes de contingencia</small>
-                </div>
-              </a>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header" target="_blank" rel="noopener" class="fmt-btn-card" data-sharepoint-id="fmt-juridico" aria-label="Solicitud Jurídica">
-                <span class="material-symbols-outlined" aria-hidden="true">gavel</span>
-                <div class="fmt-info">
-                  <strong>Solicitud Jurídica</strong>
-                  <small>Revisión y radicación</small>
-                </div>
-              </a>
-            </div>
-          </div>
+    <!-- 3. GUÍAS Y TUTORIALES (4 CARDS EXACTAS AL FORMATO DE TI) -->
+    <section class="pub-panel pub-guides" id="guias" aria-labelledby="guias-title">
+      <header class="pub-sec-head">
+        <span class="pub-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">menu_book</span></span>
+        <div class="pub-sec-titles">
+          <h2 id="guias-title">Guías y tutoriales</h2>
+          <p>Consulte guías prácticas y recursos para sus solicitudes de comunicación.</p>
         </div>
+        <a class="pub-view-all" href="#politicas">Ver políticas <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </header>
+      <div class="pub-guide-grid" id="guide-grid"></div>
+    </section>
+
+    <!-- 4. ¿QUÉ HACE EL ÁREA DE PUBLICIDAD? (GRID 3x2) -->
+    <section class="pub-panel" id="servicios" aria-labelledby="servicios-title">
+      <header class="pub-sec-head">
+        <span class="pub-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">brush</span></span>
+        <div class="pub-sec-titles">
+          <h2 id="servicios-title">¿Qué hace el área de Publicidad?</h2>
+          <p>Nuestros servicios y responsabilidades.</p>
+        </div>
+      </header>
+      <div class="pub-services-grid" id="services-grid"></div>
+      <p class="pub-panel-foot">
+        <span class="material-symbols-outlined" aria-hidden="true">help</span>
+        ¿Requiere una pieza visual o de comunicación específica? Cuéntenos su necesidad y la desarrollaremos junto con usted.
+        <a href="https://forms.cloud.microsoft/r/9v1tzA7sRX?origin=lprLink" target="_blank" rel="noopener">Solicitar pieza publicitaria <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </p>
+    </section>
+
+    <!-- 5. EQUIPO DE PUBLICIDAD Y MERCADEO -->
+    <section class="pub-panel" id="equipo" aria-labelledby="equipo-title">
+      <header class="pub-sec-head">
+        <span class="pub-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">groups</span></span>
+        <div class="pub-sec-titles">
+          <h2 id="equipo-title">Equipo de Publicidad y Mercadeo</h2>
+          <p>Conozca al equipo responsable de la imagen y la comunicación de TRANES.</p>
+        </div>
+      </header>
+      <div class="pub-team-grid" id="team-grid"></div>
+    </section>
+
+    <!-- 6. PROCESO CREATIVO (BANNER AZUL MARINO OSCURO CON FONDO TRANES) -->
+    <section class="pub-process" id="proceso" aria-labelledby="proceso-title">
+      <div class="pub-process-bg" aria-hidden="true">
+        <img src="assets/proceso-creativo.svg" alt="" width="1600" height="560" loading="lazy" />
+      </div>
+
+      <div class="pub-process-inner">
+        <header class="pub-process-head">
+          <div class="pub-process-title">
+            <span class="pub-process-icon" aria-hidden="true"><span class="material-symbols-outlined">auto_awesome</span></span>
+            <div>
+              <h2 id="proceso-title">Nuestro proceso creativo</h2>
+              <p>Desde el brief inicial hasta la publicación final.</p>
+            </div>
+          </div>
+
+          <div class="pub-process-sign">
+            <p class="pub-script">¡Juntos proyectamos lo mejor de TRANES!</p>
+            <span class="ti-logo-clip ti-logo-clip--sm">
+              <img src="assets/logo-tranes-oficial.png" alt="TRANES" width="396" height="170" loading="lazy" />
+            </span>
+          </div>
+        </header>
+
+        <ol class="pub-steps" id="process-steps"></ol>
       </div>
     </section>
 
-    <!-- BANNER DE APLICACIONES CORPORATIVAS (ADAPTADO DEL CUADRO TRANSVERSAL) -->
-    <section class="governance-bar-section">
-      <div class="governance-container">
-        <div class="gov-left">
-          <div class="gov-icon" aria-hidden="true">
-            <span class="material-symbols-outlined">apps</span>
-          </div>
-          <div class="gov-info">
-            <h3>Aplicaciones Corporativas</h3>
-            <p>Acceso directo a las plataformas de gestión de TRANES S.A.S.</p>
-          </div>
+    <!-- 7. CENTRO DE POLÍTICAS (4 TARJETAS CON BORDE SUAVE) -->
+    <section class="pub-panel" id="politicas" aria-labelledby="politicas-title">
+      <header class="pub-sec-head">
+        <span class="pub-sec-icon" aria-hidden="true"><span class="material-symbols-outlined">policy</span></span>
+        <div class="pub-sec-titles">
+          <h2 id="politicas-title">Centro de directrices y políticas</h2>
+          <p>Lineamientos institucionales y normativa de marca.</p>
         </div>
-        <div class="gov-apps-right">
-          <a href="https://librasys.com.co/" target="_blank" rel="noopener" class="gov-app-link" title="LIBRASYS" aria-label="Abrir LIBRASYS"><img src="assets/logo_librasys.png" alt="Librasys"></a>
-          <a href="https://tranes.enruta.cloudappsaigroup.com/login" target="_blank" rel="noopener" class="gov-app-link" title="ENRUTA" aria-label="Abrir ENRUTA"><img src="assets/logo_enruta.png" alt="Enruta"></a>
-          <a href="https://gt7siaroco.com/control/index.php" target="_blank" rel="noopener" class="gov-app-link" title="SIAROCO" aria-label="Abrir SIAROCO"><img src="assets/logo_siaroco.jpg" alt="Siaroco"></a>
-          <a href="https://www.siesa.com/" target="_blank" rel="noopener" class="gov-app-link" title="SIESA" aria-label="Abrir SIESA"><img src="assets/logo_siesa.jpg" alt="Siesa"></a>
-        </div>
-      </div>
+      </header>
+      <div class="pub-policies-grid" id="policies-grid"></div>
     </section>
+
   </main>
 
-  <!-- PIE DE PÁGINA -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-inner">
-      <div class="footer-brand-section">
-        <a class="brand footer-brand" href="#inicio" aria-label="TRÁNES - Volver al inicio">
-          <img src="assets/logo-tranes-oficial.png" alt="TRANES" class="brand-logo-img-footer" />
-        </a>
-        <p class="footer-copy-text">Intranet Corporativa & Ecosistema Digital | TRANES S.A.S.</p>
-      </div>
-
-      <div class="footer-contact">
-        <a class="f-item" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+98+%23+70-91%2C+Bogot%C3%A1%2C+Colombia" target="_blank" rel="noopener" title="Ver en Google Maps - Bogotá">
-          <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
-          <div><strong>Calle 98 # 70-91</strong><small>Bogotá, Colombia</small></div>
-        </a>
-        <a class="f-item" href="https://www.google.com/maps/search/?api=1&amp;query=Cra+35A+No.+15B+35%2C+Medell%C3%ADn%2C+Colombia" target="_blank" rel="noopener" title="Ver en Google Maps - Medellín">
-          <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
-          <div><strong>Cra 35A No. 15B 35</strong><small>Sede Medellín, Colombia</small></div>
-        </a>
-        <a class="f-item" href="https://www.google.com/maps/search/?api=1&amp;query=Av+30+de+Agosto+No.+32-21%2C+Pereira%2C+Colombia" target="_blank" rel="noopener" title="Ver en Google Maps - Pereira">
-          <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
-          <div><strong>Av 30 de Agosto No. 32-21</strong><small>Sede Pereira, Colombia</small></div>
-        </a>
-        <div class="f-item">
-          <span class="material-symbols-outlined" aria-hidden="true">call</span>
-          <div><strong>322 743 3387 / (604 4483197)</strong><small>PBX Línea nacional</small></div>
+  <!-- =========================================================
+       PIE DE PÁGINA (IDÉNTICO A TI / SISTEMAS)
+       ========================================================= -->
+  <footer class="ti-footer" role="contentinfo">
+    <div class="ti-footer-inner">
+      <div class="ti-footer-brand">
+        <span class="ti-logo-clip">
+          <img src="assets/logo-tranes-oficial.png" alt="TRANES" width="396" height="170" loading="lazy" />
+        </span>
+        <div>
+          <p class="ti-footer-copy">Intranet Corporativa &amp; Ecosistema Digital | TRANES S.A.S.</p>
+          <nav class="ti-breadcrumb" aria-label="Ubicación">
+            <a href="../index.html">Intranet Corporativa</a>
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+            <span>Nuestras Áreas</span>
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+            <strong class="current">Publicidad y Mercadeo</strong>
+          </nav>
         </div>
       </div>
-
-      <div class="footer-social">
-        <p class="social-title">Redes Sociales Oficiales</p>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/company/transportes-tranes/?originalSubdomain=co" target="_blank" rel="noopener" title="LinkedIn TRANES" class="social-btn" aria-label="LinkedIn TRANES">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.47 1.47 0 1 0 0 2.94 1.47 1.47 0 0 0 0-2.94Z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/transportestranes" target="_blank" rel="noopener" title="Facebook TRANES" class="social-btn" aria-label="Facebook TRANES">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/transportestranes/" target="_blank" rel="noopener" title="Instagram TRANES" class="social-btn" aria-label="Instagram TRANES">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.8 3.8 0 0 0 3.8 7.8v8.4A3.8 3.8 0 0 0 7.6 20h8.8a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8a1.25 1.25 0 0 1-1.25-1.25c0-.69.56-1.25 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@TransportesTranes" target="_blank" rel="noopener" title="YouTube TRANES" class="social-btn" aria-label="YouTube TRANES">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73Z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="footer-script" aria-hidden="true">
-        <span>Juntos</span>
-        <span class="hl">llegamos</span>
-        <span>más lejos</span>
+      <nav class="ti-footer-links" aria-label="Accesos rápidos a otras áreas">
+        <a href="../ti-sistemas.html">TI / Sistemas</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="../gestion-humana.html">Gestión Humana</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="../index.html">Inicio</a>
+      </nav>
+      <div class="ti-footer-right">
+        <a class="ti-footer-help" href="https://forms.cloud.microsoft/r/9v1tzA7sRX?origin=lprLink" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined" aria-hidden="true">palette</span> Solicitar pieza publicitaria
+        </a>
+        <span class="ti-footer-current">
+          <span class="material-symbols-outlined" aria-hidden="true">campaign</span> Publicidad
+        </span>
       </div>
     </div>
   </footer>
 
-  <!-- BARRA DE ACCESIBILIDAD -->
-  <div class="a11y-toolbar" role="toolbar" aria-label="Herramientas de accesibilidad">
-    <button class="a11y-toggle" aria-label="Abrir herramientas de accesibilidad" aria-expanded="false">
-      <span class="material-symbols-outlined" aria-hidden="true">accessibility_new</span>
-    </button>
-    <div class="a11y-panel" role="group" aria-label="Opciones de accesibilidad">
-      <p class="a11y-panel-title">Accesibilidad</p>
-      <button class="a11y-btn" data-action="contrast" aria-label="Alternar modo alto contraste">
-        <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
-        <span>Alto Contraste</span>
-      </button>
-      <button class="a11y-btn" data-action="fontsize-increase" aria-label="Aumentar tamaño del texto">
-        <span class="material-symbols-outlined" aria-hidden="true">text_increase</span>
-        <span>Aumentar Texto</span>
-      </button>
-      <button class="a11y-btn" data-action="fontsize-decrease" aria-label="Reducir tamaño del texto">
-        <span class="material-symbols-outlined" aria-hidden="true">text_decrease</span>
-        <span>Reducir Texto</span>
-      </button>
-      <button class="a11y-btn" data-action="reset" aria-label="Restablecer configuración de accesibilidad">
-        <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
-        <span>Restablecer</span>
-      </button>
+  <!-- MODAL DE GUÍAS -->
+  <div class="pub-modal-overlay" id="guide-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="pub-dialog">
+      <div class="pub-dialog-media">
+        <img id="modal-img" src="" alt="" />
+        <button type="button" class="pub-dialog-close" onclick="pubCloseGuide()" aria-label="Cerrar guía">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="pub-dialog-body">
+        <span class="pub-tag" id="modal-tag"></span>
+        <h2 id="modal-title"></h2>
+        <p class="pub-dialog-desc" id="modal-desc"></p>
+        <ol class="pub-dialog-steps" id="modal-steps"></ol>
+        <div class="pub-dialog-actions" id="modal-actions"></div>
+      </div>
     </div>
   </div>
 
-  <script src="app.js?v=7" defer></script>
+  <script src="publicidad.js?v=13"></script>
 </body>
 </html>

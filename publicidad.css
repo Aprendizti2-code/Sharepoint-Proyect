@@ -1,0 +1,1146 @@
+/* ==========================================================================
+   TRANES S.A.S. — Micrositio «Publicidad y Mercadeo»
+   Estilos exactos y 100% consistentes con TI / Sistemas y Gestión Humana
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. TOKENS LOCALES DEL MICROSITIO
+   -------------------------------------------------------------------------- */
+.pub-page {
+  --ti-ink: #14181f;
+  --ti-muted: #67707c;
+  --ti-line: #e4e9f0;
+  --ti-soft: #f7f9fc;
+  --ti-dark: #12161b;
+  --ti-night: #0f141b;
+  --ti-navy: #0e1a2b;
+  --ti-radius: 16px;
+  --ti-radius-md: 12px;
+  --ti-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+  --ti-shadow-hover: 0 12px 26px rgba(16, 24, 40, 0.12);
+
+  background-color: var(--page-bg);
+}
+
+html,
+body.pub-page {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.pub-page h1,
+.pub-page h2,
+.pub-page h3 {
+  color: var(--ti-ink);
+  line-height: 1.25;
+}
+
+.pub-page .material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  line-height: 1;
+}
+
+.pub-page [hidden] { display: none !important; }
+
+/* --------------------------------------------------------------------------
+   1. ESTRUCTURA GENERAL
+   -------------------------------------------------------------------------- */
+.pub-main {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 16px var(--side-padding) 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pub-panel {
+  background: var(--white);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius);
+  box-shadow: var(--ti-shadow);
+  padding: 22px 24px;
+}
+
+/* Encabezados de sección estándar */
+.pub-sec-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.pub-sec-icon {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--orange-light);
+  color: var(--orange);
+}
+.pub-sec-icon .material-symbols-outlined { font-size: 1.35rem; }
+
+.pub-sec-titles { flex: 1 1 auto; min-width: 0; }
+.pub-sec-titles h2 { font-size: 1.16rem; font-weight: 800; letter-spacing: -0.2px; }
+.pub-sec-titles p { font-size: 0.85rem; color: var(--ti-muted); margin-top: 3px; }
+
+.pub-view-all {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--orange);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding-top: 6px;
+  transition: color 0.18s ease;
+  white-space: nowrap;
+}
+.pub-view-all:hover { color: var(--orange-hover); text-decoration: underline; }
+.pub-view-all .material-symbols-outlined { font-size: 1.1rem; }
+
+/* --------------------------------------------------------------------------
+   2. LOGO TRANES OFICIAL SOBRE PLACA BLANCA
+   -------------------------------------------------------------------------- */
+.ti-logo-clip {
+  position: relative;
+  display: block;
+  width: 186px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.ti-logo-clip img {
+  position: absolute;
+  width: 211px;
+  height: 91px;
+  max-width: none;
+  left: -13px;
+  top: -21px;
+}
+.ti-logo-clip--sm { width: 152px; height: 33px; }
+.ti-logo-clip--sm img { width: 172px; height: 74px; left: -11px; top: -17px; }
+
+/* --------------------------------------------------------------------------
+   3. NAVEGACIÓN SUPERIOR OSCURA (IDÉNTICA A TI Y GH)
+   -------------------------------------------------------------------------- */
+.ti-nav {
+  position: sticky;
+  top: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 9px var(--side-padding);
+  background: linear-gradient(180deg, #171c23 0%, var(--ti-dark) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+}
+
+.ti-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.ti-nav .navlinks {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ti-nav .navlinks > a,
+.ti-nav .dropdown-toggle {
+  background: transparent;
+  border: 0;
+  color: #e9edf2;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.ti-nav .navlinks > a .material-symbols-outlined { font-size: 1.1rem; color: var(--orange); }
+.ti-nav .navlinks > a:hover,
+.ti-nav .dropdown-toggle:hover { color: var(--orange); }
+.ti-nav .navlinks > a.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+.ti-nav .dropdown-toggle .material-symbols-outlined { font-size: 1rem; color: inherit; }
+
+/* Menús Desplegables */
+.dropdown { position: relative; }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #ffffff;
+  border: 1px solid var(--ti-line);
+  border-radius: 8px;
+  box-shadow: 0 18px 40px rgba(10, 15, 22, 0.28);
+  min-width: 250px;
+  padding: 8px 0;
+  z-index: 350;
+  flex-direction: column;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: flex;
+}
+.dropdown-menu a {
+  color: var(--ti-ink);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 9px 18px;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dropdown-menu a:hover {
+  background: var(--orange-light);
+  color: var(--orange);
+}
+.dropdown-menu a.current,
+.dropdown-menu a[aria-current="page"] {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.ti-nav .navright {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.ti-nav .nav-btn-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 102, 0, 0.12);
+  border: 1px solid rgba(255, 102, 0, 0.6);
+  color: var(--orange) !important;
+  border-radius: 22px;
+  padding: 7px 16px;
+  font-size: 0.85rem;
+  font-weight: 700 !important;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+  white-space: nowrap;
+}
+.ti-nav .nav-btn-highlight .material-symbols-outlined { font-size: 1.1rem; }
+.ti-nav .nav-btn-highlight:hover {
+  background: var(--orange);
+  color: #ffffff !important;
+  border-color: var(--orange);
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.35);
+}
+
+.ti-nav .mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: #fff;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   4. BANNER PRINCIPAL (HERO) — ESTILO IDÉNTICO A TI Y GH
+   -------------------------------------------------------------------------- */
+.pub-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--ti-radius);
+  background: var(--ti-night);
+  color: #fff;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--ti-shadow);
+}
+
+.pub-hero-media { position: absolute; inset: 0; z-index: -2; }
+.pub-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+.pub-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 20, 27, 0.95) 0%,
+      rgba(15, 20, 27, 0.82) 48%,
+      rgba(15, 20, 27, 0.35) 75%,
+      transparent 100%
+    );
+}
+
+.pub-hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 34px;
+  padding: 46px 48px;
+  width: 100%;
+  min-width: 0;
+}
+
+.pub-hero-badge {
+  position: relative;
+  flex: 0 0 auto;
+  width: 96px;
+  height: 96px;
+  border: 3px solid var(--orange);
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  color: var(--orange);
+  background: rgba(255, 102, 0, 0.08);
+  margin-top: 6px;
+}
+.pub-hero-badge > .material-symbols-outlined { font-size: 3rem; font-variation-settings: 'FILL' 0, 'wght' 300; }
+.pub-hero-badge-sub {
+  position: absolute;
+  right: -14px;
+  bottom: -14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff !important;
+  font-size: 1.4rem !important;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.4);
+}
+
+.pub-hero-text { max-width: 760px; min-width: 0; }
+.pub-hero-text h1 {
+  color: #fff;
+  font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.05;
+}
+.pub-hero-conjunction { color: var(--orange); font-weight: 700; margin: 0 4px; }
+.pub-hero-accent { color: var(--orange); }
+
+.pub-hero-rule {
+  display: block;
+  width: 92px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--orange);
+  margin: 16px 0 14px;
+}
+
+.pub-hero-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 22px;
+  list-style: none;
+  margin-top: 14px;
+}
+.pub-hero-bullets li {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #eef1f5;
+  padding-left: 16px;
+}
+.pub-hero-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.pub-hero-bullets li:first-child { padding-left: 0; }
+.pub-hero-bullets li:first-child::before { display: none; }
+
+.pub-hero-lead {
+  margin-top: 22px;
+  max-width: 580px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d7dde5;
+}
+
+/* --------------------------------------------------------------------------
+   5. ACCESOS RÁPIDOS (TI-QUICK STYLE)
+   -------------------------------------------------------------------------- */
+.pub-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pub-quick-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 92px;
+  padding: 14px 14px 14px 16px;
+  background: var(--white);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+  text-align: left;
+  text-decoration: none;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.pub-quick-card:hover {
+  border-color: var(--orange-border);
+  box-shadow: var(--ti-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.pub-quick-icon {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--qi, var(--orange));
+  box-shadow: 0 6px 14px rgba(16, 24, 40, 0.16);
+}
+.pub-quick-icon .material-symbols-outlined { font-size: 1.55rem; }
+
+.pub-quick-text { min-width: 0; flex: 1 1 auto; }
+.pub-quick-text h3 { font-size: 0.92rem; font-weight: 700; color: var(--ti-ink); }
+.pub-quick-text p {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ti-muted);
+  margin-top: 3px;
+}
+
+.pub-arrow {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--orange-light);
+  color: var(--orange);
+  border: 1px solid var(--orange-border);
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.pub-arrow .material-symbols-outlined { font-size: 1.05rem; }
+.pub-quick-card:hover .pub-arrow {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   6. GUÍAS Y TUTORIALES (TI-GUIDE STYLE)
+   -------------------------------------------------------------------------- */
+.pub-guides {
+  position: relative;
+}
+
+.pub-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pub-guide-card { min-width: 0; }
+
+.pub-guide-open {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background: var(--white);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.pub-guide-open:hover {
+  border-color: var(--orange-border);
+  box-shadow: var(--ti-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.pub-guide-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--ti-soft);
+}
+.pub-guide-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.pub-guide-open:hover .pub-guide-media img { transform: scale(1.06); }
+
+.pub-guide-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 12px 4px 4px;
+}
+
+.pub-tag {
+  align-self: flex-start;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  color: #fff;
+  background: var(--tag-color, var(--orange));
+  border-radius: 5px;
+  padding: 4px 9px;
+  text-transform: uppercase;
+}
+
+.pub-guide-body h3 {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--ti-ink);
+  margin-top: 10px;
+  line-height: 1.35;
+}
+
+.pub-guide-body p {
+  font-size: 0.79rem;
+  line-height: 1.5;
+  color: var(--ti-muted);
+  margin-top: 6px;
+}
+
+.pub-guide-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--orange);
+}
+.pub-guide-cta .material-symbols-outlined { font-size: 1rem; transition: transform 0.18s ease; }
+.pub-guide-open:hover .pub-guide-cta .material-symbols-outlined { transform: translateX(4px); }
+
+/* --------------------------------------------------------------------------
+   7. SERVICIOS — «¿Qué hace el área de Publicidad y Mercadeo?»
+   -------------------------------------------------------------------------- */
+.pub-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pub-service {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: var(--ti-soft);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+.pub-service:hover {
+  background: #fff;
+  border-color: var(--orange-border);
+  transform: translateY(-3px);
+  box-shadow: var(--ti-shadow);
+}
+
+.pub-service-icon {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--sa, var(--orange));
+  color: #fff;
+}
+.pub-service-icon .material-symbols-outlined { font-size: 1.4rem; }
+.pub-service h3 { font-size: 0.92rem; font-weight: 700; color: var(--ti-ink); }
+.pub-service p { font-size: 0.8rem; color: var(--ti-muted); line-height: 1.5; margin-top: 4px; }
+
+.pub-panel-foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--ti-line);
+  font-size: 0.82rem;
+  color: var(--ti-muted);
+}
+.pub-panel-foot a {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--orange);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+.pub-panel-foot a:hover { text-decoration: underline; }
+.pub-panel-foot .material-symbols-outlined { font-size: 1.1rem; color: var(--orange); }
+
+/* --------------------------------------------------------------------------
+   8. EQUIPO CREATIVO (TI-MEMBER STYLE EXACTO)
+   -------------------------------------------------------------------------- */
+.pub-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.pub-member {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+  overflow: hidden;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.pub-member:hover {
+  border-color: var(--orange-border);
+  box-shadow: var(--ti-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.pub-member-photo {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  background: var(--ti-soft);
+  overflow: hidden;
+}
+.pub-member-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+}
+
+.pub-member-initials {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #1e232a 0%, #37474f 100%);
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.pub-member-demo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #ffd9ae;
+  background: rgba(15, 20, 27, 0.85);
+  border: 1px solid rgba(255, 214, 150, 0.55);
+  border-radius: 20px;
+  padding: 4px 9px;
+}
+
+.pub-member-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 14px 16px 16px;
+}
+.pub-member-name { font-size: 1rem; font-weight: 800; color: var(--ti-ink); }
+.pub-member-role { font-size: 0.8rem; color: var(--ti-muted); margin-top: 2px; }
+.pub-member-tag {
+  align-self: flex-start;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--tag-color, var(--orange));
+  border-radius: 5px;
+  padding: 4px 10px;
+}
+.pub-member-summary {
+  font-size: 0.79rem;
+  line-height: 1.5;
+  color: var(--ti-muted);
+  margin-top: 10px;
+}
+.pub-member-specialty {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ti-ink);
+}
+.pub-member-specialty .material-symbols-outlined { font-size: 1rem; color: var(--orange); }
+
+.pub-member-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--ti-line);
+}
+.pub-member-contact a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.76rem;
+  color: var(--ti-ink);
+  text-decoration: none;
+  word-break: break-all;
+}
+.pub-member-contact a:hover { color: var(--orange); text-decoration: underline; }
+.pub-member-contact .material-symbols-outlined { font-size: 1rem; color: var(--orange); flex: 0 0 auto; }
+
+.pub-member-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--orange);
+  border-radius: 22px;
+  background: transparent;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pub-member-action:hover { background: var(--orange); color: #fff; }
+.pub-member-action .material-symbols-outlined { font-size: 1rem; }
+
+/* --------------------------------------------------------------------------
+   9. PROCESO CREATIVO (TI-PROCESS STYLE EXACTO)
+   -------------------------------------------------------------------------- */
+.pub-process {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--ti-radius);
+  background: var(--ti-navy);
+  color: #fff;
+  box-shadow: var(--ti-shadow);
+}
+.pub-process-bg { position: absolute; inset: 0; z-index: -1; }
+.pub-process-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.pub-process-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    var(--ti-navy) 30%,
+    rgba(14, 26, 43, 0.9) 60%,
+    rgba(14, 26, 43, 0.72) 100%
+  );
+}
+.pub-process-inner { position: relative; z-index: 1; padding: 26px 30px 30px; }
+
+.pub-process-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.pub-process-title { display: flex; align-items: center; gap: 14px; }
+.pub-process-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 102, 0, 0.16);
+  color: var(--orange);
+}
+.pub-process-icon .material-symbols-outlined { font-size: 1.5rem; }
+.pub-process-title h2 { color: #fff; font-size: 1.2rem; font-weight: 800; }
+.pub-process-title p { color: #b9c3d1; font-size: 0.86rem; margin-top: 4px; }
+
+.pub-process-sign { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.pub-script {
+  font-family: 'Caveat', cursive;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--orange);
+  text-align: right;
+  max-width: 250px;
+  transform: rotate(-3deg);
+}
+
+.pub-steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 28px;
+}
+.pub-step { position: relative; padding-right: 26px; }
+.pub-step::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 16px;
+  width: 24px;
+  height: 12px;
+  background:
+    linear-gradient(var(--orange), var(--orange)) left center / 16px 2px no-repeat,
+    linear-gradient(45deg, transparent 45%, var(--orange) 45%, var(--orange) 55%, transparent 55%) right top / 9px 9px no-repeat,
+    linear-gradient(-45deg, transparent 45%, var(--orange) 45%, var(--orange) 55%, transparent 55%) right bottom / 9px 9px no-repeat;
+  opacity: 0.9;
+}
+.pub-step:last-child { padding-right: 0; }
+.pub-step:last-child::after { display: none; }
+
+.pub-step-top { display: flex; align-items: center; gap: 12px; }
+.pub-step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--orange);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(255, 102, 0, 0.35);
+}
+.pub-step-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+.pub-step-icon .material-symbols-outlined { font-size: 1.25rem; }
+.pub-step h3 { color: #fff; font-size: 0.94rem; font-weight: 700; margin-top: 14px; }
+.pub-step p { color: #b9c3d1; font-size: 0.8rem; line-height: 1.55; margin-top: 6px; }
+
+/* --------------------------------------------------------------------------
+   10. POLÍTICAS DE MARCA (TI-POLICIES STYLE EXACTO)
+   -------------------------------------------------------------------------- */
+.pub-policies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pub-policy-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--ti-soft);
+  border: 1px solid var(--ti-line);
+  border-radius: var(--ti-radius-md);
+}
+.pub-policy-item > .material-symbols-outlined { color: var(--orange); font-size: 1.5rem; }
+.pub-policy-item h3 { font-size: 0.86rem; font-weight: 700; color: var(--ti-ink); }
+.pub-policy-item p { font-size: 0.8rem; color: var(--ti-muted); line-height: 1.5; }
+.pub-policy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+}
+.pub-policy-link:hover { text-decoration: underline; }
+.pub-policy-link .material-symbols-outlined { font-size: 1rem; }
+
+/* --------------------------------------------------------------------------
+   11. PIE DE PÁGINA (TI-FOOTER STYLE EXACTO)
+   -------------------------------------------------------------------------- */
+.ti-footer {
+  margin-top: 24px;
+  background: var(--ti-dark);
+  border-top: 3px solid var(--orange);
+  color: #c9d1db;
+  padding: 22px var(--side-padding);
+}
+.ti-footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.ti-footer-brand { display: flex; align-items: center; gap: 14px; }
+.ti-footer-copy { font-size: 0.78rem; color: #98a2ae; }
+.ti-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+  font-size: 0.75rem;
+  color: #7f8996;
+}
+.ti-breadcrumb a { color: #c9d1db; text-decoration: none; }
+.ti-breadcrumb a:hover { color: var(--orange); text-decoration: underline; }
+.ti-breadcrumb strong { color: var(--orange); font-weight: 700; }
+
+.ti-footer-links { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.ti-footer-links a {
+  color: #c9d1db;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+.ti-footer-links a:hover { color: var(--orange); background: rgba(255, 255, 255, 0.06); }
+.ti-footer-links .sep { color: #3c444f; }
+
+.ti-footer-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.ti-footer-help {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--orange);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.ti-footer-help:hover { text-decoration: underline; }
+.ti-footer-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #98a2ae;
+  font-size: 0.82rem;
+}
+.ti-footer-current .material-symbols-outlined { font-size: 1.05rem; }
+
+/* --------------------------------------------------------------------------
+   12. MODAL DE GUÍAS (OVERLAY CENTRADO SOBRE PANTALLA)
+   -------------------------------------------------------------------------- */
+.pub-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 12, 18, 0.72);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.pub-modal-overlay.is-active { display: flex; }
+
+.pub-dialog {
+  position: relative;
+  width: min(660px, 92vw);
+  max-height: 85vh;
+  margin: 0 auto;
+  border-radius: var(--ti-radius);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 30px 70px rgba(6, 10, 16, 0.55);
+  animation: pub-dialog-in 0.22s ease;
+}
+@keyframes pub-dialog-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.pub-dialog-media {
+  position: relative;
+  height: 220px;
+  background: var(--ti-soft);
+}
+.pub-dialog-media img { width: 100%; height: 100%; object-fit: cover; }
+
+.pub-dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(15, 20, 27, 0.75);
+  color: #fff;
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.pub-dialog-close:hover { background: var(--orange); }
+
+.pub-dialog-body {
+  padding: 22px 26px 26px;
+  overflow-y: auto;
+  max-height: calc(85vh - 220px);
+}
+.pub-dialog-body h2 { font-size: 1.25rem; font-weight: 800; margin-top: 10px; }
+.pub-dialog-desc { font-size: 0.86rem; color: var(--ti-muted); margin-top: 6px; }
+.pub-dialog-steps {
+  margin-top: 16px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pub-dialog-steps li {
+  padding: 12px 14px;
+  background: var(--ti-soft);
+  border: 1px solid var(--ti-line);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 8px;
+}
+.pub-dialog-steps li::before {
+  content: 'check_circle';
+  font-family: 'Material Symbols Outlined';
+  color: var(--orange);
+  font-size: 1.1rem;
+}
+.pub-dialog-actions { margin-top: 22px; display: flex; gap: 12px; }
+
+.pub-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 20px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.pub-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 20px;
+  background: var(--ti-soft);
+  color: var(--ti-ink);
+  border: 1px solid var(--ti-line);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE (MEDIA QUERIES)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1280px) {
+  .pub-quick-grid,
+  .pub-guide-grid,
+  .pub-team-grid,
+  .pub-policies-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pub-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pub-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pub-step:nth-child(2)::after { display: none; }
+}
+
+@media (max-width: 820px) {
+  .pub-hero-content {
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 20px;
+  }
+  .pub-hero-badge { display: none; }
+  .pub-quick-grid,
+  .pub-guide-grid,
+  .pub-services-grid,
+  .pub-team-grid,
+  .pub-policies-grid,
+  .pub-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pub-step::after { display: none; }
+  .ti-nav .mobile-toggle { display: block; }
+  .ti-nav .navlinks { display: none; }
+}
