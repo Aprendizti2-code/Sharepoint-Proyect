@@ -1,6 +1,8 @@
 (function (root) {
   'use strict';
 
+  var solicitudPiezaUrl = 'https://forms.cloud.microsoft/r/9v1tzA7sRX?origin=lprLink';
+
   root.PUB_CONFIG = {
 
     /* ── Metadatos del área ───────────────────────────────────────────── */
@@ -39,7 +41,7 @@
 
     links: {
       solicitudDiseno: {
-        href: 'https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header',
+        href: solicitudPiezaUrl,
         label: 'Solicitar Diseño'
       }
     },
@@ -51,8 +53,8 @@
         icon: 'palette',
         color: '#ff6600',
         title: 'Solicitud de Diseño',
-        desc: 'Pide piezas gráficas, afiches y material corporativo.',
-        href: 'https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header',
+        desc: 'Solicite piezas gráficas, afiches y material corporativo.',
+        href: solicitudPiezaUrl,
         external: true
       },
       {
@@ -60,7 +62,7 @@
         icon: 'style',
         color: '#1f6fd0',
         title: 'Manual de Marca',
-        desc: 'Uso oficial de logos, colores, tipografía y aplicaciones.',
+        desc: 'Consulte los lineamientos oficiales de logotipos, colores, tipografía y aplicaciones.',
         href: '#guias'
       },
       {
@@ -68,7 +70,7 @@
         icon: 'language',
         color: '#187a52',
         title: 'Redes Sociales',
-        desc: 'Canales digitales oficiales y plan de difusión institucional.',
+        desc: 'Consulte los canales digitales oficiales y el plan de difusión institucional.',
         href: '#servicios'
       },
       {
@@ -76,7 +78,7 @@
         icon: 'groups',
         color: '#7b1fa2',
         title: 'Equipo Creativo',
-        desc: 'Conoce al equipo encargado de la imagen corporativa.',
+        desc: 'Conozca al equipo responsable de la imagen corporativa.',
         href: '#equipo'
       }
     ],
@@ -88,16 +90,16 @@
         category: 'PROCESOS',
         categoryColor: '#ff6600',
         title: 'Cómo solicitar una pieza gráfica',
-        desc: 'Pasos y requerimientos para que tu solicitud gráfica sea aprobada y producida a tiempo.',
+        desc: 'Pasos y requisitos para que su solicitud gráfica pueda desarrollarse a tiempo.',
         image: 'assets/guia-solicitud.png',
         steps: [
-          'Diligencia el formulario oficial detallando objetivo, público objetivo y formato requerido.',
-          'Adjunta textos finales aprobados y referencias visuales o dimensiones específicas.',
-          'Programa la solicitud con al menos 3 días hábiles de anticipación para piezas estándar.',
+          'Diligencie el formulario oficial e indique el objetivo, el público y el formato requerido.',
+          'Adjunte los textos finales aprobados, referencias visuales y dimensiones específicas.',
+          'Programe la solicitud con al menos 3 días hábiles de anticipación para piezas estándar.',
           'El equipo confirmará recepción formal y programará la primera entrega para revisión.'
         ],
         link: {
-          href: 'https://docs.google.com/forms/d/e/1FAIpQLSdNzqqSW8DTCpGlEbX40DQzsx6NaVY5faCV8Gap2fpapu6rFg/viewform?usp=header',
+          href: solicitudPiezaUrl,
           label: 'Ir al formulario de solicitud'
         }
       },
@@ -106,13 +108,13 @@
         category: 'MARCA',
         categoryColor: '#1f6fd0',
         title: 'Uso correcto del logo corporativo',
-        desc: 'Normas indispensables para no alterar la proporción, colores y presencia de la marca TRANES.',
+        desc: 'Lineamientos para aplicar correctamente el logotipo, los colores y la identidad visual de TRANES.',
         image: 'assets/guia-marca.png',
         steps: [
-          'No estirar ni deformar la proporción original del imagotipo o tipografía.',
-          'Respetar el área perimetral de seguridad libre de textos u otros gráficos.',
-          'Usar exclusivamente los colores autorizados (#ff6600, blanco y negro institucional).',
-          'Para rotulación de vehículos o prendas de dotación, solicitar validación previa al área.'
+          'No estire ni deforme las proporciones originales del logotipo.',
+          'Respete el área de seguridad y manténgala libre de textos u otros gráficos.',
+          'Use los colores autorizados: naranja corporativo (#FF6600), blanco y negro institucional.',
+          'Solicite validación del área antes de aplicar la marca en vehículos o prendas de dotación.'
         ],
         link: { href: '#politicas', label: 'Ver manual de identidad' }
       },
@@ -121,13 +123,13 @@
         category: 'REDES',
         categoryColor: '#187a52',
         title: 'Guía de difusión en redes sociales',
-        desc: 'Lineamientos de tono de voz, buenas prácticas y protocolo de publicación institucional.',
+        desc: 'Lineamientos de tono de voz, buenas prácticas y protocolo para publicaciones institucionales.',
         image: 'assets/guia-redes.png',
         steps: [
-          'Toda comunicación pública externa debe ser canalizada o aprobada por Publicidad & Medios.',
-          'Preservar un tono cercano, respetuoso, profesional y centrado en la seguridad y las personas.',
-          'Las fotos y videos deben mostrar al personal con uniforme completo y sus respectivos EPP.',
-          'No publicar datos sensibles, patentes de clientes ni información operativa confidencial.'
+          'Canalice o solicite aprobación de Publicidad & Medios para toda comunicación pública externa.',
+          'Mantenga un tono cercano, respetuoso y profesional, centrado en la seguridad y las personas.',
+          'Asegúrese de que el personal aparezca con uniforme completo y los elementos de protección requeridos.',
+          'No publique datos sensibles, placas de vehículos de clientes ni información operativa confidencial.'
         ],
         link: { href: '#proceso', label: 'Ver proceso creativo' }
       },
@@ -136,13 +138,13 @@
         category: 'PRODUCCIÓN',
         categoryColor: '#7b1fa2',
         title: 'Producción fotográfica y de video',
-        desc: 'Cómo coordinar sesiones de fotos y videos en patios, sedes operativas y eventos.',
+        desc: 'Conozca cómo coordinar sesiones de fotos y videos en patios, sedes operativas y eventos.',
         image: 'assets/guia-audiovisual.png',
         steps: [
-          'Solicitar la jornada con mínimo 5 días de anticipación para planear guión y permisos.',
-          'Coordinar con SST el acceso seguro a patios o vehículos si se requiere filmación en campo.',
-          'Garantizar que los colaboradores en escena hayan firmado el consentimiento de imagen.',
-          'El material editado se entregará en las resoluciones optimizadas para cada canal.'
+          'Solicite la jornada con mínimo 5 días de anticipación para planear el guion y los permisos.',
+          'Coordine con SST el acceso seguro a patios o vehículos si se requiere filmación en campo.',
+          'Verifique que los colaboradores participantes hayan firmado el consentimiento de uso de imagen.',
+          'El material editado se entregará optimizado para los canales definidos.'
         ],
         link: { href: '#proceso', label: 'Consultar flujo' }
       }
@@ -153,8 +155,8 @@
       {
         icon: 'campaign',
         accent: '#ff6600',
-        title: 'Gestión de Medios & Pauta',
-        desc: 'Planificación, pauta estratégica y medición de campañas en canales tradicionales y digitales.'
+        title: 'Gestión de Medios y Pauta',
+        desc: 'Planificación, ejecución estratégica y medición de resultados de campañas en canales tradicionales y digitales.'
       },
       {
         icon: 'brush',
@@ -166,25 +168,25 @@
         icon: 'language',
         accent: '#187a52',
         title: 'Gestión de Redes Sociales',
-        desc: 'Creación de contenido, parrilla mensual y administración de comunidades digitales TRANES.'
+        desc: 'Creación de contenido, elaboración de la parrilla mensual y administración de las comunidades digitales de TRANES.'
       },
       {
         icon: 'psychology',
         accent: '#7b1fa2',
-        title: 'Branding & Identidad',
+        title: 'Branding e Identidad',
         desc: 'Custodia, evolución y aplicación del manual de marca en vehículos, uniformes e instalaciones.'
       },
       {
         icon: 'record_voice_over',
         accent: '#d97706',
         title: 'Comunicación Interna',
-        desc: 'Campañas de cultura, bienestar y divulgación institucional en articulación con Gestión Humana.'
+        desc: 'Diseño y ejecución de campañas de cultura, bienestar y divulgación institucional, en articulación con Gestión Humana.'
       },
       {
         icon: 'photo_camera',
         accent: '#0e7490',
         title: 'Producción Audiovisual',
-        desc: 'Registro fotográfico de flota, coberturas de eventos institucionales y edición de video corporativo.'
+        desc: 'Registro fotográfico de la flota, cobertura de eventos institucionales y edición de video corporativo.'
       }
     ],
 
@@ -214,18 +216,18 @@
         initials: 'CZ',
         tag: 'Publicidad & Medios',
         tagColor: '#1f6fd0',
-        summary: 'Producción gráfica, piezas publicitarias y gestión de medios para los diferentes canales corporativos internos y externos.',
+        summary: 'Producción gráfica, elaboración de piezas publicitarias y gestión de medios para los canales corporativos internos y externos.',
         specialty: 'Diseño publicitario, medios y contenidos',
         email: 'publicidad@tranes.com.co'
       }
     ],
 
-    /* ── Proceso creativo (4 pasos idénticos al formato de TI) ───────── */
+    /* ── Proceso creativo ───────────────────────────────────────────── */
     process: [
       {
         icon: 'edit_note',
-        title: 'Recepción del Brief',
-        desc: 'Recibimos tu solicitud oficial con objetivos, dimensiones y fechas de entrega requeridas.'
+        title: 'Recepción del brief',
+        desc: 'Recibimos su solicitud formal con los objetivos, las dimensiones y las fechas de entrega requeridas.'
       },
       {
         icon: 'lightbulb',
@@ -234,13 +236,13 @@
       },
       {
         icon: 'brush',
-        title: 'Diseño y Ajustes',
-        desc: 'Desarrollo de la propuesta gráfica y revisión colaborativa con el solicitante hasta la aprobación.'
+        title: 'Diseño y ajustes',
+        desc: 'Desarrollamos la propuesta gráfica y la revisamos de manera colaborativa con usted hasta obtener su aprobación.'
       },
       {
         icon: 'rocket_launch',
-        title: 'Publicación y Entrega',
-        desc: 'Entrega final de los archivos en alta resolución o publicación en los canales oficiales de TRANES.'
+        title: 'Publicación y entrega',
+        desc: 'Entregamos los archivos finales en alta resolución o publicamos la pieza en los canales oficiales de TRANES.'
       }
     ],
 
@@ -249,29 +251,29 @@
       {
         icon: 'style',
         title: 'Manual de Identidad Visual',
-        desc: 'Guía oficial de colores corporativos (#ff6600), tipografías autorizadas y proporciones de logo.',
+        desc: 'Guía oficial de colores corporativos (#FF6600), tipografías autorizadas y proporciones del logotipo.',
         href: '#guias',
         label: 'Consultar directrices'
       },
       {
         icon: 'policy',
         title: 'Manual de Tono y Voz',
-        desc: 'Lineamientos de redacción y tratamiento institucional para textos, comunicados y redes sociales.',
+        desc: 'Lineamientos de redacción y tratamiento institucional aplicables a textos, comunicados y redes sociales.',
         href: '#guias',
         label: 'Ver directrices'
       },
       {
         icon: 'photo_library',
         title: 'Banco de Recursos Oficial',
-        desc: 'Archivos vectoriales (.SVG, .PNG), firmas de correo electrónico y fondos corporativos de reunión.',
-        href: '#',
-        label: 'Acceso a recursos'
+        desc: 'Solicite acceso a los archivos vectoriales (.SVG, .PNG), las firmas de correo y los fondos corporativos para reuniones.',
+        href: 'mailto:publicidad@tranes.com.co?subject=Solicitud%20de%20acceso%20al%20banco%20de%20recursos',
+        label: 'Solicitar acceso'
       },
       {
         icon: 'security',
         title: 'Política de Redes Sociales',
         desc: 'Código de conducta y directrices para colaboradores sobre publicaciones relacionadas con TRANES.',
-        href: '#',
+        href: '#guias',
         label: 'Ver política'
       }
     ]
@@ -484,5 +486,29 @@
     renderProcess();
     renderPolicies();
   });
+
+  /* ── Notificador de altura al iframe padre (SharePoint Modern Script Editor) ── */
+  (function () {
+    var lastH = 0;
+    function notify() {
+      try {
+        if (window.parent === window) return;
+        var h = Math.ceil(Math.max(
+          document.documentElement.scrollHeight,
+          document.body ? document.body.scrollHeight : 0
+        ));
+        if (Math.abs(h - lastH) < 6) return;
+        lastH = h;
+        try {
+          var f = window.parent.document.getElementById('tranesFrame');
+          if (f) { f.style.height = h + 'px'; f.style.minHeight = h + 'px'; }
+        } catch (errSame) {}
+        window.parent.postMessage({ tranes: 1, height: h }, '*');
+      } catch (e) {}
+    }
+    window.addEventListener('load', notify);
+    window.addEventListener('resize', notify);
+    setInterval(notify, 1500);
+  })();
 
 })();
