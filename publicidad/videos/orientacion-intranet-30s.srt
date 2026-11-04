@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:04,700
+Bienvenidos a la Intranet TRANES.
+Desde Inicio encuentras novedades y recursos.
+
+2
+00:00:05,000 --> 00:00:09,100
+En Nuestras Áreas visita los micrositios de
+TI, Gestión Humana y Publicidad.
+
+3
+00:00:10,000 --> 00:00:14,200
+En TI consulta guías, buenas prácticas y los
+accesos para pedir soporte.
+
+4
+00:00:15,000 --> 00:00:19,600
+Gestión Humana reúne accesos, guías y
+servicios para acompañarte en tus procesos.
+
+5
+00:00:20,000 --> 00:00:24,600
+Publicidad y Medios presenta sus servicios,
+el proceso creativo y cómo solicitar una pieza.
+
+6
+00:00:25,000 --> 00:00:29,800
+Busca documentos en Centro de Formatos,
+revisa Comunicaciones y consulta el calendario.

@@ -1,0 +1,115 @@
+html[data-theme="dark"] body.ti-page,
+html[data-theme="dark"] body.gh-page,
+html[data-theme="dark"] body.pub-page,
+body[data-theme="dark"].ti-page,
+body[data-theme="dark"].gh-page,
+body[data-theme="dark"].pub-page {
+  color-scheme: dark;
+  --page-bg: #0f1318;
+  --white: #161c24;
+  --ti-ink: #f1f5f9;
+  --ti-muted: #aab6c5;
+  --ti-line: #303b4b;
+  --ti-soft: #1b222d;
+  --ti-dark: #090c0f;
+  --ti-night: #0b1017;
+  --ti-navy: #101a29;
+  --text-dark: #f1f5f9;
+  --text-gray: #aab6c5;
+  --border: #303b4b;
+  --light-bg: #1b222d;
+  --orange-light: rgba(255, 102, 0, 0.14);
+  --orange-border: rgba(255, 102, 0, 0.38);
+  --ti-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  --ti-shadow-hover: 0 14px 30px rgba(0, 0, 0, 0.34);
+}
+
+html[data-theme="dark"] .ti-panel,
+html[data-theme="dark"] .pub-panel,
+body[data-theme="dark"] .ti-panel,
+body[data-theme="dark"] .pub-panel {
+  background: #151b23;
+  border-color: var(--ti-line);
+  box-shadow: var(--ti-shadow);
+}
+
+html[data-theme="dark"] .ti-quick-card,
+html[data-theme="dark"] .ti-guide-open,
+html[data-theme="dark"] .ti-guide-link,
+html[data-theme="dark"] .ti-member,
+html[data-theme="dark"] .pub-quick-card,
+html[data-theme="dark"] .pub-guide-open,
+html[data-theme="dark"] .pub-member,
+html[data-theme="dark"] .ti-dialog,
+html[data-theme="dark"] .pub-dialog,
+body[data-theme="dark"] .ti-quick-card,
+body[data-theme="dark"] .ti-guide-open,
+body[data-theme="dark"] .ti-guide-link,
+body[data-theme="dark"] .ti-member,
+body[data-theme="dark"] .pub-quick-card,
+body[data-theme="dark"] .pub-guide-open,
+body[data-theme="dark"] .pub-member,
+body[data-theme="dark"] .ti-dialog,
+body[data-theme="dark"] .pub-dialog {
+  background: var(--white);
+  border-color: var(--ti-line);
+  color: var(--ti-ink);
+}
+
+html[data-theme="dark"] .ti-service,
+html[data-theme="dark"] .ti-policy-item,
+html[data-theme="dark"] .ti-dialog-steps li,
+html[data-theme="dark"] .pub-service,
+html[data-theme="dark"] .pub-policy-item,
+html[data-theme="dark"] .pub-dialog-steps li,
+html[data-theme="dark"] .resource-list a,
+body[data-theme="dark"] .ti-service,
+body[data-theme="dark"] .ti-policy-item,
+body[data-theme="dark"] .ti-dialog-steps li,
+body[data-theme="dark"] .pub-service,
+body[data-theme="dark"] .pub-policy-item,
+body[data-theme="dark"] .pub-dialog-steps li,
+body[data-theme="dark"] .resource-list a {
+  background: var(--ti-soft);
+  border-color: var(--ti-line);
+  color: var(--ti-ink);
+}
+
+html[data-theme="dark"] .ti-service:hover,
+html[data-theme="dark"] .pub-service:hover,
+body[data-theme="dark"] .ti-service:hover,
+body[data-theme="dark"] .pub-service:hover {
+  background: #252e3a;
+  border-color: var(--orange-border);
+}
+
+html[data-theme="dark"] .ti-nav .dropdown-menu,
+body[data-theme="dark"] .ti-nav .dropdown-menu {
+  background: #161c24;
+  border-color: var(--ti-line);
+}
+
+html[data-theme="dark"] .ti-nav .dropdown-menu a,
+body[data-theme="dark"] .ti-nav .dropdown-menu a {
+  color: #f1f5f9;
+}
+
+html[data-theme="dark"] .ti-nav .dropdown-menu a:hover,
+body[data-theme="dark"] .ti-nav .dropdown-menu a:hover {
+  background: #232c39;
+  color: var(--orange);
+}
+
+html[data-theme="dark"] .ti-team-notice,
+body[data-theme="dark"] .ti-team-notice {
+  background: #2a2419;
+  border-color: #5b4727;
+  color: #f3c979;
+}
+
+html[data-theme="dark"] .ti-dialog-btn--secondary:hover,
+html[data-theme="dark"] .pub-btn-secondary:hover,
+body[data-theme="dark"] .ti-dialog-btn--secondary:hover,
+body[data-theme="dark"] .pub-btn-secondary:hover {
+  background: #252e3a;
+}

@@ -565,8 +565,23 @@ a:focus:not(:focus-visible) {
 .news-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-color: #cbd5e1; }
 .news-thumb { width: 75px; min-width: 75px; height: 58px; border-radius: var(--radius-sm); flex-shrink: 0; background-size: cover; background-position: center; }
 .news-info h3 { font-size: 0.86rem; font-weight: 700; margin: 3px 0 3px; color: var(--text-dark); line-height: 1.25; }
+.news-info h3 a { color: inherit; text-decoration: none; }
+.news-info h3 a:hover, .news-info h3 a:focus-visible { color: var(--orange-hover); text-decoration: underline; }
 .news-info p { font-size: 0.74rem; color: var(--text-gray); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.3; }
 .news-info small { color: #888; font-size: 0.7rem; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+.news-expanded { margin-top: 6px; }
+.news-expanded summary { color: var(--orange-hover); cursor: pointer; font-size: 0.72rem; font-weight: 700; list-style: none; }
+.news-expanded summary::-webkit-details-marker { display: none; }
+.news-expanded summary::after { content: ""; display: inline-block; width: 7px; height: 7px; margin: 0 0 2px 6px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
+.news-expanded[open] summary::after { transform: rotate(225deg); margin-bottom: -2px; }
+.news-expanded summary:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 2px; }
+.news-less, .news-expanded[open] .news-more { display: none; }
+.news-expanded[open] .news-less { display: inline; }
+.news-expanded-content { padding-top: 5px; }
+.news-expanded-content p, .news-expanded-content li { color: var(--text-gray); font-size: 0.74rem; line-height: 1.4; }
+.news-expanded-content p { display: block; overflow: visible; margin-bottom: 5px; }
+.news-expanded-content ol, .news-expanded-content ul { padding-left: 18px; margin: 0 0 6px; }
+.news-expanded-content a { color: var(--orange-hover); font-size: 0.73rem; font-weight: 700; text-decoration: underline; }
 .icon-small { font-size: 0.85rem; }
 .tag { font-size: 0.65rem; padding: 2px 6px; border-radius: 3px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
 .tag-red { background: #ffebee; color: #c62828; }
@@ -1124,19 +1139,6 @@ a.f-item:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; 
   box-shadow: 0 4px 10px rgba(255, 102, 0, 0.4);
 }
 
-.footer-script {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Caveat', cursive;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 0.95;
-  color: white;
-  text-align: right;
-  transform: rotate(-4deg);
-}
-.footer-script .hl { color: var(--orange); }
-
 /* ============================================
    ECOSISTEMA DIGITAL — Mapa Interactivo
    ============================================ */
@@ -1509,7 +1511,6 @@ body.font-xlarge { font-size: 20px; }
 
   /* Footer */
   .footer-inner { justify-content: center; text-align: center; }
-  .footer-script { text-align: center; }
   .footer-contact { justify-content: center; }
   .footer-social { align-items: center; }
 
@@ -1605,7 +1606,6 @@ body.font-xlarge { font-size: 20px; }
   .site-footer { padding: var(--space-lg) var(--side-padding); }
   .footer-inner { gap: var(--space-lg); }
   .footer-contact { flex-direction: column; gap: var(--space-md); }
-  .footer-script { font-size: 1.2rem; }
 
   /* Ecosystem */
   .eco-columns { grid-template-columns: 1fr; }
@@ -2147,6 +2147,10 @@ body[data-theme="dark"] .news-info h3 {
 body[data-theme="dark"] .news-info p,
 body[data-theme="dark"] .news-info small {
   color: #94a3b8 !important;
+}
+body[data-theme="dark"] .news-expanded-content p,
+body[data-theme="dark"] .news-expanded-content li {
+  color: #cbd5e1 !important;
 }
 
 /* Ecosistema Digital y Nuestras Áreas */

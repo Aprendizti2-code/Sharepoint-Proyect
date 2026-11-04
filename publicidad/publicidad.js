@@ -7,9 +7,9 @@
 
     /* ── Metadatos del área ───────────────────────────────────────────── */
     site: {
-      area: 'Publicidad & Medios',
+      area: 'Publicidad y Mercadeo',
       intranetHome: '../index.html',
-      breadcrumb: ['Intranet Corporativa', 'Nuestras Áreas', 'Publicidad & Medios']
+      breadcrumb: ['Intranet Corporativa', 'Nuestras Áreas', 'Publicidad y Mercadeo']
     },
 
     /* ── Menús de navegación ──────────────────────────────────────────── */
@@ -27,7 +27,7 @@
         { label: 'Control Interno',    href: '../index.html#area-control' },
         { label: 'Calidad / SGI',      href: '../index.html#area-calidad' },
         { label: 'Gerencia',           href: '../index.html#area-gerencia' },
-        { label: 'Publicidad & Medios',href: 'index.html', current: true }
+        { label: 'Publicidad y Mercadeo', href: 'index.html', current: true }
       ],
       formatos: [
         { label: 'Centro de Formatos y Plantillas', href: '../index.html#formatos' },
@@ -126,7 +126,7 @@
         desc: 'Lineamientos de tono de voz, buenas prácticas y protocolo para publicaciones institucionales.',
         image: 'assets/guia-redes.png',
         steps: [
-          'Canalice o solicite aprobación de Publicidad & Medios para toda comunicación pública externa.',
+          'Canalice o solicite aprobación de Publicidad y Mercadeo para toda comunicación pública externa.',
           'Mantenga un tono cercano, respetuoso y profesional, centrado en la seguridad y las personas.',
           'Asegúrese de que el personal aparezca con uniforme completo y los elementos de protección requeridos.',
           'No publique datos sensibles, placas de vehículos de clientes ni información operativa confidencial.'
@@ -200,7 +200,7 @@
         photoScale: 1.05,
         photoOrigin: 'center 25%',
         initials: 'LG',
-        tag: 'Publicidad & Medios',
+        tag: 'Publicidad y Mercadeo',
         tagColor: '#ff6600',
         summary: 'Gestión y coordinación de estrategias publicitarias, identidad corporativa y desarrollo de campañas visuales para TRANES.',
         specialty: 'Estrategia de marca, campañas y contenidos',
@@ -208,16 +208,16 @@
       },
       {
         name: 'María Camila Zapata Betancur',
-        role: 'Analista de Publicidad',
+        role: 'Comunicadora social y audiovisual',
         image: 'assets/team-camila.jpg',
         photoPos: 'center 46%',
         photoScale: 1.34,
         photoOrigin: 'center 46%',
         initials: 'CZ',
-        tag: 'Publicidad & Medios',
+        tag: 'Publicidad y Mercadeo',
         tagColor: '#1f6fd0',
-        summary: 'Producción gráfica, elaboración de piezas publicitarias y gestión de medios para los canales corporativos internos y externos.',
-        specialty: 'Diseño publicitario, medios y contenidos',
+        summary: 'Crea contenidos y piezas audiovisuales que comunican la identidad de TRANES, y apoya la producción y difusión de mensajes para los canales internos y externos.',
+        specialty: 'Comunicación corporativa, producción audiovisual y contenidos',
         email: 'publicidad@tranes.com.co'
       }
     ],
@@ -283,7 +283,7 @@
 
 
 /* ==========================================================================
-   RENDER ENGINE — Publicidad & Medios
+   RENDER ENGINE — Publicidad y Mercadeo
    ========================================================================== */
 (function () {
   'use strict';

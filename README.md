@@ -25,6 +25,16 @@ No necesita servidor ni instalación de Node para esta primera maqueta.
 - Responsive para tablet/móvil.
 - Botones con eventos preparados para sustituir los mensajes de demostración por URLs, formularios o listas reales.
 
+## Imágenes de comunicaciones
+
+Las imágenes de las comunicaciones se descargaron de Unsplash y se guardan localmente para que la portada no dependa de servicios externos. La licencia de Unsplash permite su uso gratuito, incluso comercial, sin atribución obligatoria; se conserva aquí la procedencia:
+
+- Plataforma: [Unsplash](https://images.unsplash.com/photo-1516321318423-f06f85e504b3)
+- Tickets y colaboración: [Unsplash](https://images.unsplash.com/photo-1521737711867-e3b97375f902)
+- Calendario: [Unsplash](https://images.unsplash.com/photo-1506784983877-45594efa4cbe)
+- Seguridad digital: [Unsplash](https://images.unsplash.com/photo-1550751827-4bd374c3f58b)
+- [Licencia de Unsplash](https://unsplash.com/license)
+
 ## Siguiente fase
 
 Cuando validemos el aspecto:

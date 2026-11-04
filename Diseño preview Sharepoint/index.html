@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" media="print" onload="this.media='all'" />
 
   <!-- CSS CRÍTICO: carga síncrona -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 
   <!-- Material Symbols: carga asíncrona para no bloquear renderizado -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -84,7 +84,7 @@
           <a href="#area-control" role="menuitem"><span class="material-symbols-outlined">fact_check</span> Control Interno</a>
           <a href="#area-calidad" role="menuitem"><span class="material-symbols-outlined">verified</span> Calidad / SGI</a>
           <a href="#area-gerencia" role="menuitem"><span class="material-symbols-outlined">trending_up</span> Gerencia (M365)</a>
-          <a href="#area-publicidad" role="menuitem"><span class="material-symbols-outlined">campaign</span> Publicidad & Medios</a>
+          <a href="#area-publicidad" role="menuitem"><span class="material-symbols-outlined">campaign</span> Publicidad y Mercadeo</a>
         </div>
       </div>
 
@@ -200,39 +200,76 @@
         
         <div class="news-list">
           <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news-comunicado.jpg');" role="img" aria-label="Horario especial Semana Santa" loading="lazy"></div>
+            <div class="news-thumb" style="background-image: url('assets/news-platform.jpg');" role="img" aria-label="Colaboradores consultando una plataforma en su computador" loading="lazy"></div>
             <div class="news-info">
-              <span class="tag tag-red">Comunicado</span>
-              <h3>Horario especial Semana Santa</h3>
-              <p>Informamos a todos los colaboradores que durante la semana santa el horario de operación tendrá modificación...</p>
-              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> 15 abr 2025</small>
+              <span class="tag tag-blue">TI / Sistemas</span>
+              <h3><a href="../ti-sistemas.html">Novedades de la plataforma</a></h3>
+              <p>Explora el micrositio de TI: allí encuentras guías, buenas prácticas, equipo y acceso a la Mesa de Ayuda.</p>
+              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> <time datetime="2026-11-04">04 nov 2026</time></small>
+              <details class="news-expanded">
+                <summary><span class="news-more">Ver noticia completa</span><span class="news-less">Ver menos</span></summary>
+                <div class="news-expanded-content">
+                  <p>En el micrositio de TI / Sistemas puedes consultar las guías y buenas prácticas, conocer al equipo y encontrar los accesos a los servicios de soporte.</p>
+                  <a href="../ti-sistemas.html">Visitar TI / Sistemas</a>
+                </div>
+              </details>
             </div>
           </article>
           <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news-noticias.jpg');" role="img" aria-label="Nuevos beneficios" loading="lazy"></div>
+            <div class="news-thumb" style="background-image: url('assets/news-ticket.jpg');" role="img" aria-label="Equipo colaborando frente a sus computadores" loading="lazy"></div>
             <div class="news-info">
-              <span class="tag tag-blue">Noticias</span>
-              <h3>Nuevos beneficios para nuestros colaboradores</h3>
-              <p>Conoce aquí todos los beneficios y convenios que tenemos para ti y tu familia.</p>
-              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> 10 abr 2025</small>
+              <span class="tag tag-orange">Consejo rápido</span>
+              <h3><a href="../ti-sistemas.html#guias">Cómo crear un ticket de soporte</a></h3>
+              <p>Describe qué ocurre, desde cuándo y a quién afecta. Adjunta una captura del error para ayudar al equipo a resolverlo.</p>
+              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> <time datetime="2026-11-03">03 nov 2026</time></small>
+              <details class="news-expanded">
+                <summary><span class="news-more">Ver paso a paso</span><span class="news-less">Ver menos</span></summary>
+                <div class="news-expanded-content">
+                  <ol>
+                    <li>Abre la Mesa de Ayuda TI.</li>
+                    <li>Crea una solicitud en el tablero de soporte.</li>
+                    <li>Indica qué equipo o servicio presenta el problema y desde cuándo.</li>
+                    <li>Adjunta una captura o el mensaje de error y guarda el ticket.</li>
+                  </ol>
+                  <a href="../ti-sistemas.html#guias">Consultar guía completa</a>
+                </div>
+              </details>
             </div>
           </article>
           <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news-sst.jpg');" role="img" aria-label="Campaña de salud" loading="lazy"></div>
+            <div class="news-thumb" style="background-image: url('assets/news-calendar.jpg');" role="img" aria-label="Calendario mensual de actividades" loading="lazy"></div>
             <div class="news-info">
-              <span class="tag tag-yellow">SGI / SST</span>
-              <h3>Cuida tu salud, cuida tu vida</h3>
-              <p>Te invitamos a participar en la campaña de prevención de riesgos laborales SGI. Juntos por un entorno más seguro.</p>
-              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> 07 abr 2025</small>
+              <span class="tag tag-red">Intranet</span>
+              <h3>Consulta el calendario y las comunicaciones</h3>
+              <p>Revisa las publicaciones de la intranet y el calendario para tener presentes las actividades y fechas importantes.</p>
+              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> <time datetime="2026-11-02">02 nov 2026</time></small>
+              <details class="news-expanded">
+                <summary><span class="news-more">Ver información</span><span class="news-less">Ver menos</span></summary>
+                <div class="news-expanded-content">
+                  <p>Consulta el calendario corporativo para revisar las fechas y actividades publicadas. Las comunicaciones de la intranet se actualizarán aquí.</p>
+                  <a href="../calendario.html">Abrir calendario</a>
+                </div>
+              </details>
             </div>
           </article>
           <article class="news-item">
-            <div class="news-thumb" style="background-image: url('assets/news-cultura.jpg');" role="img" aria-label="Cultura Tranes" loading="lazy"></div>
+            <div class="news-thumb" style="background-image: url('assets/news-security.jpg');" role="img" aria-label="Circuitos y tecnología digital" loading="lazy"></div>
             <div class="news-info">
-              <span class="tag tag-orange">Cultura Tranes</span>
-              <h3>Celebramos a nuestros conductores</h3>
-              <p>Reconocemos el compromiso y la dedicación de todo nuestro equipo en carretera.</p>
-              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> 02 abr 2025</small>
+              <span class="tag tag-yellow">Seguridad digital</span>
+              <h3>Verifica antes de abrir un enlace</h3>
+              <p>Comprueba el remitente y el destino del enlace. Si algo parece sospechoso, no compartas tus claves y consulta con TI.</p>
+              <small><span class="material-symbols-outlined icon-small" aria-hidden="true">schedule</span> <time datetime="2026-10-30">30 oct 2026</time></small>
+              <details class="news-expanded">
+                <summary><span class="news-more">Ver recomendaciones</span><span class="news-less">Ver menos</span></summary>
+                <div class="news-expanded-content">
+                  <ul>
+                    <li>Revisa cuidadosamente la dirección del remitente y del sitio antes de iniciar sesión.</li>
+                    <li>No compartas contraseñas ni códigos de verificación.</li>
+                    <li>Si el mensaje o el enlace te parece sospechoso, no lo abras y consulta con el equipo de TI.</li>
+                  </ul>
+                  <a href="../ti-sistemas.html">Más información de seguridad digital</a>
+                </div>
+              </details>
             </div>
           </article>
         </div>
@@ -354,7 +391,7 @@
             </div>
 
             <div class="area-card area-card-wide" id="area-publicidad" style="--col-accent: #ad1457;">
-              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">campaign</span> Publicidad & Medios</div>
+              <div class="area-head"><span class="material-symbols-outlined" aria-hidden="true">campaign</span> Publicidad y Mercadeo</div>
               <div class="area-tools">
                 <span class="tool-badge">Adobe Suite</span>
                 <span class="tool-badge">MailerLite</span>
@@ -578,11 +615,6 @@
         </div>
       </div>
 
-      <div class="footer-script" aria-hidden="true">
-        <span>Juntos</span>
-        <span class="hl">llegamos</span>
-        <span>más lejos</span>
-      </div>
     </div>
   </footer>
 

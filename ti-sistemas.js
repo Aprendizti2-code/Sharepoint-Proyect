@@ -52,7 +52,7 @@
         { label: 'Control Interno',    href: 'index.html#area-control' },
         { label: 'Calidad / SGI',      href: 'index.html#area-calidad' },
         { label: 'Gerencia',           href: 'index.html#area-gerencia' },
-        { label: 'Publicidad & Medios',href: 'publicidad.html' }
+        { label: 'Publicidad y Mercadeo', href: 'publicidad.html' }
       ],
       formatos: [
         { label: 'Centro de Formatos y Plantillas', href: 'index.html#formatos' },

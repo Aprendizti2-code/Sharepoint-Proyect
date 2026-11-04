@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRANES S.A.S. — Micrositio «Publicidad & Medios»
+   TRANES S.A.S. — Micrositio «Publicidad y Mercadeo»
    Estilos exactos y 100% consistentes con TI / Sistemas y Gestión Humana
    ========================================================================== */
 
@@ -303,21 +303,6 @@ body.pub-page {
     );
 }
 
-.pub-hero-script {
-  position: absolute;
-  right: 42px;
-  bottom: 34px;
-  max-width: 360px;
-  text-align: right;
-  font-family: 'Caveat', cursive;
-  font-size: 2.1rem;
-  font-weight: 700;
-  line-height: 1.05;
-  color: #fff;
-  transform: rotate(-5deg);
-  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.55);
-}
-
 .pub-hero-content {
   position: relative;
   z-index: 1;
@@ -366,7 +351,7 @@ body.pub-page {
   letter-spacing: -1px;
   line-height: 1.05;
 }
-.pub-hero-slash { color: var(--orange); font-weight: 700; margin: 0 4px; }
+.pub-hero-conjunction { color: var(--orange); font-weight: 700; margin: 0 4px; }
 .pub-hero-accent { color: var(--orange); }
 
 .pub-hero-rule {
@@ -376,12 +361,6 @@ body.pub-page {
   border-radius: 4px;
   background: var(--orange);
   margin: 16px 0 14px;
-}
-
-.pub-hero-sub {
-  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
-  font-weight: 700;
-  color: #fff;
 }
 
 .pub-hero-bullets {
@@ -596,7 +575,7 @@ body.pub-page {
 .pub-guide-open:hover .pub-guide-cta .material-symbols-outlined { transform: translateX(4px); }
 
 /* --------------------------------------------------------------------------
-   7. SERVICIOS — «¿Qué hace el área de Publicidad & Medios?»
+   7. SERVICIOS — «¿Qué hace el área de Publicidad y Mercadeo?»
    -------------------------------------------------------------------------- */
 .pub-services-grid {
   display: grid;
@@ -1153,7 +1132,6 @@ body.pub-page {
     gap: 20px;
   }
   .pub-hero-badge { display: none; }
-  .pub-hero-script { display: none; }
   .pub-quick-grid,
   .pub-guide-grid,
   .pub-services-grid,
