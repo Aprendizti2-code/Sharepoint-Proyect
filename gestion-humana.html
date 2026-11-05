@@ -1576,30 +1576,38 @@
     /* ==========================================================================
        HERO / BANNER DE ACCESO
        ========================================================================== */
-    .hero {
-      width: 100%;
-      max-width: 1652px;
-      margin: 0 auto;
-      padding: 16px 20px 0;
-    }
-    .hero-frame {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border-radius: var(--ti-radius, 14px);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      background-color: #fff;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-      line-height: 0;
-    }
-    .hero-bg {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1600 / 600;
-      object-fit: cover;
-      object-position: center;
-    }
+    
+    
+    
+
+  
+/* ==========================================================================
+   BANNER HERO INSTITUCIONAL — ARQUITECTURA EXACTA AL INICIO
+   ========================================================================== */
+.hero {
+  width: 100%;
+  max-width: 1652px;
+  margin: 0 auto;
+  padding: 14px var(--side-padding, 20px) 0;
+}
+.hero-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--card-radius, 14px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  line-height: 0;
+}
+.hero-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1530 / 540;
+  object-fit: cover;
+  object-position: center;
+}
 
   </style>
   <link rel="stylesheet" href="micrositios-theme.css?v=2" />
@@ -1694,9 +1702,9 @@
     <!-- =========================================================
          3.2 HERO BANNER (Gestión / Humana)
          ========================================================= -->
-    <section class="hero" role="region" aria-label="Banner Gestión Humana">
+    <section class="hero" role="region" aria-label="Banner de bienvenida Gestión Humana">
       <div class="hero-frame">
-        <img class="hero-bg" src="banner-gestion-humana.jpg" width="2000" height="500" alt="Gestión Humana - Personas que hacen la diferencia" fetchpriority="high" />
+        <img class="hero-bg" src="banner-gestion-humana.png" width="1530" height="540" alt="Gestión Humana - Personas que hacen la diferencia" fetchpriority="high" />
       </div>
     </section>
 

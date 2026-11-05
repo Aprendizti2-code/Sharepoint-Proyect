@@ -1436,27 +1436,35 @@ body.ti-page {
 /* ==========================================================================
    BANNER ILUSTRADO MICROSITIO (AJUSTADO A PROPORCIÓN ORIGINAL 1024x384)
    ========================================================================== */
+
+
+
+
+
+/* ==========================================================================
+   BANNER HERO INSTITUCIONAL — ARQUITECTURA EXACTA AL INICIO
+   ========================================================================== */
 .hero {
   width: 100%;
   max-width: 1652px;
   margin: 0 auto;
-  padding: 16px var(--side-padding, 20px) 0;
+  padding: 14px var(--side-padding, 20px) 0;
 }
 .hero-frame {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background-color: #fff;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  border-radius: var(--card-radius, 14px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   line-height: 0;
 }
 .hero-bg {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 1600 / 600;
+  aspect-ratio: 1530 / 540;
   object-fit: cover;
   object-position: center;
 }
