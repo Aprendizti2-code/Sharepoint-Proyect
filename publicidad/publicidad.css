@@ -1144,3 +1144,31 @@ body.pub-page {
   .ti-nav .mobile-toggle { display: block; }
   .ti-nav .navlinks { display: none; }
 }
+
+
+/* ==========================================================================
+   BANNER ILUSTRADO MICROSITIO (AJUSTADO A PROPORCIÓN ORIGINAL 1024x384)
+   ========================================================================== */
+.hero {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px var(--side-padding, 20px) 0;
+}
+.hero-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  line-height: 0;
+}
+.hero-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
