@@ -249,27 +249,6 @@
     /* ── Políticas de marca (4 tarjetas estándar) ────────────────────── */
     policies: [
       {
-        icon: 'style',
-        title: 'Manual de Identidad Visual',
-        desc: 'Guía oficial de colores corporativos (#FF6600), tipografías autorizadas y proporciones del logotipo.',
-        href: '#guias',
-        label: 'Consultar directrices'
-      },
-      {
-        icon: 'policy',
-        title: 'Manual de Tono y Voz',
-        desc: 'Lineamientos de redacción y tratamiento institucional aplicables a textos, comunicados y redes sociales.',
-        href: '#guias',
-        label: 'Ver directrices'
-      },
-      {
-        icon: 'photo_library',
-        title: 'Banco de Recursos Oficial',
-        desc: 'Solicite acceso a los archivos vectoriales (.SVG, .PNG), las firmas de correo y los fondos corporativos para reuniones.',
-        href: 'mailto:publicidad@tranes.com.co?subject=Solicitud%20de%20acceso%20al%20banco%20de%20recursos',
-        label: 'Solicitar acceso'
-      },
-      {
         icon: 'timer',
         title: 'Tiempo de devolución',
         desc: 'El tiempo de entrega será de 1 a 3 días hábiles. Publicidad que se requiera urgente deberá ser notificada vía WhatsApp.',
