@@ -270,11 +270,25 @@
         label: 'Solicitar acceso'
       },
       {
-        icon: 'security',
-        title: 'Política de Redes Sociales',
-        desc: 'Código de conducta y directrices para colaboradores sobre publicaciones relacionadas con TRANES.',
-        href: '#guias',
-        label: 'Ver política'
+        icon: 'timer',
+        title: 'Tiempo de devolución',
+        desc: 'El tiempo de entrega será de 1 a 3 días hábiles. Publicidad que se requiera urgente deberá ser notificada vía WhatsApp.',
+        href: '#condiciones',
+        label: 'Ver condición'
+      },
+      {
+        icon: 'checklist',
+        title: 'Requerimientos específicos',
+        desc: 'Incluye en tu solicitud el diseño, el mensaje y los detalles de la publicidad que necesitas para atenderte de manera oportuna y efectiva.',
+        href: '#condiciones',
+        label: 'Ver condición'
+      },
+      {
+        icon: 'verified',
+        title: 'Difusión de publicidad',
+        desc: 'Toda pieza publicitaria deberá contar con la aprobación previa del área de Publicidad antes de ser difundida.',
+        href: '#condiciones',
+        label: 'Ver condición'
       }
     ]
   };
